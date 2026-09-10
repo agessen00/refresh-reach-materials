@@ -175,6 +175,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 .colophon .mark{height:22px;opacity:.55;}
 .colophon span{font-size:12px;color:var(--muted);}
 
+.sechead{break-inside:avoid;page-break-inside:avoid;}
+
 /* Print ------------------------------------------------------------------ */
 @media print{
   *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
@@ -183,14 +185,21 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
   .wrap{max-width:none;}
   .cover{border-radius:0;padding:34px 34px 104px;margin:0 0 10px;}
   .cover h1{font-size:34px;}
-  .sec{break-before:page;padding-top:4px;}
-  .sec:first-of-type{break-before:auto;}
+  /* Sections flow rather than each claiming a fresh page. Forcing a break per
+     section left most pages two-thirds empty and pushed tall figures onto
+     pages of their own. Headings are pinned to the text they introduce, and
+     every grid is kept whole, which is what actually stops things splitting. */
+  .sec{padding-top:2px;}
   h2,h3,h4{break-after:avoid;}
+  .sechead{break-inside:avoid;break-after:avoid;}
+  .sec h2{margin-bottom:12px;}
   p,li{orphans:3;widows:3;}
-  .fig,.callout,.howto,.exec,.revcard,.kcol,.gstep,.fstep,.traj,.toc{break-inside:avoid;}
+  .callout,.howto,.revcard,.kcol,.gstep,.fstep,.step,.c,.ba,.rcell,.amex{break-inside:avoid;}
+  .fig,.exec,.traj,.toc,.bb,.flow,.steps,.trio,.quad,.revgrid,.kpi,.arc,.rings,.reachrow,.funnel,.stack,.chips,.keeps{break-inside:avoid;}
+  .fig{padding:12px 14px;}
   .toc{break-after:page;}
   a{color:inherit;text-decoration:none;}
-  .colophon{break-inside:avoid;}
+  .colophon{break-inside:avoid;break-before:avoid;}
 }
 </style>
 </head>
@@ -234,8 +243,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </div>
 
 <section class="sec" id="s1">
-  <div class="secnum">Section 1</div>
-  <h2>What we are building</h2>
+  <div class="sechead"><div class="secnum">Section 1</div>
+    <h2>What we are building</h2></div>
   <p>The public-serving division of Refresh runs REACH, a white-labeled engagement and orchestration platform that trusted nonprofits deliver to the people and communities they serve. It sits on top of the benefits, resources, programs, and services that already exist but remain scattered across disconnected systems, and it brings the right tool, benefit, or resource to each person at the right moment.</p>
   <p>Before going further, hold on to the shape of the thing.</p>
   <div class="callout n"><b>One REACH network. Many white-label front doors. One portable person account. One commons every partner tends.</b> Nonprofits get their own branded app, which is the front door. Underneath, every one of those apps runs on the same REACH platform, which is the network. Every person has a single REACH account that belongs to them, not to the organization they came in through. And every partner's local knowledge lands in one collection that all of them draw from.</div>
@@ -251,8 +260,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="s2">
-  <div class="secnum">Section 2</div>
-  <h2>Executive summary</h2>
+  <div class="sechead"><div class="secnum">Section 2</div>
+    <h2>Executive summary</h2></div>
   <p class="big">Own the users. Do not rent the audience.</p>
   <div class="exec">
     <div class="l">Problem</div><div class="v">Access to help is fragmented, and value sits inside each partner's door. When a partner leaves, refuses to pay, or falls out of favor, one of our most important business models turns volatile, and the company is worth less.</div>
@@ -284,8 +293,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="s3">
-  <div class="secnum">Section 3</div>
-  <h2>The frameworks it stands on</h2>
+  <div class="sechead"><div class="secnum">Section 3</div>
+    <h2>The frameworks it stands on</h2></div>
   <p>Two established frameworks explain why this plan works, and neither one is ours. That is the point. We are applying proven patterns to a sector that has never had them.</p>
   <h3>AARRR, the Pirate Metrics</h3>
   <p>The funnel we manage the business by is <b>AARRR</b>, which stands for <b>Acquisition, Activation, Retention, Revenue, and Referral</b>. Dave McClure, the founder of the accelerator 500 Startups, coined it in a 2007 talk called Startup Metrics for Pirates, and the acronym reads like a pirate's call. Its premise is simple. Stop chasing vanity numbers such as downloads, likes, and pageviews, and track the five behavioral metrics that actually predict whether a business will grow. Section 7 defines each stage in our own terms.</p>
@@ -303,8 +312,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="s4">
-  <div class="secnum">Section 4</div>
-  <h2>The North Star</h2>
+  <div class="sechead"><div class="secnum">Section 4</div>
+    <h2>The North Star</h2></div>
   <p>Our goal is easy to state and hard to build. It is millions of individuals, reached through many trusted doors and onboarded into one platform that compounds their wellbeing for life. Providers people already trust bring them in, and technology carries them. The technology is not the point. The point is what those millions unlock once they are ours to serve, which is economies of scale for curated access that drive wellbeing outward, ring by ring.</p>
   <div class="fig">
     <div class="rings">
@@ -334,8 +343,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="s5">
-  <div class="secnum">Section 5</div>
-  <h2>What REACH means</h2>
+  <div class="sechead"><div class="secnum">Section 5</div>
+    <h2>What REACH means</h2></div>
   <p>The name carries the mission. REACH stands for Refresh, Equity, Access, Community, and Hub. We exist to make equity and access real through a community hub that meets people where they are and stays with them.</p>
   <div class="fig">
     <div class="reachrow">
@@ -354,8 +363,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="s6">
-  <div class="secnum">Section 6</div>
-  <h2>How people arrive, and how the door becomes the hub</h2>
+  <div class="sechead"><div class="secnum">Section 6</div>
+    <h2>How people arrive, and how the door becomes the hub</h2></div>
   <p>People do not arrive through Refresh. They arrive through a federated, marquee, trusted provider, whether Goodwill Marion, Catholic Charities San Diego, or a local YMCA, and that provider holds their hand and onboards them. At that first moment, community means the one local nonprofit, and that is exactly right. It is how we get in quickly, on the strength of a brand people already believe in. This first stage is acquisition and activation, nothing more.</p>
   <p>What matters is what happens next. Over time the experience widens from the single organization into the full REACH hub, a user-based view that carries the marketplace, the perks, the resources, and the community spanning every organization on the network.</p>
   <div class="fig">
@@ -371,8 +380,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="s7">
-  <div class="secnum">Section 7</div>
-  <h2>The business model, AARRR on one shared network</h2>
+  <div class="sechead"><div class="secnum">Section 7</div>
+    <h2>The business model, AARRR on one shared network</h2></div>
   <p>Here is the whole business in a sentence. Grow, and never lose, the number of active users in our environment. Every stage of the AARRR funnel compounds only if we keep the person, which is why portability, covered in Section 10, is not a convenience. It is what makes the model work.</p>
   <div class="fig">
     <div class="funnel">
@@ -434,8 +443,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="s8">
-  <div class="secnum">Section 8</div>
-  <h2>How we measure it</h2>
+  <div class="sechead"><div class="secnum">Section 8</div>
+    <h2>How we measure it</h2></div>
   <p>We track AARRR on two sides at once. On the user side we count the people in our environment. On the business side we count the network and the money. We slice everything by three segments, which are active against pending against alumni, days since last login, and days since a member was onboarded.</p>
   <h3>User-based KPIs</h3>
   <div class="fig">
@@ -461,8 +470,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="s9">
-  <div class="secnum">Section 9</div>
-  <h2>The risk we design out, and why we do not rent the audience <span class="crux">Read first</span></h2>
+  <div class="sechead"><div class="secnum">Section 9</div>
+    <h2>The risk we design out, and why we do not rent the audience <span class="crux">Read first</span></h2></div>
   <p>This is the section an executive most needs to internalize. If our leverage in the market lives inside any single nonprofit or connector, then variables we do not control decide our fate. A partner leaves. A partner refuses to pay next year. People stop wanting to work with that organization, or to walk through that door. Any of these turns one of our most important business models volatile, then obsolete, and it lowers the value of the company, because no real sustainability plan sits underneath it.</p>
   <p>The two frameworks from Section 3 explain why the fix works. Network-effects theory tells us that value grows with the number of users we hold. Retention economics tells us that value accrues to whoever holds the durable relationship rather than the channel. If we hold the relationship, we compound. If the partner holds it, we are exposed.</p>
   <div class="fig">
@@ -475,8 +484,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="s10">
-  <div class="secnum">Section 10</div>
-  <h2>The architecture that makes portability real <span class="crux">Read first</span></h2>
+  <div class="sechead"><div class="secnum">Section 10</div>
+    <h2>The architecture that makes portability real <span class="crux">Read first</span></h2></div>
   <p>It is not two apps. It is one REACH app, wearing an organization-branded skin on top and holding a wider community space inside. One decision makes the whole thing work. The person's account lives above the organization, so the chapter is an affiliation rather than a container. Detach the affiliation and the account persists.</p>
   <div class="fig">
     <div class="stack">
@@ -501,8 +510,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="s11">
-  <div class="secnum">Section 11</div>
-  <h2>Branding, the local door powered by REACH</h2>
+  <div class="sechead"><div class="secnum">Section 11</div>
+    <h2>Branding, the local door powered by REACH</h2></div>
   <p>A clarification, because the history is often misremembered. The move away from Refresh@Goodwill, and away from a single national-Goodwill structure, was not driven by Goodwills refusing to have their own app. The real reason was the business model and the velocity of adoption. A federated national rollout would never have moved at the pace we need, because governance cycles, approval loops, and a single national structure slow adoption, while local, autonomous front doors launch quickly. Refresh@Goodwill was one operational reason, a vendor-first name that also treated roughly 170 independent chapters as one, and it was not the strategic driver.</p>
   <div class="fig">
     <div class="ba">
@@ -514,16 +523,16 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="s12">
-  <div class="secnum">Section 12</div>
-  <h2>The strategic bet <span class="crux">Read first</span></h2>
+  <div class="sechead"><div class="secnum">Section 12</div>
+    <h2>The strategic bet <span class="crux">Read first</span></h2></div>
   <p>This is fundamentally different from our current enterprise relationships. In those relationships value equals the contract, so losing the contract means losing the value. Here value equals the millions of people we onboard and keep, and that difference is the whole bet.</p>
   <p>We have a rare, one-time opportunity to own our leverage and let it scale as we grow, rather than to build a way to lose it. Every partner we add is a channel that widens the top of the funnel. Every user we keep is an asset that compounds down it. The frameworks say this is how durable, defensible companies are built. The precedents, Amex and Shopify, say it works at scale. Our job in the public-serving division is to make it work for the people who need it most.</p>
   <div class="callout n" style="font-size:18px;"><b>Organizations are how people come in. REACH is how they stay, for life, and for one another.</b></div>
 </section>
 
 <section class="sec" id="s13">
-  <div class="secnum">Section 13</div>
-  <h2>Sources and frameworks</h2>
+  <div class="sechead"><div class="secnum">Section 13</div>
+    <h2>Sources and frameworks</h2></div>
   <ul class="clean">
     <li><b>AARRR, the Pirate Metrics.</b> Dave McClure, Startup Metrics for Pirates, 500 Startups, 2007. <span class="src">(inc.com; productplan.com)</span></li>
     <li><b>Aggregation Theory.</b> Ben Thompson, Stratechery, 2015. <span class="src">(stratechery.com; introduction via medium.com/@hagaetc)</span></li>
@@ -533,7 +542,7 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
   </ul>
 </section>
 
-<div class="foot">Refresh Software, Inc. · REACH · Public-Serving Division. An internal onboarding study, in draft for the executive team. Named organizations illustrate partner and provider types. Brand: Arial, cream #F8F7F0, warm-black #252427, green #4BDF52.</div>
+<div class="foot">Refresh Software, Inc. · REACH · Public-Serving Division. An internal business case, in draft for the executive team. Named organizations illustrate partner and provider types. Brand: Arial, cream #F8F7F0, warm-black #252427, green #4BDF52.</div>
 
   <div class="colophon">
     <img class="mark" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOwAAABOCAYAAAAjB/rxAAAKmUlEQVR4Xu2aCY4jOQ5F+zAV032MOVrfLI42PTKshPKZ4qIlIrKLD/gowBIXkaLDduUffyRJkqzm16+//vufX3/9TR2//jz/r/9RZY0+kiRZiGcQoyqDzjhPpvfGVMX9SXIJqwdTE2M/jTKkR7AO9JEky6hPjeilXKiTOT2BkUGtoq8kmeLmAZX0qKF914c5ukV/ybXwqwvXH0/zFP24XA/SI4a25CHkFhJ9JuvhULIHP64fP2RIv+nuH6GOBcNaRL/JHJ6h1ER/j+EnDil021P2/Z2V+QyJvpM5WN+o6O92HviddFh3PWWZx4zoO5mD9Y2K/m6Fyf103fEjwepPJfSfzMH6RkV/t3H8S56qre4YWOYwK/pP1jD6xko/tzCa/GKd7S91+NXuFPabunpgI3Vszvax1ooxknV46k/Rxy2MJD6gr4Ec+W458scHI3FmUPJ7nZ37ifSHJ9yTrEXolSra30J7QRbpazgZa4TRX13pZzeMXzRTgxnbxAf7ZYn2t8Ckopp5clqMDusdl/0JOSQx2DNLtL+FOnAe8QA7D3FMPPnpazdSbXa8gSVrYc8s0f7RMPmdhzgmhvWOQZEGlnuS58GeWaL9o2HyRas/9o1+BG500ucVSAN7xxtHEoM9s0T7xyJdyKKVA/tTh7XQqc9t+SQ+hJ6pov1jKZePyRetGtjOhQ+JPnvU/z7paeTJqOVf/dJmNTwX1yvcp+3VoA+K+0eR8qVo44W9skT7Fi3PkTs1BROvmilW5ei8GURkFeT99A7Fkc7GPbvEuC3tRaCd5ePo1EA6q8Q7puijo9PqjcRIv4qiw0F7S7QvWH1oNFSLMFpCswmUQ9BnVFoOo41v9K3IwvoW1dwHBuSbjxbNjzWw2h3wyPJfWdCvKtfXEcFOVWv7zvVjjyXtvi7hUArIvV5GDwupTdEumecJ1aoWma/vkpW/R20tDqWHRb2BMgboDL6hTPdL2yPJGg7ut9TYnVyLyMprCgZrxb0erhjWsi7YiHbCHkkvO+H1LSqxopeTqufz1FsaWM2OF07ba8UpHIF+FZT9H2KuLdxr6W1z8vURMZclWI3gfovZS/iW2MRKWRdsXuLegjen3mUreH14fFWiPqnq51DqUcV8jL6L9ffEKeIAabHafcQbr4gxK9xnabYnrVjzJWgJRgMegQIrEi9LpawLNi9p+XJvT7SraHWSpOVCjI+lXTW2H2tUm49l85UYCNTgWw+FdXGfhGDTlTS03HO1mM80DNDKe+lGL5wgtYFlXbD5Eve3cG9PvTMHLqvqR4M+LBUbb15tPlzr7SPeWEXVxnhzUPtdiMSU/Al7LpX0JjKMUUy1eRXLR0AfxW5xxFHthf09iX6CF8dVOxKNUWz4Wk81n8N409MumKMHH/GsMyHEB5GYRcyf606d7J91jp7oZworCe4n0WIqEoekRbD5Jqsw3K+JtgWrVpSVj0Q0RqT+xbdnP3Mi3K/o1dPyr7D2sU9DsOmKdee6JQ58i6d+FPOZgs4p7m857EZ4ZTbMc5G1Qhc8PqqkIkfsez4sRmLwtZ7ee0++TjEnwv2aIvvrGwrCvShrEbW2jGOptZWI1LyI+UxB55A4SCPvMpp6TWqhjSTakEihpSJH7Hs+LKIxKF7cqvf6yf2UJ2faaIrur5IGbxT6tkR7Er3/q85hXg4pUDRZS55h9cakHbHO20o6e8S+58MiGiMS57hhYEfOI6n48dwVCfqyRHsJ2mjy1NTFYTSQgbyD45W3AauaHtVsHqyfh50xaHuFoufxKDq8tLdEewnaaIr0SIWOqXbvXcNaoO1VYh7RyzfSqF0xVvfPq5Jf9EwBnZ57JNipor0EbTR5e6TiKWJkb0TRA9D+KjGPaB2i5yzsihH1u0ol7gVvFuJvLRVhvyraS9BGk7dHKofxcbjIuy8q5qJx10Urms1lpFG7YkT9rlLNj69vUHdohb2qaC9BG03eHqnQqaDXxw3h9Wl5PsZUIheNtquJ5FI00qhdMQ7nG6/XX5RddwkSh1bYp4r2ErTRNF3Ti4qnSSysROQC03Y1kVyKRhq1KwbtFLl7EyV6thFJ9eAeS7SXoI0mKacQVxTOEnPqEck18uQeIZJL0UijdsWgnSbaruSKhwVjct0S7SVoo8nboy50eIe8h4hcYK/PUSK5jOazKwbtNO1+43sP7cm4q8SacN1Sa9uDNpqYT4gr3uEOZzOYm0T0AtN+JdFcRhq1KwbtNHl9zlLuYvS8HjF/rltqbXvQRhPzCbGjQK0iTfAcxOsr4nOUK3LZFSPql/a7idwbj1rfXLPU2vagjSZvj0ToTNJg4b79WCGsS3L9wCHYqRr5SMczc73APZZGGrUrRtTv4ewNKXatH657KfkO5CzG5Zql1rYHbTR5e/SB9+NwtFBSQtzTk2e4aOOQ6y9gKtJ5uacg7dMk1cViV4yo37dCQ1v2t/YjQ9c7T9RPa8s1S61tD9po6p3JxHvo5uPJyTWqNxjeWIfjUpQ9gp0pq1DKjx9iToEzueJL7IxBW6dOK0Yv52rH1zVZsQ65Xx+Czce6pta2B200WWfqQkc9tTbRS13xPs2LrANFfCl6Xbze5WrVy8dj6/GjsTPGIfcxpFpDT54jcT3nsfzRB9cttbY9aKOJ+biho55o11Kbxdcl6FcTbQn37xRjVzyXtJW3Ti07Yyx643OpzSsS13Meyx99cN1Sa9uDNpqYjwvvRRhy3sEb8y31iR30NSzt/NEcNF89dsc4jKfTKs3Epa0EbTR7rluivQRtDKl3W6QYCY4+FL0AGtHL1/s+XDmcZ5iQWtiyLthoUv1J7I5hPZ1WSLpDkbjWPSjQptG3ekTvYFFrL7HD5wd00JOnWBHo35B5+QSbZdLOfsQHqco8U2XkIhRJA6IRGZ4Bdc8biNv1UdDq1O4LxKPU+GVdsLGk+vyGdkCKtrOURBlDkzY0hYkmqJLiltcitdNU/FTtjiGdhRzBvjhlXspA/0Rfmn0997ueJ9eDOtmrFX1y9ecIJE/bWUYOSR9Ea9qIegUcyd2j3TF40XosrqM4YBLBuK/BsYaw7SHXZtSkvcyv2R8a9GQ6GoRxLHnzOJQGOqX+gcWOYSraHcNbv8J7eE76iCgSr2XR2T96KOwZ1g6/ar0iRVEdTXAMXAg2ocfgR8qPJksM+HVpd4yRPo4M7kgcicEadHso7B3WDr9q3Y5AE3oFmGW0IfRjUYe3VfEz4/N3hDWkdt2TAmNRO2M/AmEQuqLtShjLqeEB6zwxhv0lyXbKO5IwBD1tvczBXL408o5qxeL+JHkEx+cTpqtyyWm/Gsb0KjK0h+PMtEmSR8CLqumKgbWefJo8+R2OYS2iXZLcTnQ4aL8Lxg1K/GXw/X2Ve7uSfCTJrTx1YKN5deT6z/SecmCTxxEcjK0/OBEh/pW69KxJ4iLyMdHz/XAlwTeTlcphTZ5LuaDCpf3QHR8RmcMFymFNno/yPe/1PZD7r+Lip2wOa5LMIgzWDuWwJskKIt+zB5XDmiQrKUMlDNoK5bAmyQ7KcAkDN6Mc1iTZxeKPxjmsSbKbFUN7x39PJclvzTH28Vj8G+MkSS4g8n+0d/5fcpIkDc0f+H8b0KJ8oiZJkiRJkiRJkvxo/gEybi46UXmRGQAAAABJRU5ErkJggg==" alt="Refresh">

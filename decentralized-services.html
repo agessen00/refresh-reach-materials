@@ -175,6 +175,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 .colophon .mark{height:22px;opacity:.55;}
 .colophon span{font-size:12px;color:var(--muted);}
 
+.sechead{break-inside:avoid;page-break-inside:avoid;}
+
 /* Print ------------------------------------------------------------------ */
 @media print{
   *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
@@ -183,14 +185,21 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
   .wrap{max-width:none;}
   .cover{border-radius:0;padding:34px 34px 104px;margin:0 0 10px;}
   .cover h1{font-size:34px;}
-  .sec{break-before:page;padding-top:4px;}
-  .sec:first-of-type{break-before:auto;}
+  /* Sections flow rather than each claiming a fresh page. Forcing a break per
+     section left most pages two-thirds empty and pushed tall figures onto
+     pages of their own. Headings are pinned to the text they introduce, and
+     every grid is kept whole, which is what actually stops things splitting. */
+  .sec{padding-top:2px;}
   h2,h3,h4{break-after:avoid;}
+  .sechead{break-inside:avoid;break-after:avoid;}
+  .sec h2{margin-bottom:12px;}
   p,li{orphans:3;widows:3;}
-  .fig,.callout,.howto,.exec,.revcard,.kcol,.gstep,.fstep,.traj,.toc{break-inside:avoid;}
+  .callout,.howto,.revcard,.kcol,.gstep,.fstep,.step,.c,.ba,.rcell,.amex{break-inside:avoid;}
+  .fig,.exec,.traj,.toc,.bb,.flow,.steps,.trio,.quad,.revgrid,.kpi,.arc,.rings,.reachrow,.funnel,.stack,.chips,.keeps{break-inside:avoid;}
+  .fig{padding:12px 14px;}
   .toc{break-after:page;}
   a{color:inherit;text-decoration:none;}
-  .colophon{break-inside:avoid;}
+  .colophon{break-inside:avoid;break-before:avoid;}
 }
 </style>
 
@@ -198,6 +207,11 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;}
 .quad{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px;}
 .revgrid{margin-top:12px;}
+.ba{margin-top:12px;}
+.bacol ul{margin:0;padding-left:17px;}
+.bacol li{font-size:13px;color:var(--ink2);margin-bottom:5px;line-height:1.4;}
+.bacol.before{background:var(--panel);}
+.bacol.after{background:var(--greenSoft);}
 .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px;}
 .step{background:#fff;border:1px solid var(--hair);border-top:4px solid var(--green);border-radius:12px;padding:13px 12px;}
 .sn{width:30px;height:30px;border-radius:9px;background:var(--ink);color:var(--brandGreen);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;}
@@ -207,7 +221,7 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 @media(max-width:720px){.steps,.steps.four{grid-template-columns:1fr;}}
 .flow{margin-top:12px;}
 @media(max-width:720px){.trio,.quad{grid-template-columns:1fr;}}
-@media print{.trio,.quad,.revgrid,.steps,.step,.bb{break-inside:avoid;}}
+@media print{.trio,.quad,.revgrid,.steps,.step,.ba,.bacol,.bb{break-inside:avoid;}}
 </style>
 </head>
 <body>
@@ -246,8 +260,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </div>
 
 <section class="sec" id="d1">
-  <div class="secnum">Section 1</div>
-  <h2>What we are building</h2>
+  <div class="sechead"><div class="secnum">Section 1</div>
+  <h2>What we are building</h2></div>
 <p>Most nonprofits can only help the people who can physically reach them. An agency in Marion, Ohio can be the best in the country at moving someone from a resume to a job offer, and that excellence stops at the county line. Not because the need stops there. Because there has never been a way to deliver it anywhere else.</p>
 <p>We are building the way. A person anywhere in the REACH network asks to be connected with a case manager on a specific topic, books a time in the app, and meets that person by video. The agency on the other end is the one that is genuinely excellent at that topic, wherever it happens to sit. It brings the expertise. Refresh brings the toolkit, the curated resources, and the person who raised their hand.</p>
 <div class="callout n"><b>One sentence.</b> A mission that works in one market can expand and extend its reach into every other market on the network, and Refresh runs the market that makes the match, supplies the tools, and carries the demand.</div>
@@ -256,8 +270,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="d2">
-  <div class="secnum">Section 2</div>
-  <h2>Why it could not happen before</h2>
+  <div class="sechead"><div class="secnum">Section 2</div>
+  <h2>Why it could not happen before</h2></div>
 <p>The limit was never talent or willingness. It was that resources reached an agency through relationships, one introduction at a time. A case manager could only refer to what they personally knew about. That worked, slowly, inside a market someone had spent years building. It could not cross into a market where nobody had made those introductions yet.</p>
 <p>That was the governor on the whole sector. Every agency was capped at the reach of its own rolodex, so expertise stayed stranded exactly where it was built.</p>
 <div class="callout g"><b>What changes.</b> Once the commons is large, current, and searchable by proximity and by where someone is in their path, an agency no longer needs to have made the introduction. It needs only to be findable and good. The relationship stops being the distribution channel, and the network becomes the distribution channel.</div>
@@ -265,8 +279,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="d3">
-  <div class="secnum">Section 3</div>
-  <h2>How it works, end to end</h2>
+  <div class="sechead"><div class="secnum">Section 3</div>
+  <h2>How it works, end to end</h2></div>
 <p>Nothing here asks a person to understand the machinery. From where they sit, they clicked a button and met someone who could help.</p>
 <div class="steps">
   <div class="step"><div class="sn">1</div><div class="st">A person raises their hand</div><p>Inside their own organization's branded app, they ask to be connected with a case manager on a topic: debt, expungement, a job search, recovery support.</p></div>
@@ -279,8 +293,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="d4">
-  <div class="secnum">Section 4</div>
-  <h2>What to call it</h2>
+  <div class="sechead"><div class="secnum">Section 4</div>
+  <h2>What to call it</h2></div>
 <p>Two different things need names here, and conflating them causes trouble later. One is the kind of business Refresh is in. The other is the kind of service the nonprofit is now selling.</p>
 
 <h3>What Refresh is doing</h3>
@@ -303,8 +317,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="d5">
-  <div class="secnum">Section 5</div>
-  <h2>Who pays whom</h2>
+  <div class="sechead"><div class="secnum">Section 5</div>
+  <h2>Who pays whom</h2></div>
 <p>The money has to make sense for three parties at once, or the market does not clear.</p>
 <div class="revgrid">
   <div class="revcard"><div class="rt">The receiving agency earns</div><h4>Reach it could not fund before</h4><ul>
@@ -334,18 +348,18 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="d6">
-  <div class="secnum">Section 6</div>
-  <h2>What it does for the agency</h2>
+  <div class="sechead"><div class="secnum">Section 6</div>
+  <h2>What it does for the agency</h2></div>
 <p>The staffing problem is the one worth stating plainly, because every executive director recognises it. You cannot justify a full-time specialist for a caseload of four. You also cannot tell those four people that you do not do that here. So the work gets done badly by someone whose job is something else, or it does not get done.</p>
 <p>Pooling demand across the network fixes both halves at once. The agency that is excellent at the specialty gets enough volume to staff it properly. Everyone else gets access to it without hiring anyone.</p>
-<div class="bb">
-  <div class="ba"><h4>Before</h4><ul>
+<div class="ba">
+  <div class="bacol before"><div class="bah">Before</div><ul>
     <li>Expertise capped at the local market</li>
     <li>Specialist roles that never reach viable volume</li>
     <li>Referrals limited to who someone personally knows</li>
     <li>Revenue almost entirely restricted and granted</li></ul></div>
-  <div class="ba"><h4>After</h4><ul>
-    <li>Expertise sold into markets it will never physically serve</li>
+  <div class="bacol after"><div class="bah">After</div><ul>
+    <li>Reach extended into markets it will never physically serve</li>
     <li>One specialty staffed properly and run at scale</li>
     <li>Referrals arrive from the network, matched and booked</li>
     <li>An earned-revenue line the board actually controls</li></ul></div>
@@ -354,8 +368,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="d7">
-  <div class="secnum">Section 7</div>
-  <h2>What could go wrong</h2>
+  <div class="sechead"><div class="secnum">Section 7</div>
+  <h2>What could go wrong</h2></div>
 <p>Four risks are worth designing against now rather than discovering later.</p>
 <div class="quad">
   <div class="kcol"><div class="khead">Quality</div><div class="kbody"><p>A bad encounter in a distant market damages the network, not just the agency. Centers of Excellence need entry standards, participant feedback that is visible, and the ability to lose the designation.</p></div></div>
@@ -366,8 +380,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="d8">
-  <div class="secnum">Section 8</div>
-  <h2>The launch path</h2>
+  <div class="sechead"><div class="secnum">Section 8</div>
+  <h2>The launch path</h2></div>
 <p>The failure mode for a marketplace is launching wide and thin. Every phase here concentrates rather than spreads.</p>
 <div class="steps four">
   <div class="step"><div class="sn">1</div><div class="st">One specialty, two markets</div><p>Pick the specialty with the clearest expertise and the least regulatory drag, most likely employment development or debt management. One Center of Excellence, one receiving market, real people, real money.</p></div>
@@ -379,8 +393,8 @@ ul.clean li{font-size:16px;margin-bottom:8px;color:var(--ink2);}
 </section>
 
 <section class="sec" id="d9">
-  <div class="secnum">Section 9</div>
-  <h2>Decisions this needs</h2>
+  <div class="sechead"><div class="secnum">Section 9</div>
+  <h2>Decisions this needs</h2></div>
 <p>Four things need an answer before the first phase can start, and three of them are naming or policy rather than engineering.</p>
 <div class="exec">
   <div class="l">The name</div><div class="v">What the service is called to participants and to boards. The working choice is <b>Telecase</b>, with <b>Center of Excellence</b> for the agency's role regardless of what the service is named. Neither is settled, and Section 4 keeps the alternatives on the record.</div>
