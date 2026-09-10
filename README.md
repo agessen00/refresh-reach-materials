@@ -12,14 +12,15 @@ stays put even when the study is renamed.
 | `index.html` | The main study. This is what the published URL serves. |
 | `REACH_Business_Case_and_Strategic_Launch_Path.html` | The same study under its own name. |
 | `REACH_Business_Case_and_Strategic_Launch_Path.pdf` | Print version, linked from the study. |
-| `decentralized-services.html` | Companion study: turning one agency's expertise into a service other markets can buy. |
+| `decentralized-services.html` | Companion study: how a mission expands and extends its reach across the network. |
 | `REACH_Decentralized_Mission_Services.pdf` | Print version of the companion. |
-| `REACH_Strategic_Business_Plan_Deck.html` | The same case as slides, for a live session. Published but not linked. |
-| `materials.html` | A three-card index of everything, for when it all goes live. |
+| `materials.html` | A two-card index of the study and the companion. |
 
-The companion's filename is deliberately name-neutral, because what the
-service is called is still an open decision. Nothing has to move when the
-name is chosen.
+There is no slide deck. The two studies are the whole set, deliberately, so
+that nobody has to work out which document is the current one.
+
+The companion's filename is name-neutral, because what the service is called
+is still an open decision. Nothing has to move when the name is chosen.
 
 These are drafts for review. Named organizations in them illustrate partner
 and provider types; they are not partners or integrations.
@@ -33,12 +34,14 @@ will be overwritten on the next publish.
 
 To publish a change, edit the page in OneDrive and run `publish.ps1` from
 that folder. It copies the pages and the PDFs across, adds a `noindex` tag so
-the drafts stay out of search results, commits, and pushes.
+the drafts stay out of search results, commits, and pushes. Files under
+`_archive` in that folder are never published.
 
 Both studies carry the Refresh brand: the wordmark and the painted strokes are
 lifted from the master slide deck and embedded in each page, so the files are
 self-contained and the PDFs keep their colour. The companion is generated from
-the main study's stylesheet, so the two cannot drift apart.
+the main study's stylesheet by `build-decentralized.js`, so the two cannot
+drift apart. Edit the generator, not the companion's HTML.
 
 After any text edit, regenerate the PDF for that page with headless Chrome:
 
