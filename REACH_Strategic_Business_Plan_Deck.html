@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REACH Strategic Business Plan</title>
+<style>
+:root{
+  --ink:#252427;--ink2:#373536;--muted:#6E6B62;
+  --green:#4BDF52;--greenText:#1E8A29;--greenSoft:#E4F7E5;
+  --cream:#F8F7F0;--panel:#ECE9D6;--panel2:#E4E1CF;--onink:#F2F1EA;
+  --hair:rgba(37,36,39,0.12);--hairw:rgba(255,255,255,0.18);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{background:#201F22;font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;color:var(--ink2);margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;}
+#frame{position:relative;width:100%;aspect-ratio:16/9;max-height:100vh;max-width:calc(100vh*16/9);margin:auto;overflow:hidden;background:#201F22;}
+#stage{position:absolute;top:0;left:0;width:1920px;height:1080px;transform-origin:top left;}
+.slide{position:absolute;inset:0;background:var(--cream);padding:94px 108px;display:none;overflow:hidden;}
+.exlbl{font-weight:700;font-size:24px;color:var(--greenText);text-transform:uppercase;letter-spacing:.04em;padding-top:3px;}
+.exval{font-size:24px;color:var(--ink2);line-height:1.42;}
+.exval b{color:var(--ink);}
+.slide.active{display:block;}
+.slide.navy{background:var(--ink);color:var(--onink);}
+.slide.navy .title,.slide.navy .eyebrow.c{color:var(--onink);}
+.slide.navy .eyebrow.c{color:var(--green);}
+.eyebrow{font-weight:700;font-size:29px;color:var(--greenText);letter-spacing:.01em;margin-bottom:26px;}
+.title{font-weight:700;font-size:62px;line-height:1.05;letter-spacing:-.02em;color:var(--ink);}
+.title.sm{font-size:52px;}
+.subtitle{font-weight:400;font-size:27px;color:var(--muted);line-height:1.5;margin-top:20px;max-width:1400px;}
+.callout{font-weight:700;font-size:31px;color:var(--ink);line-height:1.3;}
+.navy .callout{color:var(--onink);}
+.lead{font-size:25px;color:var(--muted);line-height:1.5;max-width:1500px;margin-top:16px;}
+b{color:var(--ink);}.navy b{color:var(--onink);}
+.pill{display:inline-flex;align-items:center;gap:9px;background:var(--panel);color:var(--ink);border-radius:999px;padding:12px 24px;font-weight:700;font-size:23px;}
+.pill.coral{background:var(--greenSoft);color:var(--greenText);}
+.pill.on-navy{background:rgba(255,255,255,.10);color:var(--onink);border:1px solid var(--hairw);}
+.row{display:flex;flex-wrap:wrap;gap:14px;}
+.card{background:#fff;border:1px solid var(--hair);border-radius:20px;padding:30px 30px;}
+.card.lav{background:var(--panel);border:none;}
+.split{display:grid;grid-template-columns:1.06fr .94fr;gap:66px;align-items:center;height:100%;}
+.mid{display:flex;flex-direction:column;justify-content:center;height:100%;}
+#footer{position:absolute;left:108px;right:108px;bottom:48px;display:flex;justify-content:space-between;align-items:center;pointer-events:none;}
+#footer .brand{font-weight:700;font-size:24px;color:var(--ink);letter-spacing:.02em;}
+#footer .brand span{color:var(--greenText);}
+#footer .count{font-weight:500;font-size:22px;color:var(--muted);}
+#stage.navyfoot #footer .brand{color:var(--onink);}#stage.navyfoot #footer .brand span{color:var(--green);}
+#stage.navyfoot #footer .count{color:rgba(255,255,255,.7);}
+.hint{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-size:19px;color:var(--muted);opacity:.6;}
+#stage.navyfoot .hint{color:rgba(255,255,255,.6);}
+.statline{font-weight:700;font-size:40px;color:var(--ink);line-height:1.3;margin-top:34px;}
+.statline em{font-style:normal;color:var(--greenText);}
+.rings-wrap{display:flex;align-items:center;gap:20px;}
+.rlg .rl{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;}
+.rlg .sw{width:20px;height:20px;border-radius:6px;margin-top:4px;flex-shrink:0;}
+.rlg b{font-size:26px;color:var(--ink);}
+.rlg p{font-size:21px;color:var(--muted);line-height:1.4;}
+.reachrow{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:12px;}
+.rcell{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:26px 22px;border-top:6px solid var(--green);}
+.rcell .rk{font-weight:700;font-size:52px;color:var(--ink);line-height:1;}
+.rcell .rw{font-weight:700;font-size:28px;color:var(--ink);margin-top:6px;}
+.rcell p{font-size:19px;color:var(--ink2);margin-top:10px;line-height:1.4;}
+.bb{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px;}
+.bb>div{border-radius:18px;padding:28px 30px;}
+.bb .c{background:var(--greenSoft);}.bb .b{background:var(--panel);}
+.bb h4{font-weight:700;font-size:26px;color:var(--ink);margin-bottom:10px;}
+.bb p{font-size:22px;color:var(--ink2);line-height:1.45;}
+.arc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:30px;align-items:stretch;}
+.arcstep{background:var(--panel);border-radius:20px;padding:28px 26px;margin-right:18px;position:relative;}
+.arcstep:last-child{margin-right:0;background:var(--greenSoft);}
+.arcstep .n{font-weight:700;font-size:22px;color:var(--greenText);letter-spacing:.08em;}
+.arcstep h4{font-weight:700;font-size:30px;color:var(--ink);margin:6px 0 10px;}
+.arcstep p{font-size:20px;color:var(--ink2);line-height:1.45;}
+.arcarrow{position:absolute;right:-30px;top:50%;transform:translateY(-50%);color:var(--green);font-size:34px;font-weight:700;z-index:3;}
+.doorbig{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;}
+.door{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:20px 24px;font-weight:700;font-size:24px;color:var(--ink);display:flex;align-items:center;gap:12px;}
+.door .m{width:34px;height:34px;border-radius:8px;background:#0A5A34;color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;}
+.tagchip{background:var(--greenSoft);border:1px dashed var(--green);border-radius:999px;padding:8px 18px;font-weight:700;font-size:20px;color:var(--greenText);}
+.funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:26px;}
+.fstep{background:#fff;border:1px solid var(--hair);border-top:6px solid var(--green);border-radius:18px;padding:26px 22px;}
+.fstep .lt{width:52px;height:52px;border-radius:13px;background:var(--ink);color:var(--green);font-weight:700;font-size:26px;display:flex;align-items:center;justify-content:center;}
+.fstep .fl{font-weight:700;font-size:27px;color:var(--ink);margin:12px 0 8px;}
+.fstep p{font-size:19px;color:var(--ink2);line-height:1.4;}
+.kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:22px;}
+.kcol{border-radius:16px;overflow:hidden;border:1px solid var(--hair);display:flex;flex-direction:column;}
+.khead{padding:16px 16px;background:var(--ink);color:var(--green);font-weight:700;font-size:24px;display:flex;align-items:center;gap:10px;}
+.khead .kl{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;font-size:19px;}
+.kbody{padding:16px 16px 18px;background:#fff;flex:1;}
+.kbody li{font-size:19px;color:var(--ink2);line-height:1.32;list-style:none;padding-left:18px;position:relative;margin-bottom:9px;}
+.kbody li:before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--green);}
+.knote{font-size:21px;color:var(--muted);margin-top:18px;}
+.knote b{color:var(--ink);}
+.stack{border-radius:20px;overflow:hidden;border:1px solid var(--hair);}
+.layer{padding:26px 30px;}
+.layer .lt{font-weight:700;font-size:24px;letter-spacing:.02em;}
+.layer .ld{font-size:21px;margin-top:6px;}
+.l1{background:var(--greenSoft);}.l1 .lt{color:var(--ink);}
+.l2{background:var(--panel);}.l2 .lt{color:var(--ink);}
+.l3{background:var(--ink);color:var(--onink);}.l3 .lt{color:var(--green);}.l3 .ld{opacity:.9;}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+.chips .c{background:#fff;border:1px solid var(--hair);border-radius:999px;padding:8px 16px;font-weight:700;font-size:19px;color:var(--ink);}
+.l3 .chips .c{background:rgba(255,255,255,.12);border-color:var(--hairw);color:var(--onink);}
+.identity{display:flex;align-items:center;gap:14px;background:var(--green);color:var(--ink);border-radius:16px;padding:22px 26px;margin-top:22px;font-size:24px;}
+.identity b{color:var(--ink);}
+.phones{display:flex;gap:40px;justify-content:center;}
+.phone{background:#1a1a1a;border-radius:44px;padding:14px;width:330px;}
+.pin{background:#fff;border-radius:34px;overflow:hidden;}
+.phead{padding:16px 18px;display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--hair);}
+.plogo{width:38px;height:38px;border-radius:10px;color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;}
+.pname{font-weight:700;font-size:20px;color:var(--ink);line-height:1.05;}
+.ppow{font-size:14px;color:var(--muted);}
+.pbody{padding:20px 18px;}
+.pt{font-weight:700;font-size:20px;color:var(--ink);margin-bottom:12px;}
+.tile{border:1px solid var(--hair);border-radius:12px;padding:13px 13px;font-size:17px;color:var(--ink2);margin-bottom:9px;display:flex;gap:10px;align-items:center;}
+.tile .i{width:22px;height:22px;border-radius:7px;background:var(--greenSoft);flex-shrink:0;}
+.tile .i.g{background:var(--panel);}
+.ptab{display:flex;border-top:1px solid var(--hair);}
+.ptab div{flex:1;text-align:center;padding:13px 2px;font-weight:700;font-size:14px;color:var(--muted);}
+.ptab div.on{color:var(--greenText);}
+.pcap{text-align:center;font-weight:700;font-size:23px;color:var(--ink);margin-top:20px;}
+.pcap span{display:block;font-weight:400;font-size:19px;color:var(--muted);margin-top:4px;}
+.flow{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;align-items:center;margin-top:30px;}
+.gstep{background:var(--panel);border-radius:20px;padding:30px 28px;}
+.gstep.keep{background:var(--greenSoft);}
+.gstep h4{font-weight:700;font-size:30px;color:var(--ink);margin-bottom:10px;}
+.gstep p{font-size:21px;color:var(--ink2);line-height:1.45;}
+.garrow{text-align:center;color:var(--ink);font-size:38px;font-weight:700;}
+.keeps{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.keeps .k{background:#fff;border:1px solid var(--green);color:var(--ink);border-radius:999px;padding:6px 14px;font-weight:700;font-size:17px;}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;}
+.bacol{border-radius:20px;padding:28px 30px;}
+.bacol.before{background:var(--panel);}.bacol.after{background:var(--greenSoft);}
+.bah{font-weight:700;font-size:22px;letter-spacing:.06em;margin-bottom:16px;color:var(--ink);}
+.after .bah{color:var(--greenText);}
+.lockup{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--hair);border-radius:16px;padding:20px 22px;}
+.lockup .mk{width:52px;height:52px;border-radius:12px;color:#fff;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.lockup .big{font-weight:700;font-size:28px;color:var(--ink);line-height:1.05;}
+.lockup .sm{font-size:19px;color:var(--muted);margin-top:4px;}
+.lockup .sm b{color:var(--greenText);}
+.strike{text-decoration:line-through;color:var(--muted);opacity:.8;}
+.amex{background:var(--ink);color:var(--onink);border-radius:18px;padding:26px 30px;margin-top:24px;}
+.amex .h{font-weight:700;font-size:26px;margin-bottom:10px;color:#fff;}
+.amex p{font-size:23px;line-height:1.5;color:var(--onink);}
+.amex b{color:var(--green);}
+.rule{font-size:24px;background:var(--greenSoft);border-left:8px solid var(--green);border-radius:14px;padding:22px 26px;margin-top:22px;color:var(--ink);}
+.rule.g{background:var(--greenSoft);border-left-color:var(--green);}
+.rule b{color:var(--ink);}
+.src{font-size:17px;color:var(--muted);margin-top:16px;}
+</style>
+</head>
+<body>
+<div id="frame"><div id="stage">
+
+<!-- 01 COVER -->
+<section class="slide navy active">
+  <div class="mid">
+    <div class="eyebrow c">Business case and operating plan · Refresh · REACH</div>
+    <div class="title" style="font-size:88px;">REACH<br>Strategic Business Plan</div>
+    <div class="subtitle" style="color:rgba(255,255,255,.82);">Branding, portability, and the business model. How the open door brings people in, and how it compounds into millions of active users we own and keep.</div>
+    <div class="row" style="margin-top:40px;">
+      <span class="pill on-navy">Equity and access, B2C and B2B</span>
+      <span class="pill on-navy">One portable network</span>
+      <span class="pill on-navy">Own our leverage</span>
+    </div>
+    <div class="statline" style="color:#fff;margin-top:44px;">Millions of individuals · <em>one platform</em> · wellbeing that compounds, from the individual to the nation.</div>
+  </div>
+</section>
+
+<!-- 01b EXECUTIVE SUMMARY -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">Executive summary, the business case in one slide</div>
+    <div class="title sm">Own the users. Do not rent the audience.</div>
+    <div style="display:grid;grid-template-columns:190px 1fr;gap:20px 28px;margin-top:30px;align-items:start;max-width:1560px;">
+      <div class="exlbl">Problem</div><div class="exval">Access is fragmented, and value sits inside each partner's door. When a partner leaves, refuses to pay, or falls out of favor, one of our most important models turns volatile, and the company is worth less.</div>
+      <div class="exlbl">Insight</div><div class="exval">Give each person a <b>portable REACH account that sits above any single org</b>. The entry door becomes an on-ramp rather than a gate, so we keep the user even when the partner changes.</div>
+      <div class="exlbl">Model</div><div class="exval">Acquire through trusted, marquee providers. Then activate, retain, monetize, and grow referrals for every user on <b>one shared REACH network</b>. That funnel is AARRR.</div>
+      <div class="exlbl">Market</div><div class="exval">Roughly <b>100 million Americans</b> live below the true cost of living. We enter through Goodwill, the YMCA, Catholic Charities, and their peers, with millions of licenses already within reach.</div>
+      <div class="exlbl">Outcome</div><div class="exval">A durable, defensible asset, which is <b>millions of active users we own and keep</b>, measured by the user-side and business-side KPIs set out in this plan.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02b FRAMEWORK -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">The framework this plan is built on</div>
+    <div class="title sm">Two proven frameworks: Pirate Metrics and Aggregation Theory.</div>
+    <div class="lead" style="margin-top:6px;">The funnel is <b>AARRR, the Pirate Metrics</b>, which are Acquisition, Activation, Retention, Revenue, and Referral, coined by Dave McClure (500 Startups, 2007).</div>
+    <div class="card lav" style="margin-top:16px;padding:22px 30px;">
+      <div style="font-size:23px;line-height:1.45;color:var(--ink2);">Platforms that <b>own the customer relationship directly</b>, rather than reaching people only through distributors or partners, earn compounding <b>network effects</b>. As more value flows through the platform, users stay, and customer-acquisition cost falls once you pass critical mass.</div>
+      <div class="src" style="margin-top:9px;">Aggregation Theory, Ben Thompson, Stratechery (2015). Network-effects theory: a technology's value grows with its number of users.</div>
+    </div>
+    <div class="bb" style="grid-template-columns:1fr 1fr;margin-top:16px;">
+      <div class="c"><h4>American Express and card networks</h4><p>Co-branded cards such as the Delta SkyMiles Card ride on the Amex network. The membership, rewards, and data belong to the <b>network</b>, and they are portable across every brand on it.</p></div>
+      <div class="b"><h4>Shopify and Shop Pay</h4><p>Every merchant owns its storefront, yet <b>Shop Pay is one portable identity</b> that travels with the shopper across every Shopify brand. Hundreds of millions of buyers are recognized network-wide.</p></div>
+    </div>
+    <div class="rule" style="margin-top:14px;">REACH applies the same pattern to human services. <b>Many trusted, branded front doors rest on one portable network and one portable account.</b></div>
+  </div>
+</section>
+
+<!-- 02 NORTH STAR -->
+<section class="slide">
+  <div class="split">
+    <div>
+      <div class="eyebrow">Our North Star, the real goal, not today's task</div>
+      <div class="title">Millions of individuals, reached through many trusted doors, onboarded into one platform.</div>
+      <div class="lead">Providers people already trust bring them in and onboard them. Technology carries them, but the point is what those millions unlock once they are <b>ours to serve</b>, which is economies of scale for curated access, driving wellbeing outward, ring by ring.</div>
+      <div class="rule g" style="margin-top:26px;">Winning a local brand's app is <b>today's task</b>, and it matters. Yet it is only <b>acquisition and activation</b>. It is not the goal, and we should not mistake the task for the goal.</div>
+    </div>
+    <div class="rings-wrap">
+      <svg viewBox="0 0 420 420" width="470" role="img" aria-label="wellbeing rings">
+        <circle cx="210" cy="210" r="200" fill="rgba(75,223,82,.10)" stroke="#4BDF52" stroke-width="2"/>
+        <circle cx="210" cy="210" r="158" fill="rgba(75,223,82,.20)" stroke="#4BDF52" stroke-width="2"/>
+        <circle cx="210" cy="210" r="116" fill="rgba(75,223,82,.34)" stroke="#4BDF52" stroke-width="2"/>
+        <circle cx="210" cy="210" r="74"  fill="rgba(75,223,82,.55)" stroke="#4BDF52" stroke-width="2"/>
+        <circle cx="210" cy="210" r="34"  fill="#4BDF52"/>
+        <text x="210" y="217" text-anchor="middle" fill="#252427" font-family="Arial" font-weight="700" font-size="17">You</text>
+        <text x="210" y="150" text-anchor="middle" fill="#252427" font-family="Arial" font-weight="700" font-size="15">Home</text>
+        <text x="210" y="108" text-anchor="middle" fill="#252427" font-family="Arial" font-weight="700" font-size="15">Neighbor</text>
+        <text x="210" y="66"  text-anchor="middle" fill="#252427" font-family="Arial" font-weight="700" font-size="15">Community</text>
+        <text x="210" y="26"  text-anchor="middle" fill="#252427" font-family="Arial" font-weight="700" font-size="15">Nation</text>
+      </svg>
+      <div class="rlg">
+        <div class="rl"><span class="sw" style="background:#4BDF52"></span><div><b>Individual</b><p>Stabilize or thrive.</p></div></div>
+        <div class="rl"><span class="sw" style="background:rgba(75,223,82,.62)"></span><div><b>Home</b><p>Household lifted together.</p></div></div>
+        <div class="rl"><span class="sw" style="background:rgba(75,223,82,.42)"></span><div><b>Neighbor</b><p>They pull the next person in.</p></div></div>
+        <div class="rl"><span class="sw" style="background:rgba(75,223,82,.26)"></span><div><b>Community</b><p>Access and belonging compound.</p></div></div>
+        <div class="rl"><span class="sw" style="background:rgba(75,223,82,.14);border:1px solid rgba(75,223,82,.6)"></span><div><b>Nation</b><p>Scale across every door.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 WHAT REACH MEANS -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">What REACH means, and what we are solving</div>
+    <div class="title sm">REACH = <span style="color:var(--greenText)">R</span>efresh · <span style="color:var(--greenText)">E</span>quity · <span style="color:var(--greenText)">A</span>ccess · <span style="color:var(--greenText)">C</span>ommunity · <span style="color:var(--greenText)">H</span>ub</div>
+    <div class="reachrow">
+      <div class="rcell"><div class="rk">R</div><div class="rw">Refresh</div><p>The platform that powers every door.</p></div>
+      <div class="rcell"><div class="rk">E</div><div class="rw">Equity</div><p>Help is not rationed by which door you came through.</p></div>
+      <div class="rcell"><div class="rk">A</div><div class="rw">Access</div><p>One portable account to the whole graph, rather than a keyring of gates.</p></div>
+      <div class="rcell"><div class="rk">C</div><div class="rw">Community</div><p>Belonging and referrals no single institution owns.</p></div>
+      <div class="rcell"><div class="rk">H</div><div class="rw">Hub</div><p>The persistent place people and providers return to.</p></div>
+    </div>
+    <div class="bb">
+      <div class="c"><h4>Equity and access for people, B2C</h4><p>Individuals reach the help they need to stabilize, thrive, or lift someone else, without it being withheld at the door.</p></div>
+      <div class="b"><h4>Equity and access for providers, B2B</h4><p>Nonprofits, agencies, and partners are <b>also</b> trying to connect, to help themselves, others, or their future. The reason is the same on both sides. Everyone is trying to reach, and to be reached.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 STORY 1 -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">The story, 1 of 2, how it starts</div>
+    <div class="title">Everyone comes in through a door they already trust.</div>
+    <div class="lead">Acquisition and activation happen through a <b>federated, marquee, trusted provider</b>. They hold the person's hand and onboard them. At this stage, community means that <b>local nonprofit or association</b>, and that is exactly right for getting in fast.</div>
+    <div class="doorbig">
+      <div class="door"><span class="m">GW</span>Goodwill Marion, OH</div>
+      <div class="door"><span class="m" style="background:#7A2E2E">CC</span>Catholic Charities San Diego</div>
+      <div class="door"><span class="m" style="background:#C0392B">Y</span>YMCA [City]</div>
+    </div>
+    <div class="row" style="margin-top:26px;gap:12px;">
+      <span class="pill">First community is the local org</span>
+      <span class="pill coral">The door earns the trust</span>
+      <span class="pill">Fast, federated, no national approval loop</span>
+    </div>
+    <div class="callout" style="margin-top:34px;">This is how we get in, quickly, on the strength of brands people already believe in.</div>
+  </div>
+</section>
+
+<!-- 05 STORY 2 -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">The story, 2 of 2, what happens down the road</div>
+    <div class="title sm">Over time, the door becomes a tag, and REACH becomes the hub.</div>
+    <div class="arc">
+      <div class="arcstep"><div class="n">1 · ENTER</div><h4>The door</h4><p>Onboarded by a trusted provider. Community means the local org.</p><div class="arcarrow">→</div></div>
+      <div class="arcstep"><div class="n">2 · ENGAGE</div><h4>Programs and rewards</h4><p>The org's relationship and our rewards and perks activate them.</p><div class="arcarrow">→</div></div>
+      <div class="arcstep"><div class="n">3 · EXPAND</div><h4>The REACH hub</h4><p>Marketplace, perks, and community beyond the entry org, a user-based view.</p><div class="arcarrow">→</div></div>
+      <div class="arcstep"><div class="n">4 · ENDURE</div><h4>Theirs for life</h4><p>A portable account. They refer others, and wellbeing compounds outward.</p></div>
+    </div>
+    <div class="row" style="margin-top:28px;align-items:center;gap:16px;">
+      <span style="font-weight:700;font-size:23px;color:var(--ink);">Where you came in becomes just a</span>
+      <span class="tagchip">macro tag · entered via Goodwill Marion</span>
+      <span style="font-size:21px;color:var(--muted);">a net-new capability we do not have yet, and should build.</span>
+    </div>
+    <div class="rule" style="margin-top:22px;">The entry door is a <b>tag on the person's REACH identity, not a cage</b>. The hub is REACH: user-based, portable, and bigger than any one org.</div>
+  </div>
+</section>
+
+<!-- 06 AARRR MODEL -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">Our business model, the reminder that anchors everything</div>
+    <div class="title sm">Grow, and never lose, the number of active users in our environment.</div>
+    <div class="lead" style="margin-top:8px;">AARRR, the Pirate Metrics, which are <b>Acquisition, Activation, Retention, Revenue, and Referral</b>, the five behavioral metrics of a growth business, coined by Dave McClure (500 Startups, 2007).</div>
+    <div class="funnel">
+      <div class="fstep"><div class="lt">A</div><div class="fl">Acquisition</div><p>We ride in on marquee, trusted providers such as Goodwill, the YMCA, and Catholic Charities. We are introduced to the audience, and we do not buy it.</p></div>
+      <div class="fstep"><div class="lt">A</div><div class="fl">Activation</div><p>Engagement through the org's existing relationship and programs, and through our rewards and perks.</p></div>
+      <div class="fstep"><div class="lt">R</div><div class="fl">Retention</div><p>They come back, again and again. Because the account is portable, they do not fall off when a program ends.</p></div>
+      <div class="fstep"><div class="lt">R</div><div class="fl">Revenue</div><p>They buy through the marketplace, and businesses pay us for access to a trusted, engaged audience.</p></div>
+      <div class="fstep"><div class="lt">R</div><div class="fl">Referral</div><p>Other businesses want in because of our reach, and users invite others into access they value.</p></div>
+    </div>
+    <div class="callout" style="margin-top:22px;text-align:center;">Portability protects every stage. Keep the active user, and acquisition compounds into retention, revenue, and referral rather than leaking out the door.</div>
+    <div class="src" style="text-align:center;">Framework: Dave McClure, Startup Metrics for Pirates (500 Startups, 2007).</div>
+  </div>
+</section>
+
+<!-- 07 KPIs USER -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">KPIs · AARRR, user-based, the people in our environment</div>
+    <div class="title sm">Measure the users, at every stage.</div>
+    <div class="kpi">
+      <div class="kcol"><div class="khead"><span class="kl">A</span>Acquisition</div><div class="kbody"><ul>
+        <li>Active users onboarded</li><li>New members by entry door or chapter</li><li>Alumni</li><li>Volunteers</li><li>Employees</li><li>Community members active</li></ul></div></div>
+      <div class="kcol"><div class="khead"><span class="kl">A</span>Activation</div><div class="kbody"><ul>
+        <li>Percent completing onboarding</li><li>Engaging with an org program</li><li>Engaging with rewards or perks</li><li>Setting a Personalized Plan</li><li>Time to first value</li></ul></div></div>
+      <div class="kcol"><div class="khead"><span class="kl">R</span>Retention</div><div class="kbody"><ul>
+        <li>Returning more than once a month</li><li>Monthly or weekly active</li><li>Average days since last login</li><li>Average days since onboarded</li><li>Repeat rewards usage</li></ul></div></div>
+      <div class="kcol"><div class="khead"><span class="kl">R</span>Revenue</div><div class="kbody"><ul>
+        <li>Purchasing through the app</li><li>Using the app to enter another service and collect points</li><li>Marketplace transactions</li><li>Points redeemed</li><li>Value per active user</li></ul></div></div>
+      <div class="kcol"><div class="khead"><span class="kl">R</span>Referral</div><div class="kbody"><ul>
+        <li>Users inviting others</li><li>Invites accepted</li><li>Referrals per active user</li><li>Peer-brought community members</li></ul></div></div>
+    </div>
+    <div class="knote"><b>Segments to slice by everywhere:</b> active against pending against alumni · days since last login · days since a member was onboarded.</div>
+  </div>
+</section>
+
+<!-- 08 KPIs BUSINESS -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">KPIs · AARRR, business-based, the network and the money</div>
+    <div class="title sm">Measure the businesses, at every stage.</div>
+    <div class="kpi">
+      <div class="kcol"><div class="khead"><span class="kl">A</span>Acquisition</div><div class="kbody"><ul>
+        <li>Federated groups live</li><li>Chapters live</li><li>Providers integrated</li><li>Activity by federated group</li><li>Activity by chapter</li></ul></div></div>
+      <div class="kcol"><div class="khead"><span class="kl">A</span>Activation</div><div class="kbody"><ul>
+        <li>Businesses with an MOU</li><li>Marketing agreements</li><li>Partners live in the marketplace</li><li>Perks activated</li></ul></div></div>
+      <div class="kcol"><div class="khead"><span class="kl">R</span>Retention</div><div class="kbody"><ul>
+        <li>Active against pending against alumni orgs</li><li>Chapter and partner retention</li><li>Renewal rate</li><li>Engagement by group and chapter</li></ul></div></div>
+      <div class="kcol"><div class="khead"><span class="kl">R</span>Revenue</div><div class="kbody"><ul>
+        <li>Dollars created by business</li><li>Dollars created in total</li><li>Marketing dollars back to us</li><li>Marketplace GMV and sponsorship dollars</li><li>Revenue per chapter or group</li></ul></div></div>
+      <div class="kcol"><div class="khead"><span class="kl">R</span>Referral</div><div class="kbody"><ul>
+        <li>Businesses wanting in, inbound because of our reach</li><li>Partner-sourced leads</li><li>Businesses referring businesses</li></ul></div></div>
+    </div>
+    <div class="knote"><b>The point:</b> our worth is active users on the network multiplied by the dollars the network creates, not the count of org logos.</div>
+  </div>
+</section>
+
+<!-- 09 SUSTAINABILITY -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">Sustainability and defensibility, the risk we design out</div>
+    <div class="title sm">Partners are channels, not the switch on our value.</div>
+    <div class="lead">If our leverage lives <b>inside</b> any single nonprofit or connector, variables we do not control become our fate. One leaves. One will not pay. People no longer want to work with that org. That turns our model volatile, then obsolete, and makes the company worth less.</div>
+    <div class="ba" style="margin-top:24px;">
+      <div class="bacol before"><div class="bah">If value lives in the partner</div><p style="font-size:23px;color:var(--ink2);line-height:1.45;">Partner churn, price resistance, or a reputational falling-out with one org can wipe out the audience, and the revenue with it. Our worth rises and falls on decisions made outside our walls.</p></div>
+      <div class="bacol after"><div class="bah">If value lives in the person and the network</div><p style="font-size:23px;color:var(--ink2);line-height:1.45;">Any single door can open or close and <b>our active users stay</b>, because the account and the REACH network are ours. Partner-dependent leverage becomes a durable, owned asset.</p></div>
+    </div>
+    <div class="rule" style="margin-top:24px;"><b>The rule:</b> orgs are how people come in. They are <b>not</b> allowed to be how our value walks out.</div>
+  </div>
+</section>
+
+<!-- 10 ARCHITECTURE LAYERS -->
+<section class="slide">
+  <div class="split">
+    <div>
+      <div class="eyebrow">The architecture, three layers, one app</div>
+      <div class="title sm">One REACH network. Many white-label front doors. One portable account.</div>
+      <div class="lead">It is not two apps. It is one REACH app with an org-branded skin on top and a wider community space inside. The person's account lives <b>above</b> the org, the single decision that makes portability work.</div>
+      <div class="identity"><span style="font-size:30px;">◎</span><div>Person is a REACH account above the org. The chapter is an <b>affiliation</b>, not the identity container.</div></div>
+    </div>
+    <div>
+      <div class="stack">
+        <div class="layer l1"><div class="lt">1 · Front door, org-branded and white-label</div><div class="ld">The org's logo, community, and control. Local by default, with national names avoided.</div>
+          <div class="chips"><span class="c">Goodwill Marion · powered by REACH</span><span class="c">CCDSD</span><span class="c">YMCA</span></div></div>
+        <div class="layer l2"><div class="lt">2 · Local experience, the Group or Team level</div><div class="ld">Curated menu, resources, coaches, and Personalized Plans. Org admin works here.</div></div>
+        <div class="layer l3"><div class="lt">3 · REACH network, the platform above the org</div><div class="ld">The universal layer everyone is in by default. No org has to share anything of theirs.</div>
+          <div class="chips"><span class="c">Resource graph</span><span class="c">Marketplace</span><span class="c">Perks</span><span class="c">Community</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 TWO VIEWS -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">What the participant sees</div>
+    <div class="title sm">Same account, two views, one branded app.</div>
+    <div class="phones" style="margin-top:20px;">
+      <div>
+        <div class="phone"><div class="pin">
+          <div class="phead"><div class="plogo" style="background:#0A5A34">GW</div><div><div class="pname">Goodwill Marion, OH</div><div class="ppow">powered by REACH</div></div></div>
+          <div class="pbody"><div class="pt">Your resources</div>
+            <div class="tile"><span class="i"></span>Career coaching and job openings</div>
+            <div class="tile"><span class="i"></span>Food and benefits near you</div>
+            <div class="tile"><span class="i"></span>Your Personalized Plan</div>
+            <div class="tile"><span class="i"></span>Message your coach</div></div>
+          <div class="ptab"><div class="on">Home</div><div>REACH Community</div><div>Me</div></div>
+        </div></div>
+        <div class="pcap">Local view (default)<span>Org-branded home</span></div>
+      </div>
+      <div>
+        <div class="phone"><div class="pin">
+          <div class="phead"><div class="plogo" style="background:#252427">R</div><div><div class="pname">REACH Community</div><div class="ppow">available in every app</div></div></div>
+          <div class="pbody"><div class="pt">Reach for what is available</div>
+            <div class="tile"><span class="i g"></span>Marketplace and perks you are enrolled in</div>
+            <div class="tile"><span class="i g"></span>Resources beyond your org</div>
+            <div class="tile"><span class="i g"></span>Help someone else, or share</div>
+            <div class="tile"><span class="i g"></span>Your saved and favorites</div></div>
+          <div class="ptab"><div>Home</div><div class="on">REACH Community</div><div>Me</div></div>
+        </div></div>
+        <div class="pcap">REACH Community (inside the app)<span>Universal layer, same account, wider aperture</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 PORTABILITY MOMENT -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">Why it survives people moving on</div>
+    <div class="title sm">The portability moment: the affiliation drops, the account does not.</div>
+    <div class="flow">
+      <div class="gstep"><h4>In program</h4><p>Goodwill Marion participant. Local view and REACH Community, one account.</p></div>
+      <div class="garrow">→</div>
+      <div class="gstep"><h4>Moves on</h4><p>Graduates, relocates, or leaves. The Goodwill Marion <b>affiliation expires</b>.</p></div>
+      <div class="garrow">→</div>
+      <div class="gstep keep"><h4>Keeps REACH</h4><p>Same login, now the neutral REACH app.</p><div class="keeps"><span class="k">Account</span><span class="k">Marketplace</span><span class="k">Perks</span><span class="k">Saved</span><span class="k">Community</span></div></div>
+    </div>
+    <div class="callout" style="margin-top:34px;">The graduate ten years on will not reopen a Goodwill app, yet they will open <b style="color:var(--greenText)">REACH</b> to reach resources, their marketplace, or to help someone else.</div>
+  </div>
+</section>
+
+<!-- 13 GOODWILL REBRAND + AMEX -->
+<section class="slide">
+  <div class="mid">
+    <div class="eyebrow">Why the model changed, and the naming with it</div>
+    <div class="title sm">Goodwill: from Refresh@Goodwill to Goodwill Marion, Ohio, powered by REACH.</div>
+    <div class="lead">This was not because Goodwills did not want their own app. The real reason is <b>business model and velocity of adoption</b>. A federated national rollout would never move at the pace we need. Refresh@Goodwill was one <b>operational</b> reason, not the strategic driver.</div>
+    <div class="ba" style="margin-top:22px;">
+      <div class="bacol before"><div class="bah">Before, the operational miss</div>
+        <div class="lockup"><div class="mk" style="background:#9AA0B4">R</div><div><div class="big strike">Refresh@Goodwill</div><div class="sm">Vendor-first. Implies one national Goodwill.</div></div></div></div>
+      <div class="bacol after"><div class="bah">After, the local chapter powered by REACH</div>
+        <div class="lockup"><div class="mk" style="background:#0A5A34">GW</div><div><div class="big">Goodwill Marion, Ohio</div><div class="sm"><b>powered by REACH</b></div></div></div></div>
+    </div>
+    <div class="amex"><div class="h">The Amex analogy: the brand rides on the network, not the other way around</div>
+      <p>A <b>Delta SkyMiles Card</b> is co-branded, but it rides on the <b>Amex network</b>. Amex does not ride on Delta. <b>Amex Platinum</b> is Amex direct. Goodwill Marion, CCDSD, and the YMCA are the co-branded cards. The neutral REACH app is like Platinum. <b>Everything rides on REACH, and REACH rides on none of them.</b></p></div>
+  </div>
+</section>
+
+<!-- 14 THE ASK -->
+<section class="slide navy">
+  <div class="mid">
+    <div class="eyebrow c">The opportunity, why now</div>
+    <div class="title" style="font-size:74px;color:#fff;">We have a rare, one-time chance to own our leverage, and to let it scale as we grow.</div>
+    <div class="subtitle" style="color:rgba(255,255,255,.85);">This is fundamentally different from our current enterprise relationships. There, value equals the contract. Here, value equals the millions we onboard and keep. We do not build an opportunity to lose our leverage. We build the one that compounds it.</div>
+    <div class="row" style="margin-top:44px;">
+      <span class="pill on-navy">Own the account, do not rent the audience</span>
+      <span class="pill on-navy">A portable network is defensible value</span>
+      <span class="pill on-navy">Equity and access, B2C and B2B</span>
+    </div>
+    <div class="callout" style="margin-top:44px;color:#fff;">Orgs are how people come in. REACH is how they stay, for life, and for one another.</div>
+  </div>
+</section>
+
+<div id="footer"><div class="brand">Refresh · <span>REACH</span></div><div class="count" id="count">01 / 14</div></div>
+<div class="hint" id="hint">Use the arrow keys or the space bar to navigate</div>
+
+</div></div>
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var frame=document.getElementById('frame');
+  var stage=document.getElementById('stage');
+  var count=document.getElementById('count');
+  var hint=document.getElementById('hint');
+  var i=0, total=slides.length;
+  function pad(n){return (n<10?'0':'')+n;}
+  function fit(){ var k=frame.clientWidth/1920; stage.style.transform='scale('+k+')'; }
+  function show(n){
+    i=Math.max(0,Math.min(total-1,n));
+    slides.forEach(function(s,idx){s.classList.toggle('active',idx===i);});
+    stage.classList.toggle('navyfoot', slides[i].classList.contains('navy'));
+    count.textContent=pad(i+1)+' / '+pad(total);
+    hint.style.display = i>0 ? 'none' : 'block';
+  }
+  if(window.ResizeObserver){ new ResizeObserver(fit).observe(frame); }
+  window.addEventListener('resize',fit);
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight',' ','PageDown','Spacebar'].indexOf(e.key)>-1){e.preventDefault();show(i+1);}
+    else if(['ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(i-1);}
+    else if(e.key==='Home'){show(0);}else if(e.key==='End'){show(total-1);}
+  });
+  frame.addEventListener('click',function(e){
+    var r=frame.getBoundingClientRect();
+    if((e.clientX-r.left) < r.width*0.28){show(i-1);}else{show(i+1);}
+  });
+  fit();show(0);
+})();
+</script>
+</body>
+</html>
