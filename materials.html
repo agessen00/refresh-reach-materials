@@ -13,7 +13,7 @@ body{font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;background:var(--cr
 .kicker{font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);}
 h1{font-weight:700;font-size:36px;color:var(--ink);letter-spacing:-.015em;margin-top:10px;}
 .sub{font-size:17px;color:var(--muted);margin-top:12px;}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:8px;}
 a.card{display:flex;flex-direction:column;gap:10px;text-decoration:none;background:#fff;border:1px solid var(--hair);border-top:4px solid var(--green);border-radius:16px;padding:24px;color:inherit;transition:box-shadow .15s,transform .15s;box-shadow:0 6px 20px rgba(37,36,39,.05);}
 a.card:hover{box-shadow:0 14px 34px rgba(37,36,39,.12);transform:translateY(-2px);}
 a.card .tag{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--greenText);}
@@ -43,6 +43,12 @@ a.card .go{margin-top:auto;font-weight:700;font-size:13px;color:var(--greenText)
       <h2>Decentralized Mission Services</h2>
       <p>How a mission that works in one market expands and extends its reach across the whole network, what that business is called, and how to launch it.</p>
       <span class="go">Open the companion →</span>
+    </a>
+    <a class="card" href="know-the-need.html">
+      <span class="tag">Summary</span>
+      <h2>Know the Need</h2>
+      <p>Why a needs assessment people answer for themselves, connected directly to resources, shows nonprofits, public agencies, and employers what their people need, and where to invest.</p>
+      <span class="go">Open the summary →</span>
     </a>
   </div>
   <div class="foot">Refresh Software, Inc. · REACH · Public-Serving Division. Draft materials for review. Named organizations illustrate partner and provider types.</div>
