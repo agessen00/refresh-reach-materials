@@ -273,16 +273,17 @@ const lifeOn = !!(C.optional_pages && C.optional_pages.life_events && C.life_eve
 if (lifeOn) pages.push({ id: 'life', file: '02b-life-events', title: 'Life Events', html: () => {
   const L = C.life_events_page;
   const pts = L.points ? ' and points' : '';
+  const card = L.points ? 'A team card, a post and points' : 'A team card and a post';
   const pg = (id, text) => `${text} (p.${seePage(id)})`;
   const rows = [
     ['star', 'Your birthday', `An automatic shoutout on your day${pts}`, ''],
     ['calendar', 'Your work anniversary', `An automatic shoutout${pts}${awardsOn ? `, plus milestone awards (p.${seePage('awards')})` : ''}`, ''],
     ['chat', 'Joining the team', 'A welcome post from your new team', pg('p1', 'Everything in one app')],
-    ['family', 'A new baby or adoption', `A team card and post${pts}`, `${pg('p3', 'Family services near you')}; ${pg('p6', 'family support')}`],
-    ['gift', 'Getting married', `A team card and post${pts}`, ''],
+    ['family', 'A new baby or adoption', card, `${pg('p3', 'Family services near you')}; ${pg('p6', 'family support')}`],
+    ['gift', 'Getting married', card, ''],
     ['home', 'A new home', `A post${pts}`, pg('p5', 'Budgeting and housing help')],
     ['education', 'A graduation or new credential', `A post${pts}${awardsOn ? `, plus growth awards (p.${seePage('awards')})` : ''}`, pg('p7', 'Career tools')],
-    ['coach', 'Retiring', `A team card and post${pts}`, pg('p5', 'Planning with a money coach')],
+    ['coach', 'Retiring', card, pg('p5', 'Planning with a money coach')],
     ['shield', 'A loss or serious illness', 'A private message of support. No post, no points.', `${pg('p3', 'Local support')}; ${pg('p6', 'crisis and family support')}`],
   ];
   return `
