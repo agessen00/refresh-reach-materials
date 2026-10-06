@@ -221,7 +221,7 @@ const orgAwards = () => {
   const A = C.org_awards;
   if (!A || !Array.isArray(A.items) || !A.items.length) return '';
   const allPh = A.items.every((i) => isPh(i.name));
-  return `<div class="card awards${allPh ? ' ph-block' : ''}"><h3>${icon('gift', 'inline')}Awards at ${f(C.org_short)}</h3><div class="awlist">${A.items.map((i) => `<div><b>${f(i.name)}</b>${has(i.reward) ? ` · <span>${f(i.reward)}</span>` : ''}</div>`).join('')}</div>${has(A.how) ? `<p class="awhow">${f(A.how)}</p>` : ''}</div>`;
+  return `<div class="card awards${allPh ? ' ph-block' : ''}"><h3>${icon('gift', 'inline')}Awards at ${f(C.org_short)}</h3><div class="awlist">${A.items.map((i) => `<div><b>${f(i.name)}</b>${has(i.reward) ? phrase(` · <span>${esc(i.reward)}</span>`, i.reward) : ''}</div>`).join('')}</div>${has(A.how) ? `<p class="awhow">${f(A.how)}</p>` : ''}</div>`;
 };
 pages.push({ id: 'p2', file: '02-earn-and-celebrate', title: 'Earn & Celebrate', html: () => `
 ${hero({ kicker: 'Earn &amp; celebrate', h1: 'Do good stuff. Get rewarded.' })}
