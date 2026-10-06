@@ -1,0 +1,14 @@
+{
+  "name": "refresh-benefits-guide",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Beyond Insurance: Yours to Keep. A print-ready benefits-guide template for Refresh / REACH grantees.",
+  "scripts": {
+    "build": "node build.js config/sample-goodwill-ne-texas.json",
+    "build:blank": "node build.js config/blank.json"
+  },
+  "dependencies": {
+    "playwright-core": "^1.55.0",
+    "qrcode": "^1.5.4"
+  }
+}

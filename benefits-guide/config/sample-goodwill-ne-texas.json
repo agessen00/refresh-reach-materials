@@ -1,0 +1,62 @@
+{
+  "slug": "goodwill-ne-texas",
+  "org_name": "Goodwill Industries of Northeast Texas",
+  "org_short": "Goodwill",
+  "mission_line": "[CONFIRM: one line on Goodwill NE Texas's mission]",
+  "health_plan": "[Health plan name]",
+  "telehealth": "Teladoc",
+  "eap_name": "[CONFIRM: EAP name, or set to null if there is no EAP]",
+  "state": "Texas",
+  "state_snap_site": "YourTexasBenefits.com",
+  "state_snap_url": "https://www.yourtexasbenefits.com/",
+  "eligibility_line": "[CONFIRM: who can use it and when, e.g. every team member from your first day]",
+  "day_one": true,
+  "yours_to_keep_app_text": "[CONFIRM: what people keep after they leave, under the grant agreement]",
+  "rx_member_id": null,
+  "reward_examples": "$10 Amazon or $15 Walmart cards",
+  "points_examples": {
+    "steps": "[CONFIRM pts]",
+    "wellness_visit": "[CONFIRM pts]",
+    "reflection": "[CONFIRM pts]",
+    "money": "[CONFIRM pts]",
+    "shoutout": "[CONFIRM pts]"
+  },
+  "menu_paths": {
+    "refresh_home": "[Home]",
+    "local_services": "[Explore resources › Local services]",
+    "rx_card": "[Explore resources › Prescription card]",
+    "money_legal": "[Explore resources › Money & legal]",
+    "health_wellness": "[Explore resources › Health & wellness]",
+    "work_life": "[Explore resources › Work & life]",
+    "employee_resources": "[Employee resources]"
+  },
+  "quotes": {
+    "page1": { "text": "[A team member on what it's like to have everything in one app]", "first_name": "[First name]", "role": "[Role]", "location": "[Location]" },
+    "page2": { "text": "[A team member on a challenge or shoutout they enjoyed]", "first_name": "[First name]", "role": "[Role]", "location": "[Location]" },
+    "page3": { "text": "[A team member on finding local help]", "first_name": "[First name]", "role": "[Role]", "location": "[Location]" },
+    "page7": { "text": "[A team member on learning a new skill]", "first_name": "[First name]", "role": "[Role]", "location": "[Location]" }
+  },
+  "optional_pages": {
+    "everyday_savings": true,
+    "move_eat_rest": true,
+    "share_with_family": true,
+    "back_cover": true
+  },
+  "badges": {
+    "free": true,
+    "day_one": true,
+    "yours_to_keep": true,
+    "always_on": true,
+    "bilingual": true
+  },
+  "page_number_start": 1,
+  "growth_programs": "[CONFIRM: Goodwill's own training, certification and promotion programs]",
+  "privacy_line": "[CONFIRM: privacy wording, e.g. what Goodwill can and can't see]",
+  "monthly_themes": ["[January theme]", "[February theme]", "[March theme]", "[April theme]", "[May theme]", "[June theme]", "[July theme]", "[August theme]", "[September theme]", "[October theme]", "[November theme]", "[December theme]"],
+  "support_contact": "[Refresh support email or phone]",
+  "qr_url": "[QR link to the grantee's Refresh sign-up]",
+  "logo_paths": {
+    "wordmark": null,
+    "lockup": null
+  }
+}

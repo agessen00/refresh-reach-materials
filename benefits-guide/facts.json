@@ -1,0 +1,33 @@
+{
+  "_about": "Facts in the template copy, checked on 2026-10-06 against each publisher's own page. ok:false prints the fact as a CONFIRM placeholder (highlighted in preview, hidden in print). Re-check the week a guide goes to print.",
+
+  "src_metlife": { "ok": true, "url": "https://www.metlife.com/employee-benefit-trends/" },
+  "src_metlife_news": { "ok": true, "url": "https://www.metlife.com/about-us/newsroom/2026/january/new-metlife-data-finds-rising-cost-pressures-outpacing-gains-in-workforce-well-being/" },
+  "src_shrm": { "ok": true, "url": "https://www.shrm.org/topics-tools/research/employee-benefits-survey-2026" },
+  "src_bswift": { "ok": true, "url": "https://communicationagency.bswift.com/solutions/research-measurement/", "note": "Page blocked automated access; confirmed from its search listing." },
+  "src_shortlister": { "ok": true, "url": "https://www.myshortlister.com/insights/portable-benefits-2026" },
+
+  "stat_skip_care": { "ok": true, "note": "MetLife: \"50% of employees often avoid seeking medical care because of out-of-pocket costs\"" },
+  "stat_cost_stress": { "ok": true, "note": "MetLife: \"83% of employees say rising living expenses and medical costs are their top stressors\"" },
+
+  "nm_card_name": { "ok": true, "note": "NeedyMeds card: drug discount card" },
+  "nm_bin": { "ok": false, "note": "CONFIRM against the Refresh co-branded card. NeedyMeds' generic card uses BIN 019520; 020750 appears on co-branded cards." },
+  "nm_pcn": { "ok": true, "note": "NeedyMeds card: \"RX PCN: NMeds\"" },
+  "nm_grp": { "ok": false, "note": "CONFIRM against the Refresh co-branded card. NeedyMeds' generic card uses GRP DRUGCARD." },
+  "nm_phone": { "ok": false, "note": "CONFIRM against the Refresh co-branded card. NeedyMeds' generic card lists 1-888-602-2978 for card questions." },
+  "nm_save": { "ok": true, "note": "NeedyMeds card: \"Save up to 80%\"" },
+  "nm_pharmacies": { "ok": true, "note": "\"Use at over 65,000 pharmacies nationwide including all major chains\"" },
+  "nm_expires": { "ok": true, "note": "\"Never expires\"" },
+  "nm_insurance": { "ok": true, "note": "\"Anyone can use the card, but it can't be combined with insurance.\"" },
+  "nm_deductible": { "ok": false, "note": "CONFIRM: NeedyMeds' card does not say discount purchases don't count toward a deductible." },
+
+  "h_988": { "ok": true, "url": "https://988lifeline.org/" },
+  "h_ndvh": { "ok": true, "url": "https://www.thehotline.org/" },
+  "h_rainn": { "ok": true, "url": "https://rainn.org/", "note": "Page blocked automated access; confirmed from its search listing." },
+  "h_parent": { "ok": true, "url": "https://www.parentsanonymous.org/", "note": "855-427-2736, 24/7" },
+  "redcross_shelter": { "ok": true, "url": "https://www.redcross.org/get-help/disaster-relief-and-recovery-services/find-an-open-shelter.html" },
+
+  "learn_audit": { "ok": true, "note": "edX: free to audit (time-limited). Coursera: since Aug 2025, a free preview of the first module only." },
+  "mango_library": { "ok": true, "note": "Mango: \"Your library card may provide free access\"" },
+  "kofe_enrich": { "ok": false, "note": "CONFIRM: Enrich is iGrad's platform, not part of KOFE. Keep only if it is in the grantee's app." }
+}
