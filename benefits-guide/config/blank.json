@@ -45,7 +45,34 @@
     ],
     "how": "[How to nominate someone or claim an award]"
   },
+  "awards_page": {
+    "note": "[Choose award names with HR]",
+    "groups": [
+      { "title": "Every day", "icon": "chat", "items": [
+        { "name": "[Award name]", "what": "[What it celebrates]" },
+        { "name": "[Award name]", "what": "[What it celebrates]" },
+        { "name": "[Award name]", "what": "[What it celebrates]" }
+      ] },
+      { "title": "Your milestones", "icon": "calendar", "items": [
+        { "name": "[Award name]", "what": "[What it celebrates]" },
+        { "name": "[Award name]", "what": "[What it celebrates]" },
+        { "name": "[Award name]", "what": "[What it celebrates]" }
+      ] },
+      { "title": "When you grow", "icon": "career", "items": [
+        { "name": "[Award name]", "what": "[What it celebrates]" },
+        { "name": "[Award name]", "what": "[What it celebrates]" },
+        { "name": "[Award name]", "what": "[What it celebrates]" }
+      ] },
+      { "title": "Once a year", "icon": "gift", "items": [
+        { "name": "[Award name]", "what": "[What it celebrates]" },
+        { "name": "[Award name]", "what": "[What it celebrates]" },
+        { "name": "[Award name]", "what": "[What it celebrates]" }
+      ] }
+    ],
+    "how": "[How to nominate someone]"
+  },
   "optional_pages": {
+    "awards": false,
     "everyday_savings": false,
     "move_eat_rest": false,
     "share_with_family": false,

@@ -83,6 +83,10 @@ short of WCAG AA contrast on white and cream. Bright green stays for fills.
 | `quotes.{page1, page2, page3, page7}` | `{text, first_name, role, location}` or null | Peer quote slots. `null` hides the slot |
 | `org_awards.items` | array of `{name, reward}` or null | "Awards at [org_short]" block on Earn & Celebrate: the grantee's own recognition awards. `null` hides the block. Keep it to about five short items so the page fits |
 | `org_awards.how` | string or null | One line on how to nominate someone or claim an award |
+| `optional_pages.awards` | bool | Awards & Recognition page, after Earn & Celebrate. When on, Earn & Celebrate points to it instead of showing `org_awards` |
+| `awards_page.groups` | array of `{title, icon, sub, items: [{name, what, tag}]}` | Award groups on the Awards & Recognition page, best grouped by how often they happen (every day, milestones, growth, monthly, yearly). `tag` is an optional pill such as "In Refresh". Five groups of four short items fill the page |
+| `awards_page.note` | string or null | Preview-only note, e.g. that the names are proposals. Never prints |
+| `awards_page.how` | string or null | Third "How to start" step: how to nominate someone |
 | `optional_pages.everyday_savings` | bool | Member-discount panel on Earn & Celebrate |
 | `optional_pages.move_eat_rest` | bool | Move, Eat & Rest page |
 | `optional_pages.share_with_family` | bool | Share With Your Family & Community page |
@@ -96,7 +100,7 @@ short of WCAG AA contrast on white and cream. Bright green stays for fills.
 | `qr_url` | string | When set to a real link, every QR is generated from it |
 | `logo_paths.wordmark` | path or null | Grantee wordmark in page footers. Otherwise `org_name` is shown |
 | `logo_paths.lockup` | path or null | Grantee logo in the "R × [ORG]" lockup. Otherwise `org_short` is shown |
-| `photos.{p2, p3, p4, p5, p6, p7, move, family, phone_mockup}` | paths, optional | Real photos for the photo slots and the phone mockup. Prefer real team members, with permission |
+| `photos.{p2, awards, p3, p4, p5, p6, p7, move, family, phone_mockup}` | paths, optional | Real photos for the photo slots and the phone mockup. Prefer real team members, with permission |
 | `confirmed.money_yours_to_keep` | bool, optional | Set to `true` once money coaching is confirmed as "Yours to keep". Until then that badge shows as CONFIRM |
 
 ## Facts file

@@ -216,6 +216,7 @@ ${badgeRow([badge('free'), badge('day_one'), has(C.yours_to_keep_app_text) ? bad
 ${findBar(C.menu_paths.refresh_home)}` });
 
 const pts = C.points_examples || {};
+const awardsOn = !!(C.optional_pages && C.optional_pages.awards && C.awards_page);
 // The grantee's own recognition awards, shown on Earn & Celebrate. null hides the block.
 const orgAwards = () => {
   const A = C.org_awards;
@@ -242,7 +243,7 @@ ${badgeRow([badge('free'), badge('day_one')])}
       <div class="callout"><b>Better together.</b> People join because their coworkers do. Bring a teammate along this month.</div>
     </div>
   </div>
-  ${orgAwards()}
+  ${awardsOn ? `<div class="callout">${icon('gift', 'inline')}<b>Awards at ${f(C.org_short)}:</b> every day, at milestones and once a year. See page ${seePage('awards')}.</div>` : orgAwards()}
   <p class="tiein">${icon('health', 'inline')}Your annual wellness visit is covered as preventive care${phrase(` under ${esc(C.health_plan)}`, C.health_plan)}, and it earns points too.</p>
   ${C.optional_pages && C.optional_pages.everyday_savings ? `<div class="savings"><h3>${icon('tag', 'inline')}Everyday savings</h3><p>Member discounts on phones, tech, travel, tickets and pets, in the app.</p><div class="pills">${['Phones', 'Tech', 'Travel', 'Tickets', 'Pets'].map((x) => `<span class="pill">${x}</span>`).join('')}</div></div>` : ''}
   ${quote(C.quotes && C.quotes.page2)}
@@ -250,6 +251,21 @@ ${badgeRow([badge('free'), badge('day_one')])}
   ${howTo([goTo(C.menu_paths.refresh_home), 'Join this week\'s challenge.', 'Send your first shoutout.'])}
 </main>
 ${findBar(C.menu_paths.refresh_home)}` });
+
+// Awards & Recognition: the grantee's own awards, grouped by how often they happen.
+if (awardsOn) pages.push({ id: 'awards', file: '02a-awards-and-recognition', title: 'Awards & Recognition', html: () => {
+  const A = C.awards_page;
+  return `
+${hero({ kicker: 'Awards &amp; recognition', h1: 'Every job has a way to win.' })}
+${badgeRow([badge('day_one'), extra('star', 'Every role, every location')])}
+<main class="body">
+  <p>Recognition at ${f(C.org_short)} happens all year, not just at the banquet. Thank a teammate in Refresh, mark your milestones, grow your skills, and nominate the people who make ${f(C.org_short)} better.${has(A.note) ? ` <span class="ph">${esc(A.note)}</span>` : ''}</p>
+  <div class="awgroups">${(A.groups || []).map((g) => `<div class="card awgroup${(g.items || []).every((i) => isPh(i.name)) ? ' ph-block' : ''}"><h3>${icon(g.icon || 'star', 'inline')}${f(g.title)}</h3>${has(g.sub) ? `<p class="awsub">${f(g.sub)}</p>` : ''}<ul>${(g.items || []).map((i) => `<li><b>${f(i.name)}</b>${has(i.tag) ? ` <span class="awtag">${f(i.tag)}</span>` : ''} <span class="awwhat">– ${f(i.what)}</span></li>`).join('')}</ul></div>`).join('')}</div>
+  ${photo('awards', 'a team celebrating an award')}
+  ${howTo([goTo(C.menu_paths.refresh_home), 'Send a shoutout to a teammate.', has(A.how) && !isPh(A.how) ? f(A.how) : 'Ask your manager how to nominate someone.'])}
+</main>
+${findBar(C.menu_paths.refresh_home)}`;
+} });
 
 pages.push({ id: 'p3', file: '03-find-help-near-you', title: 'Find Help Near You', html: () => `
 ${hero({ kicker: 'Find help near you', h1: 'Help is available in your neighborhood.', sub: 'A free, private search for local programs, for you, your family or a neighbor.' })}
@@ -557,6 +573,15 @@ table.pts td:last-child{font-weight:700;color:var(--ink)}
 .awards .awlist div{font-size:10.5pt;line-height:1.3}
 .awards .awlist span{color:var(--muted)}
 .awards .awhow{font-size:10.5pt;margin-top:4px}
+.awgroups{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.awgroup:last-child:nth-child(odd){grid-column:1 / -1}
+.awgroup:last-child:nth-child(odd) ul{display:grid;grid-template-columns:1fr 1fr;column-gap:16px}
+.awgroup .awsub{font-size:10.5pt;color:var(--muted);margin-bottom:2px}
+.awgroup ul{list-style:none;margin-top:3px}
+.awgroup li{font-size:10.5pt;line-height:1.3;margin-bottom:4px}
+.awgroup li b{color:var(--ink)}
+.awgroup .awwhat{color:var(--ink2)}
+.awtag{display:inline-block;font-size:9pt;font-weight:700;color:var(--greenText);background:var(--greenSoft);border-radius:999px;padding:0 7px;margin-left:4px;vertical-align:1px}
 .savings{background:#fff;border-radius:16px;border-top:4px solid var(--yellow);padding:.1in .15in}
 
 /* Rx */
