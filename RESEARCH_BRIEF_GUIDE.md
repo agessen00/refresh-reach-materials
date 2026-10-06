@@ -42,8 +42,8 @@ These rules matter most. The team should be able to trust every line.
    automated access and the wording comes from its search listing, mark it
    with † and explain the mark once.
 4. **No invented numbers.**
-   - No percentages or estimates we can't trace. Use counts we can point to:
-     "Of the 12 things we'd do now, 4 are features we already have…"
+   - No percentages or estimates we can't trace. If a number appears, it
+     has to be a count someone can check against a table on the page.
    - Every number on a mock-up or example is labeled *Example*, and the page
      says who sets the real values.
 5. **Label our own ideas.** If no competitor does something and we still want
@@ -68,7 +68,7 @@ One idea lives in one place. If two sections say the same thing, merge them.
 
 | # | Section | What goes in it |
 |---|---|---|
-| 1 | What we found | The question we set out to answer, how we researched it, the finding in one sentence, any glossary, what we already have, and the one thing that sets us apart ("Where we win") |
+| 1 | What we found | The question we set out to answer, how we researched it, a short glossary, and the one thing that sets us apart ("Where we win"). Keep it short: the subtitle carries the finding and the roadmap's foundation band lists what we already have, so don't repeat a summary or a list here |
 | 2 | What worked for us before | Our own field experience, in our words, with a "What we saw" callout |
 | 3 | What competitors do | One practice table: **Practice · Who does it (linked) · Where we are · Our move**, with status pills |
 | 4–6 | Deep dives | One section per big topic. Each states the rule, cites who does it, and shows an example if it helps |
