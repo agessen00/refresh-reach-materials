@@ -14,7 +14,11 @@ stays put even when the study is renamed.
 | `REACH_Business_Case_and_Strategic_Launch_Path.pdf` | Print version, linked from the study. |
 | `decentralized-services.html` | Companion study: how a mission expands and extends its reach across the network. |
 | `REACH_Decentralized_Mission_Services.pdf` | Print version of the companion. |
-| `materials.html` | A two-card index of the study and the companion. |
+| `materials.html` | The index of every document, one card each. |
+| `know-the-need.html` | Summary: a self-reported needs assessment connected to resources. |
+| `somerset.html`, `miami-dade.html` | Customer briefs, with PDFs. |
+| `product-strategy.html` | Engagement: Wellness Review, our research on gamified wellness, with `product-strategy.pdf`. |
+| `RESEARCH_BRIEF_GUIDE.md` | How we write up research: voice, sourcing, structure, design, and how we check and publish. Follow it for new research. |
 
 There is no slide deck. The two studies are the whole set, deliberately, so
 that nobody has to work out which document is the current one.
