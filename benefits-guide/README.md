@@ -31,6 +31,14 @@ reported, the build exits with code 2.
 PDFs use Chrome through Playwright (`channel: 'chrome'`), so Google Chrome must
 be installed.
 
+If a page would run long, its spacing tightens automatically; text sizes don't
+change. If it still doesn't fit, the build names the page. The usual cause is
+a very long peer quote, `org_short`, or "Yours to keep" text, so shorten those
+first.
+
+Green text uses `#127a1d` rather than the brand's `#1E8A29`, which falls just
+short of WCAG AA contrast on white and cream. Bright green stays for fills.
+
 ## Preview mode and print mode
 
 - **Preview mode** (open any page normally) highlights in yellow every value

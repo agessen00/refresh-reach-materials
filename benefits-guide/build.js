@@ -115,8 +115,7 @@ const strokes = () => `<div class="strokes">${K.map((k, i) => `<img class="k${i 
 
 const hero = ({ kicker, h1, sub, calm }) => `
 <header class="hero${calm ? ' calm' : ''}">
-  ${lockup()}
-  ${kicker ? `<div class="kicker">${kicker}</div>` : ''}
+  <div class="hero-top">${kicker ? `<div class="kicker">${kicker}</div>` : '<span></span>'}${lockup()}</div>
   <h1>${h1}</h1>
   ${sub ? `<p class="sub">${sub}</p>` : ''}
   ${strokes()}
@@ -140,13 +139,18 @@ const photo = (id, label) => {
     : `<div class="photo-fill ph-block"><span class="ph-label">Photo: ${label}</span></div>`;
 };
 
-const findBar = (pathText) => `<div class="find"><div><span class="find-h">Find it in Refresh →</span> <span class="find-p">${pathText}</span></div>${qr('sm')}</div>`;
+const findBar = (p) => `<div class="find"><div><span class="find-h">Find it in Refresh</span>${phrase(`<span class="find-h"> →</span> <span class="find-p">${esc(p)}</span>`, p)}</div>${qr('sm')}</div>`;
 
 // ------------------------------------------------------------- pages
 
 const P = {}; // page id -> printed page number (filled in below)
 const pnum = (id) => (P[id] === undefined ? '' : P[id]);
 const seePage = (id) => (isPh(String(pnum(id))) || pnum(id) === '' ? `<span class="ph">XX</span>` : pnum(id));
+
+// Wraps a phrase so it disappears in print when any of its values is a placeholder.
+const phrase = (html, ...vals) => (vals.some((v) => !has(v) || isPh(v)) ? `<span class="ph">${html}</span>` : html);
+const factOk = (key) => FACTS[key] && FACTS[key].ok;
+const goTo = (p) => (isPh(p) ? `Open Refresh<span class="ph"> and go to ${esc(p)}</span>.` : `Open Refresh and go to ${esc(p)}.`);
 
 const pages = [];
 
@@ -185,7 +189,7 @@ ${badgeRow([badge('free'), badge('day_one'), has(C.yours_to_keep_app_text) ? bad
   <div class="tiles6 wide">
       ${[
         ['chat', 'Stay in the know', 'News, the weekly focus, and events you can sign up for in the app.'],
-        ['search', 'Find what you need', `Your pay, your ${f(C.health_plan)}, ${f(C.telehealth)} and the employee portal.`],
+        ['search', 'Find what you need', `Your pay${phrase(`, your ${esc(C.health_plan)}`, C.health_plan)}${phrase(`, ${esc(C.telehealth)}`, C.telehealth)} and the employee portal.`],
         ['star', 'Get involved', 'Short weekly challenges, guided quests and quick check-ins.'],
         ['gift', 'Earn &amp; celebrate', 'Points, gift cards, prize drawings and shoutouts for teammates.'],
         ['care', 'Explore resources', 'Free help with food, rent, prescriptions, money, legal questions, mental health and careers.'],
@@ -207,7 +211,7 @@ ${badgeRow([badge('free'), badge('day_one'), has(C.yours_to_keep_app_text) ? bad
   ${quote(C.quotes && C.quotes.page1)}
   ${howTo(['Scan the code or open the link in your welcome text or email.', 'Sign in and pick your language.', 'Choose a wellness focus.'])}
 </main>
-${findBar(f(C.menu_paths.refresh_home))}` });
+${findBar(C.menu_paths.refresh_home)}` });
 
 const pts = C.points_examples || {};
 pages.push({ id: 'p2', file: '02-earn-and-celebrate', title: 'Earn & Celebrate', html: () => `
@@ -218,10 +222,10 @@ ${badgeRow([badge('free'), badge('day_one')])}
   <div class="steps3">
     <div class="step"><span class="n">1</span><p><b>Join a challenge.</b> New ones every week, tied to a monthly theme.</p></div>
     <div class="step"><span class="n">2</span><p><b>Earn points</b> from challenges, quests and shoutouts.</p></div>
-    <div class="step"><span class="n">3</span><p><b>Trade points</b> for gift cards (${f(C.reward_examples)}) and enter monthly prize drawings.</p></div>
+    <div class="step"><span class="n">3</span><p><b>Trade points</b> for gift cards${phrase(` (${esc(C.reward_examples)})`, C.reward_examples)} and enter monthly prize drawings.</p></div>
   </div>
   <div class="row2">
-    <table class="pts"><thead><tr><th scope="col">Sample challenge</th><th scope="col">Points</th></tr></thead><tbody>
+    <table class="pts${Object.values(pts).every((v) => !has(v) || isPh(v)) ? ' ph-block' : ''}"><thead><tr><th scope="col">Sample challenge</th><th scope="col">Points</th></tr></thead><tbody>
       ${[['Steps', pts.steps], ['Annual wellness visit', pts.wellness_visit], ['Weekly reflection', pts.reflection], ['Money step', pts.money], ['Shoutout', pts.shoutout]].map(([a, b]) => `<tr><td>${a}</td><td>${f(b)}</td></tr>`).join('')}
     </tbody></table>
     <div class="stack">
@@ -229,13 +233,13 @@ ${badgeRow([badge('free'), badge('day_one')])}
       <div class="callout"><b>Better together.</b> People join because their coworkers do. Bring a teammate along this month.</div>
     </div>
   </div>
-  <p class="tiein">${icon('health', 'inline')}Your annual wellness visit is covered under ${f(C.health_plan)} preventive care, and it earns points too.</p>
+  <p class="tiein">${icon('health', 'inline')}Your annual wellness visit is covered as preventive care${phrase(` under ${esc(C.health_plan)}`, C.health_plan)}, and it earns points too.</p>
   ${C.optional_pages && C.optional_pages.everyday_savings ? `<div class="savings"><h3>${icon('tag', 'inline')}Everyday savings</h3><p>Member discounts on phones, tech, travel, tickets and pets, in the app.</p><div class="pills">${['Phones', 'Tech', 'Travel', 'Tickets', 'Pets'].map((x) => `<span class="pill">${x}</span>`).join('')}</div></div>` : ''}
   ${quote(C.quotes && C.quotes.page2)}
   ${photo('p2', 'teammates celebrating a shoutout or finishing a challenge together')}
-  ${howTo([`Open Refresh and go to ${f(C.menu_paths.refresh_home)}.`, 'Join this week\'s challenge.', 'Send your first shoutout.'])}
+  ${howTo([goTo(C.menu_paths.refresh_home), 'Join this week\'s challenge.', 'Send your first shoutout.'])}
 </main>
-${findBar(f(C.menu_paths.refresh_home))}` });
+${findBar(C.menu_paths.refresh_home)}` });
 
 pages.push({ id: 'p3', file: '03-find-help-near-you', title: 'Find Help Near You', html: () => `
 ${hero({ kicker: 'Find help near you', h1: 'Help is available in your neighborhood.', sub: 'A free, private search for local programs, for you, your family or a neighbor.' })}
@@ -250,9 +254,9 @@ ${badgeRow([badge('free'), badge('ytk'), extra('share', 'Share it with anyone')]
   </div>
   ${quote(C.quotes && C.quotes.page3)}
   ${photo('p3', 'a team member, or a local partner such as a food pantry')}
-  ${howTo([`Open Refresh and go to ${f(C.menu_paths.local_services)}.`, 'Enter your ZIP code.', 'Or go to findhelp.org on any device.'])}
+  ${howTo([goTo(C.menu_paths.local_services), 'Enter your ZIP code.', 'Or go to findhelp.org on any device.'])}
 </main>
-${findBar(f(C.menu_paths.local_services))}` });
+${findBar(C.menu_paths.local_services)}` });
 
 pages.push({ id: 'p4', file: '04-save-on-prescriptions', title: 'Save on Prescriptions & Care', html: () => `
 ${hero({ kicker: 'Save on prescriptions &amp; care', h1: 'Pay less for medicine and care, with or without insurance.' })}
@@ -264,12 +268,10 @@ ${badgeRow([badge('free'), badge('ytk', { label: 'Yours to keep · the card neve
       <span class="cut">${icon('scissors')}</span>
       <div class="rx-top"><img class="mark dark" src="${MARK}" alt="Refresh"><span>${fact('nm_card_name', 'NEEDYMEDS DRUG DISCOUNT CARD')}</span></div>
       <dl>
-        <dt>BIN</dt><dd>${fact('nm_bin', '020750')}</dd>
-        <dt>PCN</dt><dd>${fact('nm_pcn', 'NMeds')}</dd>
-        <dt>GRP</dt><dd>${fact('nm_grp', 'REFRESH')}</dd>
-        <dt>ID</dt><dd>${has(C.rx_member_id) ? f(C.rx_member_id) : 'See your card in the app'}</dd>
+        ${[['BIN', 'nm_bin', '020750'], ['PCN', 'nm_pcn', 'NMeds'], ['GRP', 'nm_grp', 'REFRESH']].map(([k, key, val]) => `<div class="${factOk(key) ? '' : 'ph-block'}"><dt>${k}</dt><dd>${fact(key, val)}</dd></div>`).join('')}
+        <div><dt>ID</dt><dd>${has(C.rx_member_id) ? f(C.rx_member_id) : 'See your card in the app'}</dd></div>
       </dl>
-      <div class="rx-help">Pharmacy help desk ${fact('nm_phone', '1-800-401-1031')}</div>
+      <div class="rx-help${factOk('nm_phone') ? '' : ' ph-block'}">Pharmacy help desk ${fact('nm_phone', '1-800-401-1031')}</div>
       <div class="rx-note">This is a drug discount program, not insurance.</div>
     </div>
     <ul class="checks">
@@ -284,9 +286,9 @@ ${badgeRow([badge('free'), badge('ytk', { label: 'Yours to keep · the card neve
   <div class="callout"><b>Have insurance?</b> ${fact('nm_insurance', 'Use the card instead of insurance when the card price is lower than your copay, or when a drug isn\'t covered. You can\'t combine the two on the same purchase.')} ${fact('nm_deductible', 'Discount purchases don\'t count toward your deductible.')}</div>
   <div class="card"><h3>More ways NeedyMeds helps</h3><div class="pills">${['Free or low-cost medical care', 'Affordable dental', 'Mental health support', 'Help paying for medications', 'Community clinics'].map((x) => `<span class="pill">${x}</span>`).join('')}</div><p>"Find low-cost prescriptions" in the app compares pharmacy prices nearby.</p></div>
   ${photo('p4', 'a team member at a pharmacy counter')}
-  ${howTo([`Open Refresh and go to ${f(C.menu_paths.rx_card)}.`, 'Show the card at the pharmacy counter.', 'Ask for the lower price: card or insurance.'])}
+  ${howTo([goTo(C.menu_paths.rx_card), 'Show the card at the pharmacy counter.', 'Ask for the lower price: card or insurance.'])}
 </main>
-${findBar(f(C.menu_paths.rx_card))}` });
+${findBar(C.menu_paths.rx_card)}` });
 
 const ytkMoney = C.confirmed && C.confirmed.money_yours_to_keep;
 pages.push({ id: 'p5', file: '05-money-and-legal-help', title: 'Money & Legal Help', html: () => `
@@ -303,15 +305,15 @@ ${badgeRow([badge('free'), badge('bilingual'), badge('ytk', { ph: !ytkMoney, lab
   </div>
   <div class="moneysteps"><span>Set one small money goal</span><i>→</i><span>Know what's coming in</span><i>→</i><span>Track what's left over</span></div>
   ${photo('p5', 'a team member on a call with a money coach')}
-  ${howTo([`Open Refresh and go to ${f(C.menu_paths.money_legal)}.`, 'Tap “Talk to a money coach.”', 'Book a time that works for you.'])}
+  ${howTo([goTo(C.menu_paths.money_legal), 'Tap “Talk to a money coach.”', 'Book a time that works for you.'])}
 </main>
-${findBar(f(C.menu_paths.money_legal))}` });
+${findBar(C.menu_paths.money_legal)}` });
 
 pages.push({ id: 'p6', file: '06-mind-crisis-and-family', title: 'Mind, Crisis & Family Support', calm: true, html: () => `
 ${hero({ kicker: 'Mind, crisis &amp; family support', h1: "You don't have to handle it alone.", calm: true })}
 ${badgeRow([badge('free'), badge('always'), extra('shield', 'Confidential'), badge('ytk')])}
 <main class="body">
-  <p>${has(C.eap_name) ? `Your ${f(C.eap_name)} is a great first call. ` : ''}Refresh adds support any time of day or night, for you and the people you love.</p>
+  <p>${has(C.eap_name) ? phrase(`Your ${esc(C.eap_name)} is a great first call. `, C.eap_name) : ''}Refresh adds support any time of day or night, for you and the people you love.</p>
   <div class="crisis">
     <table><thead><tr><th scope="col">If you're facing…</th><th scope="col">Reach out to</th><th scope="col">How</th></tr></thead><tbody>
       <tr><td>A mental health or suicidal crisis</td><td>988 Suicide &amp; Crisis Lifeline</td><td>${fact('h_988', 'Call or text 988, or chat')}</td></tr>
@@ -324,9 +326,9 @@ ${badgeRow([badge('free'), badge('always'), extra('shield', 'Confidential'), bad
   <div class="tiles4">${[['family', 'Parenting and family stress', fact('h_parent', 'National Parent &amp; Youth Helpline, 855-427-2736')], ['care', 'Caring for an aging parent', ''], ['home', 'Growing your family', 'Fertility and family planning'], ['search', 'Find a therapist near you', '']].map(([ic, h, p]) => `<div class="card mini">${icon(ic)}<h3>${h}</h3>${p ? `<p>${p}</p>` : ''}</div>`).join('')}</div>
   <div class="calmrow"><span class="calm-h">Everyday calm</span>${['Calm', 'Headspace', 'Guided meditation videos', 'NAMI support groups', 'I Am Sober', 'A.A. Meeting Guide'].map((x) => `<span class="pill">${x}</span>`).join('')}</div>
   ${photo('p6', 'a calm, quiet moment: a team member outdoors or at home')}
-  ${howTo([`Open Refresh and go to ${f(C.menu_paths.health_wellness)}.`, 'Pick what you need right now.', 'Reach out by call, text or chat.'])}
+  ${howTo([goTo(C.menu_paths.health_wellness), 'Pick what you need right now.', 'Reach out by call, text or chat.'])}
 </main>
-${findBar(f(C.menu_paths.health_wellness))}` });
+${findBar(C.menu_paths.health_wellness)}` });
 
 pages.push({ id: 'p7', file: '07-grow-your-skills', title: 'Grow Your Skills & Career', html: () => `
 ${hero({ kicker: 'Grow your skills &amp; career', h1: 'Grow your skills. Grow your career. Free.' })}
@@ -335,15 +337,15 @@ ${badgeRow([badge('free'), extra('pace', 'At your own pace'), badge('ytk')])}
   <p>Wherever you want to go next, at ${f(C.org_short)} or beyond, Refresh puts free courses, career tools and job-skills training in your pocket.</p>
   <div class="row2">
     <div class="card"><h3>${icon('career', 'inline')}Find your path</h3><p><b>Career quiz:</b> MyNextMove</p><p><b>Digital skills check:</b> Northstar Digital Literacy</p></div>
-    <div class="card org"><h3>At ${f(C.org_short)}</h3><p>${f(C.growth_programs)}</p></div>
+    <div class="card org${isPh(C.growth_programs) ? ' ph-block' : ''}"><h3>At ${f(C.org_short)}</h3><p>${f(C.growth_programs)}</p></div>
   </div>
   <div class="tiles6 wide">${[['Khan Academy', ''], ['LearnFree', 'Formerly GCFLearnFree'], ['Skills to Succeed Academy', ''], ['edX &amp; Coursera', fact('learn_audit', 'edX courses are free to audit; Coursera offers a free first module')], ['Udemy &amp; ed2go', 'Free Udemy courses and ed2go tutorials'], ['Duolingo &amp; Mango', fact('mango_library', 'Mango is free through many public libraries')]].map(([h, p]) => `<div class="card mini">${icon('education')}<h3>${h}</h3>${p ? `<p>${p}</p>` : ''}</div>`).join('')}</div>
   ${quote(C.quotes && C.quotes.page7)}
   <p class="closing">Try the 3-minute “What's next for you?” quest.</p>
   ${photo('p7', 'a team member learning a new skill')}
-  ${howTo([`Open Refresh and go to ${f(C.menu_paths.work_life)}.`, 'Take the career quiz.', 'Start a free course.'])}
+  ${howTo([goTo(C.menu_paths.work_life), 'Take the career quiz.', 'Start a free course.'])}
 </main>
-${findBar(f(C.menu_paths.work_life))}` });
+${findBar(C.menu_paths.work_life)}` });
 
 if (C.optional_pages && C.optional_pages.move_eat_rest) pages.push({ id: 'move', file: '08-move-eat-rest', title: 'Move, Eat & Rest', html: () => `
 ${hero({ kicker: 'Move, eat &amp; rest', h1: 'Feel better, one small habit at a time.' })}
@@ -356,9 +358,9 @@ ${badgeRow([badge('free'), badge('day_one')])}
     <div class="card">${icon('rest')}<h3>Rest</h3><p>Free sleep and wind-down apps for better nights.</p></div>
   </div>
   ${photo('move', 'a team member out for a walk')}
-  ${howTo([`Open Refresh and go to ${f(C.menu_paths.health_wellness)}.`, 'Pick one habit to start.', 'Join this month\'s step challenge.'])}
+  ${howTo([goTo(C.menu_paths.health_wellness), 'Pick one habit to start.', 'Join this month\'s step challenge.'])}
 </main>
-${findBar(f(C.menu_paths.health_wellness))}` });
+${findBar(C.menu_paths.health_wellness)}` });
 
 if (C.optional_pages && C.optional_pages.share_with_family) pages.push({ id: 'family', file: '09-share-with-family', title: 'Share With Your Family & Community', html: () => `
 ${hero({ kicker: 'Share with your family &amp; community', h1: 'Some help is for everyone you love.' })}
@@ -376,7 +378,7 @@ ${badgeRow([badge('free'), extra('share', 'Share it with anyone')])}
   ${photo('family', 'a team member with family or neighbors')}
   ${howTo(['Share this page.', 'Point them to findhelp.org and their pharmacy.', 'Call 911 in an emergency.'])}
 </main>
-${findBar(f(C.menu_paths.local_services))}` });
+${findBar(C.menu_paths.local_services)}` });
 
 // Numbering: page_number_start numbers "Meet Refresh"; the opener is the page before it.
 {
@@ -399,7 +401,7 @@ const strips = () => `
     ['mind', has(C.eap_name) ? `EAP · ${f(C.eap_name)}` : 'Support', `Need more support, any time? See page ${seePage('p6')}.`],
     ['rx', 'Prescription savings', `Start with your free Refresh prescription card. See page ${seePage('p4')}.`],
   ].map(([ic, k, t]) => `<div class="strip">${icon(ic)}<div><span class="k">${k}</span><p>${t}</p></div>${qr('xs')}</div>`).join('')}
-  <div class="strip contacts">${icon('chat')}<div><span class="k">Contacts</span><p><b>Refresh:</b> ${f(C.support_contact)} &nbsp;·&nbsp; <b>Rx help desk:</b> ${fact('nm_phone', '1-800-401-1031')}</p></div>${qr('xs')}</div>
+  <div class="strip contacts">${icon('chat')}<div><span class="k">Contacts</span><p>${phrase(`<b>Refresh:</b> ${esc(C.support_contact)}`, C.support_contact)}${phrase(' &nbsp;·&nbsp; ', C.support_contact)}${factOk('nm_phone') ? '' : '<span class="ph">'}<b>Rx help desk:</b> ${fact('nm_phone', '1-800-401-1031')}${factOk('nm_phone') ? '' : '</span>'}</p></div>${qr('xs')}</div>
 </section>`;
 
 const back = () => `
@@ -410,7 +412,7 @@ const back = () => `
     <h2 class="h2">This year's monthly themes</h2>
     <div class="badges center">${[badge('free'), badge('day_one'), badge('ytk')].join('')}</div>
     <div class="months">${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((m, i) => `<div><b>${m}</b><span>${f((C.monthly_themes || [])[i] || '[THEME]')}</span></div>`).join('')}</div>
-    <div class="contactcard"><h3>Questions?</h3><p><b>Refresh support:</b> ${f(C.support_contact)}</p><p><b>Prescription card help desk:</b> ${fact('nm_phone', '1-800-401-1031')}</p><p class="fine-c">In immediate danger? Call 911. In a mental health crisis, call or text 988.</p></div>
+    <div class="contactcard"><h3>Questions?</h3><p class="${isPh(C.support_contact) ? 'ph-block' : ''}"><b>Refresh support:</b> ${f(C.support_contact)}</p><p class="${factOk('nm_phone') ? '' : 'ph-block'}"><b>Prescription card help desk:</b> ${fact('nm_phone', '1-800-401-1031')}</p><p class="fine-c">In immediate danger? Call 911. In a mental health crisis, call or text 988.</p></div>
   </main>
   ${footer('back')}
 </section>`;
@@ -428,7 +430,7 @@ const pageHtml = (p) => `<section class="page${p.calm ? ' calm-page' : ''}" data
 // ------------------------------------------------------------- CSS
 
 const CSS = `
-:root{--cream:#F8F7F0;--panel:#ECE9D6;--ink:#252427;--ink2:#373536;--muted:#6E6B62;--green:#4BDF52;--greenText:#1E8A29;--greenSoft:#E4F7E5;--cyan:#2EC5EA;--pink:#F293F7;--yellow:#F6EE6B;--blue:#1F8FE5;--hair:rgba(37,36,39,.14);
+:root{--cream:#F8F7F0;--panel:#ECE9D6;--ink:#252427;--ink2:#373536;--muted:#6E6B62;--green:#4BDF52;--greenText:#127a1d;--greenSoft:#E4F7E5;--cyan:#2EC5EA;--pink:#F293F7;--yellow:#F6EE6B;--blue:#1F8FE5;--hair:rgba(37,36,39,.14);
   --calmBg:#EEF3F2;--calmHero:#DCE8E6;--calmInk:#2F4A4A;}
 @page{size:8.5in 11in;margin:0}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -442,13 +444,14 @@ a{color:var(--greenText);text-decoration:none;border-bottom:1px solid var(--gree
 
 /* Hero */
 .hero{position:relative;background:var(--ink);color:#fff;padding:.36in .5in .74in;overflow:hidden;flex-shrink:0}
-.lockup{position:absolute;top:.38in;right:.5in;display:flex;align-items:center;gap:8px}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:.25in}
+.lockup{display:flex;align-items:center;gap:8px;flex-shrink:0;max-width:3.4in}
 .lockup .mark{height:22px;filter:invert(1) brightness(1.9)}
 .lockup .x{color:rgba(255,255,255,.7);font-size:14pt}
-.org-ph{font-weight:700;font-size:11pt;color:#fff;border:1.5px dashed rgba(255,255,255,.5);border-radius:6px;padding:2px 8px}
+.org-ph{font-weight:700;font-size:11pt;line-height:1.2;color:#fff;border:1.5px dashed rgba(255,255,255,.5);border-radius:6px;padding:2px 8px;text-align:right}
 .org-logo{height:24px}
 .kicker{font-weight:700;font-size:9.5pt;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,241,234,.75)}
-.hero h1{font-size:31pt;line-height:1.05;letter-spacing:-.02em;font-weight:700;margin-top:10px;max-width:6.6in}
+.hero h1{font-size:31pt;line-height:1.05;letter-spacing:-.02em;font-weight:700;margin-top:8px;max-width:7.2in}
 .hero .sub{font-size:13pt;line-height:1.35;color:rgba(242,241,234,.85);margin-top:8px;max-width:6.4in}
 .strokes{position:absolute;left:0;right:0;bottom:0;height:.72in;pointer-events:none}
 .strokes img{position:absolute;width:auto}
@@ -549,6 +552,7 @@ table.pts td:last-child{font-weight:700;color:var(--ink)}
 .rx-top{display:flex;align-items:center;gap:10px;font-weight:700;font-size:10pt;letter-spacing:.06em;color:var(--ink);border-bottom:1px solid var(--hair);padding-bottom:6px;margin-bottom:6px}
 .mark.dark{height:18px}
 .rxcard dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px}
+.rxcard dl > div{display:contents}
 .rxcard dt{font-weight:700;font-size:10pt;color:var(--muted)}
 .rxcard dd{font-weight:700;color:var(--ink);font-family:"Courier New",monospace}
 .rx-help{font-size:10pt;font-weight:700;color:var(--ink);margin-top:6px}
@@ -566,7 +570,7 @@ ul.dots li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:
 .tool{background:#fff;border:1px solid var(--hair);border-radius:10px;padding:5px 9px;font-size:10.5pt;font-weight:700;color:var(--ink)}
 .moneysteps{display:flex;align-items:center;gap:8px;justify-content:center;background:var(--panel);border-radius:14px;padding:.08in .14in}
 .moneysteps span{font-weight:700;font-size:10.5pt;color:var(--ink)}
-.moneysteps i{font-style:normal;color:var(--greenText);font-weight:700}
+.moneysteps i{font-style:normal;color:var(--ink);font-weight:700}
 
 /* Calm page */
 .calm-page .card{border-top-color:#9CC9C2}
@@ -597,7 +601,8 @@ ul.dots li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:
 .find{flex-shrink:0;margin:.12in .5in 0;background:var(--ink);color:#fff;border-radius:14px;padding:.08in .16in;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .find-h{font-weight:700;font-size:11pt;color:var(--green)}
 .find-p{font-weight:700;font-size:11pt;color:#fff}
-.foot{flex-shrink:0;height:.62in;padding:0 .5in;display:flex;align-items:center;justify-content:space-between}
+.foot{flex-shrink:0;min-height:.62in;padding:.08in .5in .14in;display:flex;align-items:center;justify-content:space-between;gap:.15in}
+.foot .gw-ph{text-align:right;max-width:3.2in}
 .pnum{background:var(--green);color:var(--ink);font-weight:700;font-size:10pt;border-radius:999px;padding:2px 11px}
 .gw-ph{font-weight:700;font-size:10pt;color:var(--muted)}
 .gw{height:22px}
@@ -632,12 +637,27 @@ ul.dots li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:
 .months b{font-size:11pt}
 .months span{font-size:10.5pt}
 
+/* Tight: applied automatically when a page would overflow. Spacing only; text sizes stay the same. */
+.page.tight .hero{padding-top:.3in;padding-bottom:.6in}
+.page.tight .strokes{height:.58in}
+.page.tight .badges{padding-top:.08in}
+.page.tight .body{gap:5px;padding-top:.08in}
+.page.tight .card,.page.tight .promise,.page.tight .step{padding:.06in .12in}
+.page.tight .quote{padding:.05in .12in}
+.page.tight .photo-ph{width:.55in;height:.55in}
+.page.tight .photo-ph .ph-label{font-size:0}
+.page.tight .photo-ph .ph-label::after{content:"Photo";font-size:9pt}
+.page.tight .howto{padding:.05in .12in}
+.page.tight .find{margin-top:.08in;padding:.06in .14in}
+.page.tight .foot{min-height:.5in}
+
 /* Placeholders: highlighted in preview, hidden in print mode (?print) */
 .ph{background:var(--yellow);outline:1px dashed #A99A00;border-radius:3px;padding:0 2px;color:var(--ink)}
 .hero .ph{color:var(--ink)}
 html.print .ph,html.print .ph-block{display:none !important}
 html.print .ph-label{visibility:hidden}
 html.print .qr-ph{visibility:hidden}
+html.print .org-ph{border-color:transparent}
 html.print .split:has(.phone-ph.ph-block){grid-template-columns:1fr}
 .phone-ph img{width:100%;height:100%;object-fit:cover;border-radius:18px}
 
@@ -648,7 +668,7 @@ html.print .split:has(.phone-ph.ph-block){grid-template-columns:1fr}
 html.print .toolbar{display:none}
 `;
 
-const PRINT_SNIFF = `<script>if(/[?&]print\\b/.test(location.search))document.documentElement.classList.add('print');addEventListener('DOMContentLoaded',()=>document.querySelectorAll('.photo-fill').forEach(e=>{if(e.getBoundingClientRect().height<72)e.style.display='none'}))</script>`;
+const PRINT_SNIFF = `<script>if(/[?&]print\\b/.test(location.search))document.documentElement.classList.add('print');addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.page').forEach(pg=>{const b=pg.querySelector('.body');if(b&&b.scrollHeight>b.clientHeight+1)pg.classList.add('tight')});document.querySelectorAll('.photo-fill').forEach(e=>{if(e.getBoundingClientRect().height<72)e.style.display='none'})})</script>`;
 const doc = (title, inner, toolbar = '') => `<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
 <title>${esc(title)}</title>${PRINT_SNIFF}<style>${CSS}</style></head>
