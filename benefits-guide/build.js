@@ -166,20 +166,22 @@ ${hero({ kicker: 'Beyond insurance', h1: 'Help that stays with you.' })}
   <h2 class="h2">I need help with…</h2>
   <div class="index">
     ${[
+      ['clock', 'Help in a crisis, right now', 'p6'],
       ['food', 'Food, rent or utilities', 'p3'],
       ['rx', 'Paying for prescriptions or a doctor', 'p4'],
       ['money', 'Debt, credit or a budget', 'p5'],
       ['legal', 'A legal question', 'p5'],
-      ['mind', 'Stress, a crisis, or caring for family', 'p6'],
+      ['mind', 'Stress, or caring for family', 'p6'],
       ['career', 'A better job or new skills', 'p7'],
+      C.optional_pages && C.optional_pages.move_eat_rest ? ['rest', 'Rest, move and feel better', 'move'] : null,
+      ['star', C.optional_pages && C.optional_pages.everyday_savings ? 'Rewards, gift cards and discounts' : 'Rewards and gift cards', 'p2'],
       ['work', `Pay, my health plan, or what's happening at ${f(C.org_short)}`, 'p1'],
-      ['star', 'Feeling appreciated (and some gift cards)', 'p2'],
-    ].map(([ic, t, id]) => `<div class="tile">${icon(ic)}<span class="t">${t}</span><span class="pg">p.${seePage(id)}</span></div>`).join('')}
+    ].filter(Boolean).map(([ic, t, id]) => `<div class="tile">${icon(ic)}<span class="t">${t}</span><span class="pg">p.${seePage(id)}</span></div>`).join('')}
   </div>
   ${howTo(['Scan the code or open the link in your welcome text or email.', 'Sign in and pick your language.', 'Choose a wellness focus.'])}
   <p class="sources">Sources: <a href="${FACTS.src_metlife.url}">MetLife 2026 Employee Benefit Trends Study</a> · <a href="${FACTS.src_shrm.url}">SHRM 2026 Employee Benefits Survey</a> · <a href="${FACTS.src_bswift.url}">bswift benefits communication research</a> · <a href="${FACTS.src_shortlister.url}">Shortlister: Is 2026 the Year of Portable Benefits?</a></p>
 </main>
-<div class="find"><div><span class="find-h">Everything here is in one app.</span> <span class="find-p">Scan the code to get started.</span></div>${qr('sm')}</div>` });
+<div class="find"><div><span class="find-h">Everything here is in one app.</span> <span class="find-p">Scan the code to get started.</span>${phrase(`<br><span class="find-h">Questions?</span> <span class="find-p">${esc(C.support_contact)}</span>`, C.support_contact)}</div>${qr('sm')}</div>` });
 
 pages.push({ id: 'p1', file: '01-meet-refresh', title: 'Meet Refresh', html: () => `
 ${hero({ kicker: 'Meet Refresh', h1: `Everything ${f(C.org_short)} offers you, in one app.`, sub: "Refresh is your benefits app. It's on your phone or computer, 24/7, in the language you choose." })}
@@ -214,6 +216,13 @@ ${badgeRow([badge('free'), badge('day_one'), has(C.yours_to_keep_app_text) ? bad
 ${findBar(C.menu_paths.refresh_home)}` });
 
 const pts = C.points_examples || {};
+// The grantee's own recognition awards, shown on Earn & Celebrate. null hides the block.
+const orgAwards = () => {
+  const A = C.org_awards;
+  if (!A || !Array.isArray(A.items) || !A.items.length) return '';
+  const allPh = A.items.every((i) => isPh(i.name));
+  return `<div class="card awards${allPh ? ' ph-block' : ''}"><h3>${icon('gift', 'inline')}Awards at ${f(C.org_short)}</h3><div class="awlist">${A.items.map((i) => `<div><b>${f(i.name)}</b>${has(i.reward) ? ` · <span>${f(i.reward)}</span>` : ''}</div>`).join('')}</div>${has(A.how) ? `<p class="awhow">${f(A.how)}</p>` : ''}</div>`;
+};
 pages.push({ id: 'p2', file: '02-earn-and-celebrate', title: 'Earn & Celebrate', html: () => `
 ${hero({ kicker: 'Earn &amp; celebrate', h1: 'Do good stuff. Get rewarded.' })}
 ${badgeRow([badge('free'), badge('day_one')])}
@@ -233,6 +242,7 @@ ${badgeRow([badge('free'), badge('day_one')])}
       <div class="callout"><b>Better together.</b> People join because their coworkers do. Bring a teammate along this month.</div>
     </div>
   </div>
+  ${orgAwards()}
   <p class="tiein">${icon('health', 'inline')}Your annual wellness visit is covered as preventive care${phrase(` under ${esc(C.health_plan)}`, C.health_plan)}, and it earns points too.</p>
   ${C.optional_pages && C.optional_pages.everyday_savings ? `<div class="savings"><h3>${icon('tag', 'inline')}Everyday savings</h3><p>Member discounts on phones, tech, travel, tickets and pets, in the app.</p><div class="pills">${['Phones', 'Tech', 'Travel', 'Tickets', 'Pets'].map((x) => `<span class="pill">${x}</span>`).join('')}</div></div>` : ''}
   ${quote(C.quotes && C.quotes.page2)}
@@ -543,6 +553,10 @@ table.pts th{background:var(--ink);color:#fff;text-align:left;font-size:9.5pt;le
 table.pts td{padding:5px 10px;border-top:1px solid var(--hair)}
 table.pts td:last-child{font-weight:700;color:var(--ink)}
 .tiein{display:block}
+.awards .awlist{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;margin-top:2px}
+.awards .awlist div{font-size:10.5pt;line-height:1.3}
+.awards .awlist span{color:var(--muted)}
+.awards .awhow{font-size:10.5pt;margin-top:4px}
 .savings{background:#fff;border-radius:16px;border-top:4px solid var(--yellow);padding:.1in .15in}
 
 /* Rx */

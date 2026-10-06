@@ -36,6 +36,15 @@
     "page3": null,
     "page7": null
   },
+  "org_awards": {
+    "items": [
+      { "name": "[Award name]", "reward": "[Reward]" },
+      { "name": "[Award name]", "reward": "[Reward]" },
+      { "name": "[Award name]", "reward": "[Reward]" },
+      { "name": "[Award name]", "reward": "[Reward]" }
+    ],
+    "how": "[How to nominate someone or claim an award]"
+  },
   "optional_pages": {
     "everyday_savings": false,
     "move_eat_rest": false,

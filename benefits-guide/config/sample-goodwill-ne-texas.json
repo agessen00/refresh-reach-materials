@@ -36,6 +36,16 @@
     "page3": { "text": "[A team member on finding local help]", "first_name": "[First name]", "role": "[Role]", "location": "[Location]" },
     "page7": { "text": "[A team member on learning a new skill]", "first_name": "[First name]", "role": "[Role]", "location": "[Location]" }
   },
+  "org_awards": {
+    "items": [
+      { "name": "Near-Miss Reporting", "reward": "$50–$100 bonus CONFIRM" },
+      { "name": "Education Milestone Bonus", "reward": "$100–$500 bonus CONFIRM" },
+      { "name": "Training Graduation", "reward": "certificate CONFIRM" },
+      { "name": "Share Your Story", "reward": "$50 bonus CONFIRM" },
+      { "name": "Improvement Ideas", "reward": "raffle entry CONFIRM" }
+    ],
+    "how": "[CONFIRM: how to nominate someone or claim an award]"
+  },
   "optional_pages": {
     "everyday_savings": true,
     "move_eat_rest": true,

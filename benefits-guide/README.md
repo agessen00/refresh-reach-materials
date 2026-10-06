@@ -81,6 +81,8 @@ short of WCAG AA contrast on white and cream. Bright green stays for fills.
 | `points_examples.{steps, wellness_visit, reflection, money, shoutout}` | strings | Sample challenges table |
 | `menu_paths.{refresh_home, local_services, rx_card, money_legal, health_wellness, work_life, employee_resources}` | strings | "Find it in Refresh" bars and "How to start" steps. Use the grantee's exact menu names |
 | `quotes.{page1, page2, page3, page7}` | `{text, first_name, role, location}` or null | Peer quote slots. `null` hides the slot |
+| `org_awards.items` | array of `{name, reward}` or null | "Awards at [org_short]" block on Earn & Celebrate: the grantee's own recognition awards. `null` hides the block. Keep it to about five short items so the page fits |
+| `org_awards.how` | string or null | One line on how to nominate someone or claim an award |
 | `optional_pages.everyday_savings` | bool | Member-discount panel on Earn & Celebrate |
 | `optional_pages.move_eat_rest` | bool | Move, Eat & Rest page |
 | `optional_pages.share_with_family` | bool | Share With Your Family & Community page |
@@ -90,7 +92,7 @@ short of WCAG AA contrast on white and cream. Bright green stays for fills.
 | `growth_programs` | string | "At [org_short]" box on Grow Your Skills |
 | `privacy_line` | string | Privacy line in the footer of Meet Refresh |
 | `monthly_themes` | 12 strings | Month strip on the back cover |
-| `support_contact` | string | Contacts strip and back cover |
+| `support_contact` | string | "Questions?" line on the opener, contacts strip and back cover |
 | `qr_url` | string | When set to a real link, every QR is generated from it |
 | `logo_paths.wordmark` | path or null | Grantee wordmark in page footers. Otherwise `org_name` is shown |
 | `logo_paths.lockup` | path or null | Grantee logo in the "R × [ORG]" lockup. Otherwise `org_short` is shown |
