@@ -166,20 +166,22 @@ ${hero({ kicker: 'Beyond insurance', h1: 'Help that stays with you.' })}
   <h2 class="h2">I need help with…</h2>
   <div class="index">
     ${[
+      ['clock', 'Help in a crisis, right now', 'p6'],
       ['food', 'Food, rent or utilities', 'p3'],
       ['rx', 'Paying for prescriptions or a doctor', 'p4'],
       ['money', 'Debt, credit or a budget', 'p5'],
       ['legal', 'A legal question', 'p5'],
-      ['mind', 'Stress, a crisis, or caring for family', 'p6'],
+      ['mind', 'Stress, or caring for family', 'p6'],
       ['career', 'A better job or new skills', 'p7'],
+      C.optional_pages && C.optional_pages.move_eat_rest ? ['rest', 'Rest, move and feel better', 'move'] : null,
+      ['star', C.optional_pages && C.optional_pages.everyday_savings ? 'Rewards, gift cards and discounts' : 'Rewards and gift cards', 'p2'],
       ['work', `Pay, my health plan, or what's happening at ${f(C.org_short)}`, 'p1'],
-      ['star', 'Feeling appreciated (and some gift cards)', 'p2'],
-    ].map(([ic, t, id]) => `<div class="tile">${icon(ic)}<span class="t">${t}</span><span class="pg">p.${seePage(id)}</span></div>`).join('')}
+    ].filter(Boolean).map(([ic, t, id]) => `<div class="tile">${icon(ic)}<span class="t">${t}</span><span class="pg">p.${seePage(id)}</span></div>`).join('')}
   </div>
   ${howTo(['Scan the code or open the link in your welcome text or email.', 'Sign in and pick your language.', 'Choose a wellness focus.'])}
   <p class="sources">Sources: <a href="${FACTS.src_metlife.url}">MetLife 2026 Employee Benefit Trends Study</a> · <a href="${FACTS.src_shrm.url}">SHRM 2026 Employee Benefits Survey</a> · <a href="${FACTS.src_bswift.url}">bswift benefits communication research</a> · <a href="${FACTS.src_shortlister.url}">Shortlister: Is 2026 the Year of Portable Benefits?</a></p>
 </main>
-<div class="find"><div><span class="find-h">Everything here is in one app.</span> <span class="find-p">Scan the code to get started.</span></div>${qr('sm')}</div>` });
+<div class="find"><div><span class="find-h">Everything here is in one app.</span> <span class="find-p">Scan the code to get started.</span>${phrase(`<br><span class="find-h">Questions?</span> <span class="find-p">${esc(C.support_contact)}</span>`, C.support_contact)}</div>${qr('sm')}</div>` });
 
 pages.push({ id: 'p1', file: '01-meet-refresh', title: 'Meet Refresh', html: () => `
 ${hero({ kicker: 'Meet Refresh', h1: `Everything ${f(C.org_short)} offers you, in one app.`, sub: "Refresh is your benefits app. It's on your phone or computer, 24/7, in the language you choose." })}
@@ -214,6 +216,14 @@ ${badgeRow([badge('free'), badge('day_one'), has(C.yours_to_keep_app_text) ? bad
 ${findBar(C.menu_paths.refresh_home)}` });
 
 const pts = C.points_examples || {};
+const awardsOn = !!(C.optional_pages && C.optional_pages.awards && C.awards_page);
+// The grantee's own recognition awards, shown on Earn & Celebrate. null hides the block.
+const orgAwards = () => {
+  const A = C.org_awards;
+  if (!A || !Array.isArray(A.items) || !A.items.length) return '';
+  const allPh = A.items.every((i) => isPh(i.name));
+  return `<div class="card awards${allPh ? ' ph-block' : ''}"><h3>${icon('gift', 'inline')}Awards at ${f(C.org_short)}</h3><div class="awlist">${A.items.map((i) => `<div><b>${f(i.name)}</b>${has(i.reward) ? phrase(` · <span>${esc(i.reward)}</span>`, i.reward) : ''}</div>`).join('')}</div>${has(A.how) ? `<p class="awhow">${f(A.how)}</p>` : ''}</div>`;
+};
 pages.push({ id: 'p2', file: '02-earn-and-celebrate', title: 'Earn & Celebrate', html: () => `
 ${hero({ kicker: 'Earn &amp; celebrate', h1: 'Do good stuff. Get rewarded.' })}
 ${badgeRow([badge('free'), badge('day_one')])}
@@ -233,6 +243,7 @@ ${badgeRow([badge('free'), badge('day_one')])}
       <div class="callout"><b>Better together.</b> People join because their coworkers do. Bring a teammate along this month.</div>
     </div>
   </div>
+  ${awardsOn ? `<div class="callout">${icon('gift', 'inline')}<b>Awards at ${f(C.org_short)}:</b> every day, at milestones and once a year (p.${seePage('awards')})${C.optional_pages.life_events && C.life_events_page ? `, plus life events (p.${seePage('life')})` : ''}.</div>` : orgAwards()}
   <p class="tiein">${icon('health', 'inline')}Your annual wellness visit is covered as preventive care${phrase(` under ${esc(C.health_plan)}`, C.health_plan)}, and it earns points too.</p>
   ${C.optional_pages && C.optional_pages.everyday_savings ? `<div class="savings"><h3>${icon('tag', 'inline')}Everyday savings</h3><p>Member discounts on phones, tech, travel, tickets and pets, in the app.</p><div class="pills">${['Phones', 'Tech', 'Travel', 'Tickets', 'Pets'].map((x) => `<span class="pill">${x}</span>`).join('')}</div></div>` : ''}
   ${quote(C.quotes && C.quotes.page2)}
@@ -240,6 +251,55 @@ ${badgeRow([badge('free'), badge('day_one')])}
   ${howTo([goTo(C.menu_paths.refresh_home), 'Join this week\'s challenge.', 'Send your first shoutout.'])}
 </main>
 ${findBar(C.menu_paths.refresh_home)}` });
+
+// Awards & Recognition: the grantee's own awards, grouped by how often they happen.
+if (awardsOn) pages.push({ id: 'awards', file: '02a-awards-and-recognition', title: 'Awards & Recognition', html: () => {
+  const A = C.awards_page;
+  return `
+${hero({ kicker: 'Awards &amp; recognition', h1: 'Every job has a way to win.' })}
+${badgeRow([badge('day_one'), extra('star', 'Every role, every location')])}
+<main class="body">
+  <p>Recognition at ${f(C.org_short)} happens all year, not just at the banquet. Thank a teammate in Refresh, mark your milestones, grow your skills, and nominate the people who make ${f(C.org_short)} better.${has(A.note) ? ` <span class="ph">${esc(A.note)}</span>` : ''}</p>
+  <div class="awgroups">${(A.groups || []).map((g) => `<div class="card awgroup${(g.items || []).every((i) => isPh(i.name)) ? ' ph-block' : ''}"><h3>${icon(g.icon || 'star', 'inline')}${f(g.title)}</h3>${has(g.sub) ? `<p class="awsub">${f(g.sub)}</p>` : ''}<ul>${(g.items || []).map((i) => `<li><b>${f(i.name)}</b>${has(i.tag) ? ` <span class="awtag">${f(i.tag)}</span>` : ''} <span class="awwhat">– ${f(i.what)}</span></li>`).join('')}</ul></div>`).join('')}</div>
+  ${photo('awards', 'a team celebrating an award')}
+  ${howTo([goTo(C.menu_paths.refresh_home), 'Send a shoutout to a teammate.', has(A.how) && !isPh(A.how) ? f(A.how) : 'Ask your manager how to nominate someone.'])}
+</main>
+${findBar(C.menu_paths.refresh_home)}`;
+} });
+
+// Life Events: celebrate the big moments and connect people to help, following
+// the life events table in Engagement: Wellness Review (product-strategy.html).
+const lifeOn = !!(C.optional_pages && C.optional_pages.life_events && C.life_events_page);
+if (lifeOn) pages.push({ id: 'life', file: '02b-life-events', title: 'Life Events', html: () => {
+  const L = C.life_events_page;
+  const pts = L.points ? ' and points' : '';
+  const card = L.points ? 'A team card, a post and points' : 'A team card and a post';
+  const pg = (id, text) => `${text} (p.${seePage(id)})`;
+  const rows = [
+    ['star', 'Your birthday', `An automatic shoutout on your day${pts}`, ''],
+    ['calendar', 'Your work anniversary', `An automatic shoutout${pts}${awardsOn ? `, plus milestone awards (p.${seePage('awards')})` : ''}`, ''],
+    ['chat', 'Joining the team', 'A welcome post from your new team', pg('p1', 'Everything in one app')],
+    ['family', 'A new baby or adoption', card, `${pg('p3', 'Family services near you')}; ${pg('p6', 'family support')}`],
+    ['gift', 'Getting married', card, ''],
+    ['home', 'A new home', `A post${pts}`, pg('p5', 'Budgeting and housing help')],
+    ['education', 'A graduation or new credential', `A post${pts}${awardsOn ? `, plus growth awards (p.${seePage('awards')})` : ''}`, pg('p7', 'Career tools')],
+    ['coach', 'Retiring', card, pg('p5', 'Planning with a money coach')],
+    ['shield', 'A loss or serious illness', 'A private message of support. No post, no points.', `${pg('p3', 'Local support')}; ${pg('p6', 'crisis and family support')}`],
+  ];
+  return `
+${hero({ kicker: 'Life events', h1: 'Big moments, celebrated. Hard ones, supported.' })}
+${badgeRow([badge('free'), extra('shield', 'You choose what is shared')])}
+<main class="body">
+  <p>Life doesn't stop at the time clock. When something big happens, your team can celebrate with you, and Refresh connects you to help that fits the moment.${has(L.note) ? ` <span class="ph">${esc(L.note)}</span>` : ''}</p>
+  <table class="pts life"><thead><tr><th scope="col">Life event</th><th scope="col">How we celebrate</th><th scope="col">Help in Refresh</th></tr></thead><tbody>
+    ${rows.map(([ic, ev, cel, help]) => `<tr><td>${icon(ic, 'inline')}${ev}</td><td>${cel}</td><td>${help || '–'}</td></tr>`).join('')}
+  </tbody></table>
+  <div class="callout"><b>Hard news stays private.</b> A loss or serious illness gets a private message of support, never a public post or points.${has(L.privacy) ? ` ${f(L.privacy)}` : ''}</div>
+  ${photo('life', "a team celebrating a teammate's big moment")}
+  ${howTo([goTo(C.menu_paths.refresh_home), "Share your news, or a teammate's, with the life events form.", 'Pick the help that fits.'])}
+</main>
+${findBar(C.menu_paths.refresh_home)}`;
+} });
 
 pages.push({ id: 'p3', file: '03-find-help-near-you', title: 'Find Help Near You', html: () => `
 ${hero({ kicker: 'Find help near you', h1: 'Help is available in your neighborhood.', sub: 'A free, private search for local programs, for you, your family or a neighbor.' })}
@@ -543,6 +603,23 @@ table.pts th{background:var(--ink);color:#fff;text-align:left;font-size:9.5pt;le
 table.pts td{padding:5px 10px;border-top:1px solid var(--hair)}
 table.pts td:last-child{font-weight:700;color:var(--ink)}
 .tiein{display:block}
+.awards .awlist{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;margin-top:2px}
+.awards .awlist div{font-size:10.5pt;line-height:1.3}
+.awards .awlist span{color:var(--muted)}
+.awards .awhow{font-size:10.5pt;margin-top:4px}
+.awgroups{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.awgroup:last-child:nth-child(odd){grid-column:1 / -1}
+.awgroup:last-child:nth-child(odd) ul{display:grid;grid-template-columns:1fr 1fr;column-gap:16px}
+.awgroup .awsub{font-size:10.5pt;color:var(--muted);margin-bottom:2px}
+.awgroup ul{list-style:none;margin-top:3px}
+.awgroup li{font-size:10.5pt;line-height:1.3;margin-bottom:4px}
+.awgroup li b{color:var(--ink)}
+.awgroup .awwhat{color:var(--ink2)}
+.awtag{display:inline-block;font-size:9pt;font-weight:700;color:var(--greenText);background:var(--greenSoft);border-radius:999px;padding:0 7px;margin-left:4px;vertical-align:1px}
+table.life td{vertical-align:top}
+table.life td:first-child{font-weight:700;color:var(--ink);white-space:nowrap}
+table.life td:last-child{font-weight:400;color:var(--ink2)}
+table.life .ic.inline{margin-right:6px}
 .savings{background:#fff;border-radius:16px;border-top:4px solid var(--yellow);padding:.1in .15in}
 
 /* Rx */

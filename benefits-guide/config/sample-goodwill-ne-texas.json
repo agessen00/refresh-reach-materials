@@ -36,7 +36,60 @@
     "page3": { "text": "[A team member on finding local help]", "first_name": "[First name]", "role": "[Role]", "location": "[Location]" },
     "page7": { "text": "[A team member on learning a new skill]", "first_name": "[First name]", "role": "[Role]", "location": "[Location]" }
   },
+  "org_awards": {
+    "items": [
+      { "name": "Hazard and Near-Miss Reporting", "reward": "$50–$100 bonus CONFIRM" },
+      { "name": "Education Milestone Bonus", "reward": "$100–$500 bonus CONFIRM" },
+      { "name": "Training Graduation", "reward": "certificate CONFIRM" },
+      { "name": "Share Your Story", "reward": "$50 bonus CONFIRM" },
+      { "name": "Improvement Ideas", "reward": "raffle entry CONFIRM" }
+    ],
+    "how": "[CONFIRM: how to nominate someone or claim an award]"
+  },
+  "awards_page": {
+    "note": "[Proposed award names: choose, rename and confirm with HR before printing]",
+    "groups": [
+      { "title": "Every day", "icon": "chat", "sub": "Thanks that happen on the floor.", "items": [
+        { "name": "Shoutouts", "tag": "In Refresh", "what": "thank a teammate in the app, tagged with a value." },
+        { "name": "Good Catch", "what": "report a hazard or near-miss before anyone gets hurt." },
+        { "name": "Bright Idea", "what": "every idea to make work better earns a raffle entry." },
+        { "name": "Honest Find", "what": "turn in money or valuables found in a donation." }
+      ] },
+      { "title": "Your milestones", "icon": "calendar", "sub": "We mark time from your first day.", "items": [
+        { "name": "Day One Welcome", "what": "your first day, with a welcome from your team." },
+        { "name": "90 Days Strong", "what": "your first 90 days." },
+        { "name": "Year One", "what": "your first anniversary." },
+        { "name": "Good Years", "what": "every 5 years, with notes from coworkers." }
+      ] },
+      { "title": "When you grow", "icon": "career", "sub": "Learning is something to celebrate.", "items": [
+        { "name": "Level Up", "what": "earn a GED, license, certification or degree." },
+        { "name": "Graduation Day", "what": "finish a training or development plan." },
+        { "name": "Moving Up", "what": "step into a new role." },
+        { "name": "My Goodwill Story", "what": "share your journey to inspire others." }
+      ] },
+      { "title": "Every month or quarter", "icon": "star", "sub": "For teams, and the work the public never sees.", "items": [
+        { "name": "Beat the Budget", "what": "your location beats its monthly goal." },
+        { "name": "Back Room Hero", "what": "processing and the dock meet volume and quality goals." },
+        { "name": "Donor Door Hero", "what": "the best experience at the donation door." },
+        { "name": "Challenge Champs", "what": "the location leading this month's challenge." }
+      ] },
+      { "title": "Once a year", "icon": "gift", "sub": "Honored at the annual celebration, with nomination letters read aloud.", "items": [
+        { "name": "Helms Award", "what": "a graduate of Goodwill's programs, named for founder Edgar J. Helms." },
+        { "name": "Values Award", "what": "peer-nominated for living Goodwill's values." },
+        { "name": "People Builder", "what": "a leader who trains, mentors and promotes people." },
+        { "name": "Second Life Award", "what": "giving more donations a second life." }
+      ] }
+    ],
+    "how": "[CONFIRM: how to nominate someone]"
+  },
+  "life_events_page": {
+    "note": "[CONFIRM before printing: the life events form (Q4 2026) and automatic birthdays and anniversaries are live for Goodwill]",
+    "points": true,
+    "privacy": "[CONFIRM: who can see a life event, and that nothing posts without the person's OK]"
+  },
   "optional_pages": {
+    "awards": true,
+    "life_events": true,
     "everyday_savings": true,
     "move_eat_rest": true,
     "share_with_family": true,

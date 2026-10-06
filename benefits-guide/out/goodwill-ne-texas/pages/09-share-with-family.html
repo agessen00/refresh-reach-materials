@@ -114,6 +114,23 @@ table.pts th{background:var(--ink);color:#fff;text-align:left;font-size:9.5pt;le
 table.pts td{padding:5px 10px;border-top:1px solid var(--hair)}
 table.pts td:last-child{font-weight:700;color:var(--ink)}
 .tiein{display:block}
+.awards .awlist{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;margin-top:2px}
+.awards .awlist div{font-size:10.5pt;line-height:1.3}
+.awards .awlist span{color:var(--muted)}
+.awards .awhow{font-size:10.5pt;margin-top:4px}
+.awgroups{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.awgroup:last-child:nth-child(odd){grid-column:1 / -1}
+.awgroup:last-child:nth-child(odd) ul{display:grid;grid-template-columns:1fr 1fr;column-gap:16px}
+.awgroup .awsub{font-size:10.5pt;color:var(--muted);margin-bottom:2px}
+.awgroup ul{list-style:none;margin-top:3px}
+.awgroup li{font-size:10.5pt;line-height:1.3;margin-bottom:4px}
+.awgroup li b{color:var(--ink)}
+.awgroup .awwhat{color:var(--ink2)}
+.awtag{display:inline-block;font-size:9pt;font-weight:700;color:var(--greenText);background:var(--greenSoft);border-radius:999px;padding:0 7px;margin-left:4px;vertical-align:1px}
+table.life td{vertical-align:top}
+table.life td:first-child{font-weight:700;color:var(--ink);white-space:nowrap}
+table.life td:last-child{font-weight:400;color:var(--ink2)}
+table.life .ic.inline{margin-right:6px}
 .savings{background:#fff;border-radius:16px;border-top:4px solid var(--yellow);padding:.1in .15in}
 
 /* Rx */
@@ -252,7 +269,7 @@ html.print .toolbar{display:none}
   <div class="cards3">
     <div class="card"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><h3>Local help</h3><p>Anyone can search findhelp.org by ZIP code.</p></div>
     <div class="card"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5a5 5 0 0 1-7-7l6-6a5 5 0 0 1 7 7z"/><path d="M7 10l7 7"/></svg><h3>Prescription card</h3><p>Share your free card with family and friends.</p></div>
-    <div class="card"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3>Crisis support</h3><p>988 and the other hotlines on page 6 are open to anyone.</p></div>
+    <div class="card"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3>Crisis support</h3><p>988 and the other hotlines on page 8 are open to anyone.</p></div>
     <div class="card"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M8 20h8M5 8h14M5 8l-2.5 6a2.8 2.8 0 0 0 5 0zM19 8l-2.5 6a2.8 2.8 0 0 0 5 0z"/></svg><h3>Legal information</h3><p>LawHelp is free for anyone.</p></div>
     <div class="card"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16a8 8 0 0 1-16 0zM8 7c0-1.4 1-2 1-3M12 7c0-1.4 1-2 1-3M16 7c0-1.4 1-2 1-3"/></svg><h3>Food benefits</h3><p>Anyone can apply for SNAP at YourTexasBenefits.com.</p></div>
     <div class="card"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z"/></svg><h3>Free learning</h3><p>Khan Academy and LearnFree are free for anyone.</p></div>
@@ -260,4 +277,4 @@ html.print .toolbar{display:none}
   <div class="photo-fill ph-block"><span class="ph-label">Photo: a team member with family or neighbors</span></div>
   <div class="howto"><div class="howto-h">How to start</div><ol><li>Share this page.</li><li>Point them to findhelp.org and their pharmacy.</li><li>Call 911 in an emergency.</li></ol></div>
 </main>
-<div class="find"><div><span class="find-h">Find it in Refresh</span><span class="ph"><span class="find-h"> →</span> <span class="find-p">[Explore resources › Local services]</span></span></div><span class="qr sm qr-ph"><span class="ph">QR</span></span></div><footer class="foot"><span class="pnum">9</span><span class="gw-ph">Goodwill Industries of Northeast Texas</span></footer></section></body></html>
+<div class="find"><div><span class="find-h">Find it in Refresh</span><span class="ph"><span class="find-h"> →</span> <span class="find-p">[Explore resources › Local services]</span></span></div><span class="qr sm qr-ph"><span class="ph">QR</span></span></div><footer class="foot"><span class="pnum">11</span><span class="gw-ph">Goodwill Industries of Northeast Texas</span></footer></section></body></html>
