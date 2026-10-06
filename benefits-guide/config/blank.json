@@ -71,8 +71,14 @@
     ],
     "how": "[How to nominate someone]"
   },
+  "life_events_page": {
+    "note": "[Confirm the life events form and automatic birthdays and anniversaries are live]",
+    "points": true,
+    "privacy": "[Who can see a life event, and that nothing posts without the person's OK]"
+  },
   "optional_pages": {
     "awards": false,
+    "life_events": false,
     "everyday_savings": false,
     "move_eat_rest": false,
     "share_with_family": false,

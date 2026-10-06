@@ -243,7 +243,7 @@ ${badgeRow([badge('free'), badge('day_one')])}
       <div class="callout"><b>Better together.</b> People join because their coworkers do. Bring a teammate along this month.</div>
     </div>
   </div>
-  ${awardsOn ? `<div class="callout">${icon('gift', 'inline')}<b>Awards at ${f(C.org_short)}:</b> every day, at milestones and once a year. See page ${seePage('awards')}.</div>` : orgAwards()}
+  ${awardsOn ? `<div class="callout">${icon('gift', 'inline')}<b>Awards at ${f(C.org_short)}:</b> every day, at milestones and once a year (p.${seePage('awards')})${C.optional_pages.life_events && C.life_events_page ? `, plus life events (p.${seePage('life')})` : ''}.</div>` : orgAwards()}
   <p class="tiein">${icon('health', 'inline')}Your annual wellness visit is covered as preventive care${phrase(` under ${esc(C.health_plan)}`, C.health_plan)}, and it earns points too.</p>
   ${C.optional_pages && C.optional_pages.everyday_savings ? `<div class="savings"><h3>${icon('tag', 'inline')}Everyday savings</h3><p>Member discounts on phones, tech, travel, tickets and pets, in the app.</p><div class="pills">${['Phones', 'Tech', 'Travel', 'Tickets', 'Pets'].map((x) => `<span class="pill">${x}</span>`).join('')}</div></div>` : ''}
   ${quote(C.quotes && C.quotes.page2)}
@@ -263,6 +263,39 @@ ${badgeRow([badge('day_one'), extra('star', 'Every role, every location')])}
   <div class="awgroups">${(A.groups || []).map((g) => `<div class="card awgroup${(g.items || []).every((i) => isPh(i.name)) ? ' ph-block' : ''}"><h3>${icon(g.icon || 'star', 'inline')}${f(g.title)}</h3>${has(g.sub) ? `<p class="awsub">${f(g.sub)}</p>` : ''}<ul>${(g.items || []).map((i) => `<li><b>${f(i.name)}</b>${has(i.tag) ? ` <span class="awtag">${f(i.tag)}</span>` : ''} <span class="awwhat">– ${f(i.what)}</span></li>`).join('')}</ul></div>`).join('')}</div>
   ${photo('awards', 'a team celebrating an award')}
   ${howTo([goTo(C.menu_paths.refresh_home), 'Send a shoutout to a teammate.', has(A.how) && !isPh(A.how) ? f(A.how) : 'Ask your manager how to nominate someone.'])}
+</main>
+${findBar(C.menu_paths.refresh_home)}`;
+} });
+
+// Life Events: celebrate the big moments and connect people to help, following
+// the life events table in Engagement: Wellness Review (product-strategy.html).
+const lifeOn = !!(C.optional_pages && C.optional_pages.life_events && C.life_events_page);
+if (lifeOn) pages.push({ id: 'life', file: '02b-life-events', title: 'Life Events', html: () => {
+  const L = C.life_events_page;
+  const pts = L.points ? ' and points' : '';
+  const pg = (id, text) => `${text} (p.${seePage(id)})`;
+  const rows = [
+    ['star', 'Your birthday', `An automatic shoutout on your day${pts}`, ''],
+    ['calendar', 'Your work anniversary', `An automatic shoutout${pts}${awardsOn ? `, plus milestone awards (p.${seePage('awards')})` : ''}`, ''],
+    ['chat', 'Joining the team', 'A welcome post from your new team', pg('p1', 'Everything in one app')],
+    ['family', 'A new baby or adoption', `A team card and post${pts}`, `${pg('p3', 'Family services near you')}; ${pg('p6', 'family support')}`],
+    ['gift', 'Getting married', `A team card and post${pts}`, ''],
+    ['home', 'A new home', `A post${pts}`, pg('p5', 'Budgeting and housing help')],
+    ['education', 'A graduation or new credential', `A post${pts}${awardsOn ? `, plus growth awards (p.${seePage('awards')})` : ''}`, pg('p7', 'Career tools')],
+    ['coach', 'Retiring', `A team card and post${pts}`, pg('p5', 'Planning with a money coach')],
+    ['shield', 'A loss or serious illness', 'A private message of support. No post, no points.', `${pg('p3', 'Local support')}; ${pg('p6', 'crisis and family support')}`],
+  ];
+  return `
+${hero({ kicker: 'Life events', h1: 'Big moments, celebrated. Hard ones, supported.' })}
+${badgeRow([badge('free'), extra('shield', 'You choose what is shared')])}
+<main class="body">
+  <p>Life doesn't stop at the time clock. When something big happens, your team can celebrate with you, and Refresh connects you to help that fits the moment.${has(L.note) ? ` <span class="ph">${esc(L.note)}</span>` : ''}</p>
+  <table class="pts life"><thead><tr><th scope="col">Life event</th><th scope="col">How we celebrate</th><th scope="col">Help in Refresh</th></tr></thead><tbody>
+    ${rows.map(([ic, ev, cel, help]) => `<tr><td>${icon(ic, 'inline')}${ev}</td><td>${cel}</td><td>${help || '–'}</td></tr>`).join('')}
+  </tbody></table>
+  <div class="callout"><b>Hard news stays private.</b> A loss or serious illness gets a private message of support, never a public post or points.${has(L.privacy) ? ` ${f(L.privacy)}` : ''}</div>
+  ${photo('life', "a team celebrating a teammate's big moment")}
+  ${howTo([goTo(C.menu_paths.refresh_home), "Share your news, or a teammate's, with the life events form.", 'Pick the help that fits.'])}
 </main>
 ${findBar(C.menu_paths.refresh_home)}`;
 } });
@@ -582,6 +615,10 @@ table.pts td:last-child{font-weight:700;color:var(--ink)}
 .awgroup li b{color:var(--ink)}
 .awgroup .awwhat{color:var(--ink2)}
 .awtag{display:inline-block;font-size:9pt;font-weight:700;color:var(--greenText);background:var(--greenSoft);border-radius:999px;padding:0 7px;margin-left:4px;vertical-align:1px}
+table.life td{vertical-align:top}
+table.life td:first-child{font-weight:700;color:var(--ink);white-space:nowrap}
+table.life td:last-child{font-weight:400;color:var(--ink2)}
+table.life .ic.inline{margin-right:6px}
 .savings{background:#fff;border-radius:16px;border-top:4px solid var(--yellow);padding:.1in .15in}
 
 /* Rx */
