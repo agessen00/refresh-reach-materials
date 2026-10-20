@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guideway · Sample journey · Social Connection &amp; Support Groups</title>
+<style>.gw-note{max-width:1600px;margin:0 auto 20px;background:#FDF3E3;color:#8A5D06;border-radius:10px;padding:10px 16px;font:14px/1.5 "DM Sans","Segoe UI",system-ui,sans-serif}.gw-note b{letter-spacing:.08em;text-transform:uppercase;font-size:11px;margin-right:8px}.gw-note a{color:#8A5D06}</style>
+</head>
+<body>
+<div class="gw-note"><b>Sample</b> Illustrative mockup of one journey. Named organizations are examples of resource types, not partners or integrations. <a href="../">Back to Guideway</a></div>
+<style>
+:root{
+  --navy:#494C7E;--coral:#FE765E;--indigo:#6266A0;
+  --lav1:#EDEBF9;--lav2:#E3DFF5;--lav3:#DCD7F2;
+  --peach:#FFE3DC;--ink:#2A2A34;--muted:#5F5F6E;
+  --hair:rgba(42,42,52,0.10);
+  --stabilize:#D64545;--connect:#F49A50;--skills:#F5CD3A;--maintain:#4FAE7C;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'DM Sans','Segoe UI',system-ui,sans-serif;
+  background:linear-gradient(180deg,#F5F1EA 0%,#EDEBF9 100%);
+  color:var(--ink);padding:40px 24px;min-height:100vh;
+}
+.page-header{max-width:1600px;margin:0 auto 24px;text-align:center;}
+.page-header h1{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:32px;
+  color:var(--navy);letter-spacing:-0.01em;
+}
+.page-header p{font-size:15px;color:var(--muted);margin-top:8px;}
+
+/* Stage banner */
+.stage-banner{
+  max-width:1600px;margin:0 auto 32px;display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border-radius:14px;overflow:hidden;
+  box-shadow:0 4px 20px rgba(73,76,126,0.08);
+}
+.stage{
+  padding:14px;text-align:center;color:#fff;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;
+  letter-spacing:0.04em;position:relative;
+}
+.stage.s1{background:var(--stabilize);}
+.stage.s2{background:var(--connect);}
+.stage.s3{background:var(--skills);color:var(--ink);}
+.stage.s4{background:var(--maintain);}
+.stage-sub{
+  display:block;font-family:'DM Sans',sans-serif;font-weight:400;
+  font-size:11px;opacity:.9;margin-top:4px;letter-spacing:0;text-transform:none;
+}
+
+.screens-row{
+  max-width:1600px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:20px;
+}
+
+.phone{
+  background:#1a1a1a;border-radius:36px;padding:12px;
+  box-shadow:0 20px 60px rgba(73,76,126,0.20);
+  aspect-ratio:9/19.5;position:relative;
+}
+.phone-inner{
+  background:#fff;border-radius:24px;width:100%;height:100%;
+  overflow:hidden;position:relative;
+}
+.phone-label{
+  text-align:center;font-family:'Outfit',sans-serif;font-weight:700;
+  font-size:10px;text-transform:uppercase;letter-spacing:0.10em;
+  margin-bottom:10px;color:var(--coral);
+}
+.phone-label.s1{color:var(--stabilize);}
+.phone-label.s2{color:var(--connect);}
+.phone-label.s3{color:#B39418;}
+.phone-label.s4{color:var(--maintain);}
+.phone-label span{color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;font-size:10px;}
+
+.status-bar{
+  padding:14px 20px 6px;display:flex;justify-content:space-between;
+  font-size:10px;font-weight:600;color:var(--ink);
+}
+.app-header{
+  padding:4px 20px 10px;display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--hair);
+}
+.app-header .back{color:var(--navy);font-size:13px;font-weight:600;}
+.app-header .brand{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;color:var(--navy);
+  letter-spacing:0.04em;
+}
+.app-header .avatar{
+  width:22px;height:22px;border-radius:50%;background:var(--lav2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;color:var(--navy);
+}
+.content{padding:18px 18px 12px;overflow-y:auto;height:calc(100% - 90px);}
+
+.progress-bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.progress-track{flex:1;height:3px;background:var(--lav1);border-radius:999px;overflow:hidden;}
+.progress-fill{background:var(--coral);height:100%;border-radius:999px;}
+.progress-text{
+  font-size:9px;color:var(--muted);font-family:'Outfit',sans-serif;font-weight:600;
+  letter-spacing:0.04em;
+}
+
+.cat-icon{
+  width:38px;height:38px;border-radius:12px;background:var(--peach);
+  display:flex;align-items:center;justify-content:center;margin-bottom:10px;
+}
+.cat-icon svg{width:18px;height:18px;color:var(--coral);}
+
+h2.screen-title{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:18px;
+  color:var(--navy);letter-spacing:-0.01em;line-height:1.15;
+}
+p.screen-sub{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.5;}
+
+.q-card{background:var(--lav1);border-radius:12px;padding:12px;margin:16px 0 12px;}
+.q-card p{
+  font-family:'Outfit',sans-serif;font-weight:600;font-size:11.5px;color:var(--navy);
+  line-height:1.35;
+}
+.answers{display:flex;flex-direction:column;gap:6px;}
+.answer{
+  background:#fff;border:1.5px solid var(--hair);border-radius:10px;padding:9px 11px;
+  display:flex;gap:9px;align-items:flex-start;
+}
+.answer .letter{
+  width:22px;height:22px;border-radius:50%;background:var(--lav2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:10px;color:var(--navy);
+  flex-shrink:0;
+}
+.answer p{font-size:10.5px;line-height:1.35;color:var(--ink);flex:1;padding-top:2px;}
+.answer.pick-s1{border-color:var(--stabilize);background:#FDECEC;}
+.answer.pick-s1 .letter{background:var(--stabilize);color:#fff;}
+.answer.pick-s2{border-color:var(--connect);background:#FFF3E7;}
+.answer.pick-s2 .letter{background:var(--connect);color:#fff;}
+.answer.pick-s3{border-color:#B39418;background:#FFFAE0;}
+.answer.pick-s3 .letter{background:var(--skills);color:var(--ink);}
+.answer.pick-s4{border-color:var(--maintain);background:#E8F5EE;}
+.answer.pick-s4 .letter{background:var(--maintain);color:#fff;}
+
+.level-tag{
+  display:inline-block;font-family:'Outfit',sans-serif;font-weight:700;
+  font-size:9px;letter-spacing:0.10em;padding:4px 9px;border-radius:999px;
+  margin-bottom:8px;text-transform:uppercase;
+}
+.level-tag.s1{background:#FDECEC;color:var(--stabilize);}
+.level-tag.s2{background:#FFF3E7;color:var(--connect);}
+.level-tag.s3{background:#FFFAE0;color:#B39418;}
+.level-tag.s4{background:#E8F5EE;color:var(--maintain);}
+
+.warm-frame{
+  background:var(--lav1);border-radius:12px;padding:11px;margin:10px 0 14px;
+  font-size:11px;line-height:1.5;color:var(--ink);font-style:italic;
+}
+.warm-frame b{color:var(--navy);font-style:normal;font-family:'Outfit',sans-serif;font-weight:600;}
+
+.guide-support{
+  display:flex;align-items:center;gap:8px;
+  background:#fff;border:1.5px solid var(--coral);border-radius:10px;
+  padding:8px 10px;margin:8px 0 14px;
+}
+.guide-support .badge{
+  background:var(--coral);color:#fff;font-family:'Outfit',sans-serif;font-weight:700;
+  font-size:9px;letter-spacing:0.04em;padding:3px 7px;border-radius:999px;flex-shrink:0;
+}
+.guide-support p{
+  font-size:10.5px;line-height:1.35;color:var(--ink);font-family:'DM Sans',sans-serif;
+}
+.guide-support p b{color:var(--navy);font-weight:600;}
+
+.section-lbl{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:9px;color:var(--navy);
+  text-transform:uppercase;letter-spacing:0.10em;margin:12px 0 8px;
+}
+
+.goal-card{
+  background:#fff;border:1.5px solid var(--hair);border-radius:12px;padding:11px;
+  margin-bottom:8px;
+}
+.goal-header{display:flex;align-items:flex-start;gap:9px;}
+.goal-dot{
+  width:20px;height:20px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;
+  font-weight:700;flex-shrink:0;margin-top:1px;
+}
+.goal-dot.s1{background:var(--stabilize);}
+.goal-dot.s2{background:var(--connect);}
+.goal-dot.s3{background:#B39418;}
+.goal-dot.s4{background:var(--maintain);}
+.goal-title{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:11.5px;color:var(--navy);
+  line-height:1.25;
+}
+.goal-timeframe{
+  font-size:9.5px;color:var(--coral);font-family:'Outfit',sans-serif;font-weight:600;
+  letter-spacing:0.04em;text-transform:uppercase;margin-top:2px;
+}
+.goal-body{font-size:10.5px;color:var(--ink);line-height:1.5;margin:8px 0 8px;padding-left:29px;}
+.goal-actions{display:flex;gap:6px;padding-left:29px;}
+.partners{
+  padding:8px 0 0 29px;margin-top:8px;border-top:1px dashed var(--hair);
+}
+.partners-lbl{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:8.5px;color:var(--muted);
+  letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;margin-top:6px;
+}
+.partner-row{display:flex;flex-wrap:wrap;gap:4px;}
+.pill{
+  display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:8.5px;
+  border:1px solid var(--hair);background:#fff;
+}
+.pill .dot{width:5px;height:5px;border-radius:50%;}
+a.pill{text-decoration:none;cursor:pointer}
+a.pill:hover{text-decoration:underline;filter:brightness(.96)}
+.pill.coach{background:var(--lav1);color:var(--navy);border-color:transparent;}
+.pill.coach .dot{background:var(--coral);}
+.pill.gov{background:#EEF3FF;color:#3357B8;border-color:transparent;}
+.pill.gov .dot{background:#5578CC;}
+.pill.local{background:#FCEDCE;color:#B36F1F;border-color:transparent;}
+.pill.local .dot{background:#E39E4A;}
+.pill.tech{background:#E8F5EE;color:#2F7A56;border-color:transparent;}
+.pill.tech .dot{background:#4FAE7C;}
+.pill.perk{background:var(--peach);color:var(--coral);border-color:transparent;}
+.pill.perk .dot{background:var(--coral);}
+.btn-primary{
+  color:#fff;padding:6px 11px;border-radius:999px;border:none;
+  font-family:'Outfit',sans-serif;font-weight:600;font-size:10px;cursor:pointer;
+  background:var(--navy);
+}
+.btn-secondary{
+  background:transparent;color:var(--navy);padding:6px 11px;border-radius:999px;
+  border:1.5px solid var(--hair);font-family:'Outfit',sans-serif;font-weight:600;font-size:10px;
+}
+
+.coach-bar{
+  position:absolute;left:18px;right:18px;bottom:14px;
+  background:var(--navy);color:#fff;padding:9px 12px;border-radius:10px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:'Outfit',sans-serif;font-weight:600;font-size:10.5px;
+  box-shadow:0 6px 24px rgba(73,76,126,0.30);
+}
+.coach-bar .tag{
+  background:var(--coral);color:#fff;padding:2px 7px;border-radius:999px;font-size:8.5px;
+}
+
+.home-indicator{
+  position:absolute;bottom:5px;left:50%;transform:translateX(-50%);
+  width:90px;height:3px;background:#1a1a1a;border-radius:99px;
+}
+
+/* Explanation footer */
+.footer{
+  max-width:1600px;margin:36px auto 0;padding:22px;
+  background:#fff;border-radius:16px;border:1px solid var(--hair);
+}
+.footer h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:12px;}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.footer-col h4{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:10px;text-transform:uppercase;
+  letter-spacing:0.10em;margin-bottom:8px;
+}
+.footer-col.s1 h4{color:var(--stabilize);}
+.footer-col.s2 h4{color:var(--connect);}
+.footer-col.s3 h4{color:#B39418;}
+.footer-col.s4 h4{color:var(--maintain);}
+.footer-col p{font-size:11.5px;color:var(--muted);line-height:1.55;}
+
+@media(max-width:1200px){
+  .screens-row{grid-template-columns:repeat(2,1fr);}
+  .footer-grid,.stage-banner{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:700px){
+  .screens-row,.footer-grid,.stage-banner{grid-template-columns:1fr;}
+}
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<div class="page-header">
+  <h1>REACH — Social Connection &amp; Support Groups Journey · All 4 Stages</h1>
+  <p>One assessment question routes to a personalized journey. Each stage carries different goals, tone, and resources.</p>
+  <p style="margin-top:10px;font-size:13px;">Guided by a Guideway+ coach · Learn more at <a href="https://agessen00.github.io/guideway-site/" target="_blank" style="color:var(--coral);font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--coral);">Guideway</a></p>
+</div>
+
+<div class="stage-banner">
+  <div class="stage s1">STABILIZE<span class="stage-sub">Level 1 — Critical</span></div>
+  <div class="stage s2">CONNECT<span class="stage-sub">Level 2 — Vulnerable</span></div>
+  <div class="stage s3">BUILD SKILLS<span class="stage-sub">Level 3 — Dependent</span></div>
+  <div class="stage s4">MAINTAIN<span class="stage-sub">Level 4 &amp; 5 — Independent · Thriving</span></div>
+</div>
+
+<div class="screens-row">
+
+  <!-- SHARED ENTRY POINT -->
+  <div>
+    <div class="phone-label">Entry <span>· one question</span></div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar"><span>9:41</span><span>••• 🔋</span></div>
+        <div class="app-header">
+          <span class="back">←</span>
+          <span class="brand">REACH · SOCIAL CONNECTION</span>
+          <span class="avatar">G</span>
+        </div>
+        <div class="content">
+          <div class="progress-bar">
+            <div class="progress-track"><div class="progress-fill" style="width:7%"></div></div>
+            <span class="progress-text">1 OF 14</span>
+          </div>
+          <div class="cat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="8" cy="9" r="2.8"/><circle cx="16" cy="9" r="2.8"/><path d="M2.5 19a5.5 5.5 0 0 1 11 0"/><path d="M10.5 19a5.5 5.5 0 0 1 11 0"/>
+            </svg>
+          </div>
+          <h2 class="screen-title">Let's talk about the people in your life.</h2>
+          <p class="screen-sub">One question — we'll show you where to start.</p>
+          <div class="q-card">
+            <p>How would you best describe your level of social connection, support, and time with others?</p>
+          </div>
+          <div class="answers">
+            <div class="answer pick-s1"><div class="letter">A</div><p>I feel isolated, have no one I can rely on, and rarely spend time with others.</p></div>
+            <div class="answer pick-s2"><div class="letter">B</div><p>I have limited social contact and few supportive relationships.</p></div>
+            <div class="answer pick-s3"><div class="letter">C</div><p>I have some connections but rely on groups or services to stay socially engaged.</p></div>
+            <div class="answer pick-s4"><div class="letter">D</div><p>I spend time with others regularly, keep supportive relationships, and feel connected.</p></div>
+            <div class="answer pick-s4"><div class="letter">E</div><p>I have strong, healthy relationships and actively keep meaningful connections.</p></div>
+          </div>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STABILIZE (Level 1) -->
+  <div>
+    <div class="phone-label s1">Stabilize <span>· Level 1</span></div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar"><span>9:41</span><span>••• 🔋</span></div>
+        <div class="app-header"><span class="back">←</span><span class="brand">SOCIAL CONNECTION</span><span class="avatar">G</span></div>
+        <div class="content">
+          <span class="level-tag s1">Where you are today</span>
+          <h2 class="screen-title">It's been quiet for too long — one person is a good place to start.</h2>
+          <div class="warm-frame">
+            Isolation is heavy, and you carried it. The next two weeks are about <b>one safe person to call, one group to try, and a plan for the week.</b>
+          </div>
+          <div class="guide-support">
+            <span class="badge">GUIDEWAY+</span>
+            <p>This guide is supported by a <b>Guideway coach</b>, personalized to your journey.</p>
+          </div>
+          <div class="section-lbl">3 goals to walk together</div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s1">1</div>
+              <div><div class="goal-title">Find one safe person</div><div class="goal-timeframe">In 3–5 days</div></div>
+            </div>
+            <div class="goal-body">Name at least one safe person to call for basic support. Use a support line if it gets overwhelming. Tell your coach what matters most right now.</div>
+            <div class="goal-actions"><button class="btn-primary">Start this →</button><button class="btn-secondary">Not now</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.nationalparentyouthhelpline.org/" target="_blank" rel="noopener"><span class="dot"></span>National Parent &amp; Youth Helpline</a>
+                <a class="pill gov" href="https://988lifeline.org/" target="_blank" rel="noopener"><span class="dot"></span>988 Lifeline</a>
+                <a class="pill local" href="https://www.rainn.org/" target="_blank" rel="noopener"><span class="dot"></span>RAINN</a>
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s1">2</div>
+              <div><div class="goal-title">Try a support group</div><div class="goal-timeframe">In 7 days</div></div>
+            </div>
+            <div class="goal-body">Join a group that fits, online or in person: grief, parenting, illness, mental health. Go to one introductory session. Check community centers, libraries, and faith groups.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.nami.org/support-education/support-groups/" target="_blank" rel="noopener"><span class="dot"></span>NAMI Support Groups</a>
+                <a class="pill gov" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>findhelp.org/care</a>
+                <a class="pill local" href="https://www.imls.gov/search-compare/find-library" target="_blank" rel="noopener"><span class="dot"></span>Public Library</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s1">3</div>
+              <div><div class="goal-title">Plan the week’s connections</div><div class="goal-timeframe">In 2 weeks</div></div>
+            </div>
+            <div class="goal-body">Plan one or two safe social moments a week with your coach. Pick places that feel comfortable: a park, a center, a café. Check in weekly.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+                <a class="pill tech" href="https://www.eventbrite.com/" target="_blank" rel="noopener"><span class="dot"></span>Eventbrite: Local Events</a>
+                <a class="pill local" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>Community Center</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:64px"></div>
+        </div>
+        <div class="coach-bar"><span>💬 Message my coach</span><span class="tag">#one-person</span></div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECT (Level 2) -->
+  <div>
+    <div class="phone-label s2">Connect <span>· Level 2</span></div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar"><span>9:41</span><span>••• 🔋</span></div>
+        <div class="app-header"><span class="back">←</span><span class="brand">SOCIAL CONNECTION</span><span class="avatar">G</span></div>
+        <div class="content">
+          <span class="level-tag s2">Where you are today</span>
+          <h2 class="screen-title">You've got a few people now — let's make it weekly.</h2>
+          <div class="warm-frame">
+            You've reached out and it held. The next chapter is <b>one activity a week, a group that feels like yours, and the skills to feel safe in it.</b>
+          </div>
+          <div class="guide-support">
+            <span class="badge">GUIDEWAY+</span>
+            <p>This guide is supported by a <b>Guideway coach</b>, personalized to your journey.</p>
+          </div>
+          <div class="section-lbl">3 goals to walk together</div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s2">1</div>
+              <div><div class="goal-title">Increase safe social time</div><div class="goal-timeframe">In 30 days</div></div>
+            </div>
+            <div class="goal-body">One structured activity a week: a class, a hobby group, a walking club. Two people you feel comfortable contacting. Practice the basics of connecting.</div>
+            <div class="goal-actions"><button class="btn-primary">Start this →</button><button class="btn-secondary">Not now</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill tech" href="https://www.eventbrite.com/" target="_blank" rel="noopener"><span class="dot"></span>Eventbrite: Local Events</a>
+                <a class="pill gov" href="https://ood.ohio.gov/" target="_blank" rel="noopener"><span class="dot"></span>OOD</a>
+                <a class="pill local" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>Social Activities / Recreation</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s2">2</div>
+              <div><div class="goal-title">Join a group that fits you</div><div class="goal-timeframe">In 30 days</div></div>
+            </div>
+            <div class="goal-body">Groups that match your background or interests: veterans, parents, seniors, LGBTQ+, faith-based. Go to at least two sessions. Notice which ones meet the need.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>Community &amp; Belonging Groups</a>
+                <a class="pill local" href="https://www.nami.org/" target="_blank" rel="noopener"><span class="dot"></span>NAMI</a>
+                <a class="pill tech" href="https://www.lawhelp.org/" target="_blank" rel="noopener"><span class="dot"></span>LawHelp</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s2">3</div>
+              <div><div class="goal-title">Build connection skills</div><div class="goal-timeframe">In 30 days</div></div>
+            </div>
+            <div class="goal-body">A peer-led workshop on emotional health or connection. Coping and communication skills for social nerves. Brief daily check-ins with safe contacts.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <span class="pill tech"><span class="dot"></span>Understanding Anxiety Videos</span>
+                <a class="pill local" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>Peer Support Workshop</a>
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:64px"></div>
+        </div>
+        <div class="coach-bar"><span>💬 Message my coach</span><span class="tag">#show-up</span></div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUILD SKILLS (Level 3) -->
+  <div>
+    <div class="phone-label s3">Build Skills <span>· Level 3</span></div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar"><span>9:41</span><span>••• 🔋</span></div>
+        <div class="app-header"><span class="back">←</span><span class="brand">SOCIAL CONNECTION</span><span class="avatar">G</span></div>
+        <div class="content">
+          <span class="level-tag s3">Where you are today</span>
+          <h2 class="screen-title">You're connecting regularly — let's make it feel natural.</h2>
+          <div class="warm-frame">
+            You have people and a routine. The next chapter is <b>friendships that grow on their own, and less need for a program to make them happen.</b>
+          </div>
+          <div class="guide-support">
+            <span class="badge">GUIDEWAY+</span>
+            <p>This guide is supported by a <b>Guideway coach</b>, personalized to your journey.</p>
+          </div>
+          <div class="section-lbl">3 goals to walk together</div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s3">1</div>
+              <div><div class="goal-title">Strengthen social routines</div><div class="goal-timeframe">In 90 days</div></div>
+            </div>
+            <div class="goal-body">Keep one or two weekly social activities. Reach out more to the people you have: calls, texts, coffee. Try new places that bring people together.</div>
+            <div class="goal-actions"><button class="btn-primary">Start this →</button><button class="btn-secondary">Not now</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>Peer Support Groups</a>
+                <a class="pill tech" href="https://www.eventbrite.com/" target="_blank" rel="noopener"><span class="dot"></span>Eventbrite: Local Events</a>
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s3">2</div>
+              <div><div class="goal-title">Improve relationship skills</div><div class="goal-timeframe">Monthly review</div></div>
+            </div>
+            <div class="goal-body">Practice listening, boundaries, and asking for help. Take a workshop on healthy relationships. Look at what is working, monthly, with your coach.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <span class="pill local"><span class="dot"></span>Advocacy Training</span>
+                <a class="pill tech" href="https://www.psychologytoday.com/us/therapists" target="_blank" rel="noopener"><span class="dot"></span>Psychology Today: Find a Therapist</a>
+                <span class="pill local"><span class="dot"></span>Life Skills Workshop</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s3">3</div>
+              <div><div class="goal-title">Lean less on formal groups</div><div class="goal-timeframe">In 90 days</div></div>
+            </div>
+            <div class="goal-body">Move from structured groups toward natural friendships where it fits. Get comfortable starting small conversations. Name the connections you can keep on your own.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.volunteermatch.org/" target="_blank" rel="noopener"><span class="dot"></span>Community Engagement Opportunities</a>
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:64px"></div>
+        </div>
+        <div class="coach-bar"><span>💬 Message my coach</span><span class="tag">#my-people</span></div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAINTAIN (Level 4 & 5) -->
+  <div>
+    <div class="phone-label s4">Maintain <span>· Level 4 &amp; 5</span></div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar"><span>9:41</span><span>••• 🔋</span></div>
+        <div class="app-header"><span class="back">←</span><span class="brand">SOCIAL CONNECTION</span><span class="avatar">G</span></div>
+        <div class="content">
+          <span class="level-tag s4">Where you are today</span>
+          <h2 class="screen-title">You belong somewhere. That is the whole point.</h2>
+          <div class="warm-frame">
+            You've built a dependable network. The next chapter is <b>keeping it healthy, showing up for others — and welcoming the next person in.</b>
+          </div>
+          <div class="guide-support">
+            <span class="badge">GUIDEWAY+</span>
+            <p>This guide is supported by a <b>Guideway coach</b>, personalized to your journey.</p>
+          </div>
+          <div class="section-lbl">3 goals to walk together</div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s4">1</div>
+              <div><div class="goal-title">Keep a healthy network</div><div class="goal-timeframe">In 6 months</div></div>
+            </div>
+            <div class="goal-body">Check in with the people who matter. Balance social time with your own boundaries. Keep two or three reliable connections.</div>
+            <div class="goal-actions"><button class="btn-primary">Start this →</button><button class="btn-secondary">Not now</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>Ongoing Community Support Networks</a>
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s4">2</div>
+              <div><div class="goal-title">Take part in community life</div><div class="goal-timeframe">Quarterly</div></div>
+            </div>
+            <div class="goal-body">Community events, recreation, or volunteering. Friendships built on shared interests. Group hobbies or learning.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill tech" href="https://www.eventbrite.com/" target="_blank" rel="noopener"><span class="dot"></span>Eventbrite: Local Events</a>
+                <a class="pill local" href="https://www.volunteermatch.org/" target="_blank" rel="noopener"><span class="dot"></span>Volunteer Events</a>
+                <a class="pill perk" href="https://www.lifemart.com/" target="_blank" rel="noopener"><span class="dot"></span>LifeMart: Sport Tickets</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s4">3</div>
+              <div><div class="goal-title">Nurture and welcome others</div><div class="goal-timeframe">Ongoing</div></div>
+            </div>
+            <div class="goal-body">Offer support inside your network when it fits. Celebrate milestones with people. Stay in a group that brings meaning, and make room for someone new.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>Ongoing Community Support Networks</a>
+                <a class="pill local" href="https://www.nami.org/" target="_blank" rel="noopener"><span class="dot"></span>NAMI</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:64px"></div>
+        </div>
+        <div class="coach-bar"><span>🎉 Share your story</span><span class="tag">#belong</span></div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <h3>Partner legend</h3>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--hair);">
+    <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+    <span class="pill gov"><span class="dot"></span>Government / public program (OOD, 988, findhelp.org/care)</span>
+    <span class="pill local"><span class="dot"></span>Local nonprofit or community (Parent &amp; Youth Helpline, RAINN, NAMI, support groups, libraries)</span>
+    <span class="pill tech"><span class="dot"></span>Tech / education tool (Eventbrite, Psychology Today, LawHelp, anxiety video series)</span>
+    <span class="pill perk"><span class="dot"></span>Perk / discount partner (LifeMart sport tickets and recreation)</span>
+  </div>
+  <h3>How the four stages differ — tone, resources, and coach tags</h3>
+  <div class="footer-grid">
+    <div class="footer-col s1">
+      <h4>Stabilize · Level 1</h4>
+      <p><b>Tone:</b> urgent + reassuring. <b>Timeframes:</b> 3 days to 2 weeks. <b>Coach tag:</b> #one-person. <b>Top resources:</b> National Parent &amp; Youth Helpline, 988, RAINN, NAMI support groups, findhelp.org/care, Eventbrite, libraries.</p>
+    </div>
+    <div class="footer-col s2">
+      <h4>Connect · Level 2</h4>
+      <p><b>Tone:</b> stability + expansion. <b>Timeframes:</b> about 30 days. <b>Coach tag:</b> #show-up. <b>Top resources:</b> Eventbrite, OOD, NAMI, LawHelp, community and belonging groups, the Understanding Anxiety video series.</p>
+    </div>
+    <div class="footer-col s3">
+      <h4>Build Skills · Level 3</h4>
+      <p><b>Tone:</b> growing agency. <b>Timeframes:</b> monthly to 90 days. <b>Coach tag:</b> #my-people. <b>Top resources:</b> Peer support groups, advocacy training, Eventbrite, Psychology Today therapist finder, community engagement opportunities.</p>
+    </div>
+    <div class="footer-col s4">
+      <h4>Maintain · Level 4 &amp; 5</h4>
+      <p><b>Tone:</b> resilience + giving back. <b>Timeframes:</b> 3 to 6 months, ongoing. <b>Coach tag:</b> #belong. <b>Top resources:</b> Ongoing community support networks, Eventbrite, volunteer events, NAMI, sport ticket discounts for outings.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

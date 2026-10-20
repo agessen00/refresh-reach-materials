@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guideway · Sample journey · Family Care</title>
+<style>.gw-note{max-width:1600px;margin:0 auto 20px;background:#FDF3E3;color:#8A5D06;border-radius:10px;padding:10px 16px;font:14px/1.5 "DM Sans","Segoe UI",system-ui,sans-serif}.gw-note b{letter-spacing:.08em;text-transform:uppercase;font-size:11px;margin-right:8px}.gw-note a{color:#8A5D06}</style>
+</head>
+<body>
+<div class="gw-note"><b>Sample</b> Illustrative mockup of one journey. Named organizations are examples of resource types, not partners or integrations. <a href="../">Back to Guideway</a></div>
+<style>
+:root{
+  --navy:#494C7E;--coral:#FE765E;--indigo:#6266A0;
+  --lav1:#EDEBF9;--lav2:#E3DFF5;--lav3:#DCD7F2;
+  --peach:#FFE3DC;--ink:#2A2A34;--muted:#5F5F6E;
+  --hair:rgba(42,42,52,0.10);
+  --stabilize:#D64545;--connect:#F49A50;--skills:#F5CD3A;--maintain:#4FAE7C;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'DM Sans','Segoe UI',system-ui,sans-serif;
+  background:linear-gradient(180deg,#F5F1EA 0%,#EDEBF9 100%);
+  color:var(--ink);padding:40px 24px;min-height:100vh;
+}
+.page-header{max-width:1600px;margin:0 auto 24px;text-align:center;}
+.page-header h1{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:32px;
+  color:var(--navy);letter-spacing:-0.01em;
+}
+.page-header p{font-size:15px;color:var(--muted);margin-top:8px;}
+
+/* Stage banner */
+.stage-banner{
+  max-width:1600px;margin:0 auto 32px;display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border-radius:14px;overflow:hidden;
+  box-shadow:0 4px 20px rgba(73,76,126,0.08);
+}
+.stage{
+  padding:14px;text-align:center;color:#fff;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;
+  letter-spacing:0.04em;position:relative;
+}
+.stage.s1{background:var(--stabilize);}
+.stage.s2{background:var(--connect);}
+.stage.s3{background:var(--skills);color:var(--ink);}
+.stage.s4{background:var(--maintain);}
+.stage-sub{
+  display:block;font-family:'DM Sans',sans-serif;font-weight:400;
+  font-size:11px;opacity:.9;margin-top:4px;letter-spacing:0;text-transform:none;
+}
+
+.screens-row{
+  max-width:1600px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:20px;
+}
+
+.phone{
+  background:#1a1a1a;border-radius:36px;padding:12px;
+  box-shadow:0 20px 60px rgba(73,76,126,0.20);
+  aspect-ratio:9/19.5;position:relative;
+}
+.phone-inner{
+  background:#fff;border-radius:24px;width:100%;height:100%;
+  overflow:hidden;position:relative;
+}
+.phone-label{
+  text-align:center;font-family:'Outfit',sans-serif;font-weight:700;
+  font-size:10px;text-transform:uppercase;letter-spacing:0.10em;
+  margin-bottom:10px;color:var(--coral);
+}
+.phone-label.s1{color:var(--stabilize);}
+.phone-label.s2{color:var(--connect);}
+.phone-label.s3{color:#B39418;}
+.phone-label.s4{color:var(--maintain);}
+.phone-label span{color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;font-size:10px;}
+
+.status-bar{
+  padding:14px 20px 6px;display:flex;justify-content:space-between;
+  font-size:10px;font-weight:600;color:var(--ink);
+}
+.app-header{
+  padding:4px 20px 10px;display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--hair);
+}
+.app-header .back{color:var(--navy);font-size:13px;font-weight:600;}
+.app-header .brand{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;color:var(--navy);
+  letter-spacing:0.04em;
+}
+.app-header .avatar{
+  width:22px;height:22px;border-radius:50%;background:var(--lav2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;color:var(--navy);
+}
+.content{padding:18px 18px 12px;overflow-y:auto;height:calc(100% - 90px);}
+
+.progress-bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.progress-track{flex:1;height:3px;background:var(--lav1);border-radius:999px;overflow:hidden;}
+.progress-fill{background:var(--coral);height:100%;border-radius:999px;}
+.progress-text{
+  font-size:9px;color:var(--muted);font-family:'Outfit',sans-serif;font-weight:600;
+  letter-spacing:0.04em;
+}
+
+.cat-icon{
+  width:38px;height:38px;border-radius:12px;background:var(--peach);
+  display:flex;align-items:center;justify-content:center;margin-bottom:10px;
+}
+.cat-icon svg{width:18px;height:18px;color:var(--coral);}
+
+h2.screen-title{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:18px;
+  color:var(--navy);letter-spacing:-0.01em;line-height:1.15;
+}
+p.screen-sub{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.5;}
+
+.q-card{background:var(--lav1);border-radius:12px;padding:12px;margin:16px 0 12px;}
+.q-card p{
+  font-family:'Outfit',sans-serif;font-weight:600;font-size:11.5px;color:var(--navy);
+  line-height:1.35;
+}
+.answers{display:flex;flex-direction:column;gap:6px;}
+.answer{
+  background:#fff;border:1.5px solid var(--hair);border-radius:10px;padding:9px 11px;
+  display:flex;gap:9px;align-items:flex-start;
+}
+.answer .letter{
+  width:22px;height:22px;border-radius:50%;background:var(--lav2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:10px;color:var(--navy);
+  flex-shrink:0;
+}
+.answer p{font-size:10.5px;line-height:1.35;color:var(--ink);flex:1;padding-top:2px;}
+.answer.pick-s1{border-color:var(--stabilize);background:#FDECEC;}
+.answer.pick-s1 .letter{background:var(--stabilize);color:#fff;}
+.answer.pick-s2{border-color:var(--connect);background:#FFF3E7;}
+.answer.pick-s2 .letter{background:var(--connect);color:#fff;}
+.answer.pick-s3{border-color:#B39418;background:#FFFAE0;}
+.answer.pick-s3 .letter{background:var(--skills);color:var(--ink);}
+.answer.pick-s4{border-color:var(--maintain);background:#E8F5EE;}
+.answer.pick-s4 .letter{background:var(--maintain);color:#fff;}
+
+.level-tag{
+  display:inline-block;font-family:'Outfit',sans-serif;font-weight:700;
+  font-size:9px;letter-spacing:0.10em;padding:4px 9px;border-radius:999px;
+  margin-bottom:8px;text-transform:uppercase;
+}
+.level-tag.s1{background:#FDECEC;color:var(--stabilize);}
+.level-tag.s2{background:#FFF3E7;color:var(--connect);}
+.level-tag.s3{background:#FFFAE0;color:#B39418;}
+.level-tag.s4{background:#E8F5EE;color:var(--maintain);}
+
+.warm-frame{
+  background:var(--lav1);border-radius:12px;padding:11px;margin:10px 0 14px;
+  font-size:11px;line-height:1.5;color:var(--ink);font-style:italic;
+}
+.warm-frame b{color:var(--navy);font-style:normal;font-family:'Outfit',sans-serif;font-weight:600;}
+
+.guide-support{
+  display:flex;align-items:center;gap:8px;
+  background:#fff;border:1.5px solid var(--coral);border-radius:10px;
+  padding:8px 10px;margin:8px 0 14px;
+}
+.guide-support .badge{
+  background:var(--coral);color:#fff;font-family:'Outfit',sans-serif;font-weight:700;
+  font-size:9px;letter-spacing:0.04em;padding:3px 7px;border-radius:999px;flex-shrink:0;
+}
+.guide-support p{
+  font-size:10.5px;line-height:1.35;color:var(--ink);font-family:'DM Sans',sans-serif;
+}
+.guide-support p b{color:var(--navy);font-weight:600;}
+
+.section-lbl{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:9px;color:var(--navy);
+  text-transform:uppercase;letter-spacing:0.10em;margin:12px 0 8px;
+}
+
+.goal-card{
+  background:#fff;border:1.5px solid var(--hair);border-radius:12px;padding:11px;
+  margin-bottom:8px;
+}
+.goal-header{display:flex;align-items:flex-start;gap:9px;}
+.goal-dot{
+  width:20px;height:20px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;
+  font-weight:700;flex-shrink:0;margin-top:1px;
+}
+.goal-dot.s1{background:var(--stabilize);}
+.goal-dot.s2{background:var(--connect);}
+.goal-dot.s3{background:#B39418;}
+.goal-dot.s4{background:var(--maintain);}
+.goal-title{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:11.5px;color:var(--navy);
+  line-height:1.25;
+}
+.goal-timeframe{
+  font-size:9.5px;color:var(--coral);font-family:'Outfit',sans-serif;font-weight:600;
+  letter-spacing:0.04em;text-transform:uppercase;margin-top:2px;
+}
+.goal-body{font-size:10.5px;color:var(--ink);line-height:1.5;margin:8px 0 8px;padding-left:29px;}
+.goal-actions{display:flex;gap:6px;padding-left:29px;}
+.partners{
+  padding:8px 0 0 29px;margin-top:8px;border-top:1px dashed var(--hair);
+}
+.partners-lbl{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:8.5px;color:var(--muted);
+  letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;margin-top:6px;
+}
+.partner-row{display:flex;flex-wrap:wrap;gap:4px;}
+.pill{
+  display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:8.5px;
+  border:1px solid var(--hair);background:#fff;
+}
+.pill .dot{width:5px;height:5px;border-radius:50%;}
+a.pill{text-decoration:none;cursor:pointer}
+a.pill:hover{text-decoration:underline;filter:brightness(.96)}
+.pill.coach{background:var(--lav1);color:var(--navy);border-color:transparent;}
+.pill.coach .dot{background:var(--coral);}
+.pill.gov{background:#EEF3FF;color:#3357B8;border-color:transparent;}
+.pill.gov .dot{background:#5578CC;}
+.pill.local{background:#FCEDCE;color:#B36F1F;border-color:transparent;}
+.pill.local .dot{background:#E39E4A;}
+.pill.tech{background:#E8F5EE;color:#2F7A56;border-color:transparent;}
+.pill.tech .dot{background:#4FAE7C;}
+.pill.perk{background:var(--peach);color:var(--coral);border-color:transparent;}
+.pill.perk .dot{background:var(--coral);}
+.btn-primary{
+  color:#fff;padding:6px 11px;border-radius:999px;border:none;
+  font-family:'Outfit',sans-serif;font-weight:600;font-size:10px;cursor:pointer;
+  background:var(--navy);
+}
+.btn-secondary{
+  background:transparent;color:var(--navy);padding:6px 11px;border-radius:999px;
+  border:1.5px solid var(--hair);font-family:'Outfit',sans-serif;font-weight:600;font-size:10px;
+}
+
+.coach-bar{
+  position:absolute;left:18px;right:18px;bottom:14px;
+  background:var(--navy);color:#fff;padding:9px 12px;border-radius:10px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:'Outfit',sans-serif;font-weight:600;font-size:10.5px;
+  box-shadow:0 6px 24px rgba(73,76,126,0.30);
+}
+.coach-bar .tag{
+  background:var(--coral);color:#fff;padding:2px 7px;border-radius:999px;font-size:8.5px;
+}
+
+.home-indicator{
+  position:absolute;bottom:5px;left:50%;transform:translateX(-50%);
+  width:90px;height:3px;background:#1a1a1a;border-radius:99px;
+}
+
+/* Explanation footer */
+.footer{
+  max-width:1600px;margin:36px auto 0;padding:22px;
+  background:#fff;border-radius:16px;border:1px solid var(--hair);
+}
+.footer h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:12px;}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.footer-col h4{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:10px;text-transform:uppercase;
+  letter-spacing:0.10em;margin-bottom:8px;
+}
+.footer-col.s1 h4{color:var(--stabilize);}
+.footer-col.s2 h4{color:var(--connect);}
+.footer-col.s3 h4{color:#B39418;}
+.footer-col.s4 h4{color:var(--maintain);}
+.footer-col p{font-size:11.5px;color:var(--muted);line-height:1.55;}
+
+@media(max-width:1200px){
+  .screens-row{grid-template-columns:repeat(2,1fr);}
+  .footer-grid,.stage-banner{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:700px){
+  .screens-row,.footer-grid,.stage-banner{grid-template-columns:1fr;}
+}
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<div class="page-header">
+  <h1>REACH — Family Care Journey · All 4 Stages</h1>
+  <p>One assessment question routes to a personalized journey. Each stage carries different goals, tone, and resources.</p>
+  <p style="margin-top:10px;font-size:13px;">Guided by a Guideway+ coach · Learn more at <a href="https://agessen00.github.io/guideway-site/" target="_blank" style="color:var(--coral);font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--coral);">Guideway</a></p>
+</div>
+
+<div class="stage-banner">
+  <div class="stage s1">STABILIZE<span class="stage-sub">Level 1 — Critical</span></div>
+  <div class="stage s2">CONNECT<span class="stage-sub">Level 2 — Vulnerable</span></div>
+  <div class="stage s3">BUILD SKILLS<span class="stage-sub">Level 3 — Dependent</span></div>
+  <div class="stage s4">MAINTAIN<span class="stage-sub">Level 4 &amp; 5 — Independent · Thriving</span></div>
+</div>
+
+<div class="screens-row">
+
+  <!-- SHARED ENTRY POINT -->
+  <div>
+    <div class="phone-label">Entry <span>· one question</span></div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar"><span>9:41</span><span>••• 🔋</span></div>
+        <div class="app-header">
+          <span class="back">←</span>
+          <span class="brand">REACH · FAMILY CARE</span>
+          <span class="avatar">M</span>
+        </div>
+        <div class="content">
+          <div class="progress-bar">
+            <div class="progress-track"><div class="progress-fill" style="width:7%"></div></div>
+            <span class="progress-text">1 OF 14</span>
+          </div>
+          <div class="cat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.2"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M14.5 20a4.5 4.5 0 0 1 7 -3.5"/>
+            </svg>
+          </div>
+          <h2 class="screen-title">Let's talk about the people who count on you.</h2>
+          <p class="screen-sub">One question — we'll show you where to start.</p>
+          <div class="q-card">
+            <p>How well are you able to care for the people in your home who depend on you (children, partner, an older parent, or other family)?</p>
+          </div>
+          <div class="answers">
+            <div class="answer pick-s1"><div class="letter">A</div><p>I'm struggling to meet the basic needs of my family or household.</p></div>
+            <div class="answer pick-s2"><div class="letter">B</div><p>I try, but I often feel overwhelmed or can't keep up with caregiving.</p></div>
+            <div class="answer pick-s3"><div class="letter">C</div><p>I'm doing okay but still need help staying organized or supporting others.</p></div>
+            <div class="answer pick-s4"><div class="letter">D</div><p>I meet my family's needs well and have good routines at home.</p></div>
+            <div class="answer pick-s4"><div class="letter">E</div><p>My family or household feels strong, supported, and connected.</p></div>
+          </div>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STABILIZE (Level 1) -->
+  <div>
+    <div class="phone-label s1">Stabilize <span>· Level 1</span></div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar"><span>9:41</span><span>••• 🔋</span></div>
+        <div class="app-header"><span class="back">←</span><span class="brand">FAMILY CARE</span><span class="avatar">M</span></div>
+        <div class="content">
+          <span class="level-tag s1">Where you are today</span>
+          <h2 class="screen-title">Caring for everyone has become too much — let's make sure everyone is safe first.</h2>
+          <div class="warm-frame">
+            You've been holding the whole house up. The next week is about <b>safety for everyone at home, and the first help arriving.</b>
+          </div>
+          <div class="guide-support">
+            <span class="badge">GUIDEWAY+</span>
+            <p>This guide is supported by a <b>Guideway coach</b>, personalized to your journey.</p>
+          </div>
+          <div class="section-lbl">3 goals to walk together</div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s1">1</div>
+              <div><div class="goal-title">Make sure everyone is safe</div><div class="goal-timeframe">In 48–72 hours</div></div>
+            </div>
+            <div class="goal-body">Make sure children, partners, and older relatives are supervised and safe. Ask for emergency clothing or supplies. Call 911 if anyone is in danger.</div>
+            <div class="goal-actions"><button class="btn-primary">Start this →</button><button class="btn-secondary">Not now</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill gov" href="https://odh.ohio.gov/" target="_blank" rel="noopener"><span class="dot"></span>ODH</a>
+                <a class="pill gov" href="https://www.findhelp.org/goods" target="_blank" rel="noopener"><span class="dot"></span>findhelp.org/goods</a>
+                <a class="pill local" href="https://www.nationalparentyouthhelpline.org/" target="_blank" rel="noopener"><span class="dot"></span>National Parent &amp; Youth Helpline</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s1">2</div>
+              <div><div class="goal-title">Get caregiving help now</div><div class="goal-timeframe">In 3–5 days</div></div>
+            </div>
+            <div class="goal-body">Tell your coach what is most urgent. Ask for help with childcare, elder care, rides, food, and home needs. List what needs attention first.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+                <a class="pill gov" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>findhelp.org/care</a>
+                <a class="pill gov" href="https://www.findhelp.org/food" target="_blank" rel="noopener"><span class="dot"></span>findhelp.org/food</a>
+                <a class="pill local" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>Caregiver Support</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s1">3</div>
+              <div><div class="goal-title">Start a simple household routine</div><div class="goal-timeframe">In 7 days</div></div>
+            </div>
+            <div class="goal-body">Basic schedules for meals, hygiene, medications, bedtime, and appointments. A checklist for everyone’s needs. A weekly check-in with your coach.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+                <span class="pill local"><span class="dot"></span>CHAP</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:64px"></div>
+        </div>
+        <div class="coach-bar"><span>💬 Message my coach</span><span class="tag">#home-safe</span></div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECT (Level 2) -->
+  <div>
+    <div class="phone-label s2">Connect <span>· Level 2</span></div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar"><span>9:41</span><span>••• 🔋</span></div>
+        <div class="app-header"><span class="back">←</span><span class="brand">FAMILY CARE</span><span class="avatar">M</span></div>
+        <div class="content">
+          <span class="level-tag s2">Where you are today</span>
+          <h2 class="screen-title">You're keeping up more days than not — let's make the week predictable.</h2>
+          <div class="warm-frame">
+            You've kept everyone going. The next chapter is <b>routines that hold, calmer conversations at home, and the school and medical needs covered.</b>
+          </div>
+          <div class="guide-support">
+            <span class="badge">GUIDEWAY+</span>
+            <p>This guide is supported by a <b>Guideway coach</b>, personalized to your journey.</p>
+          </div>
+          <div class="section-lbl">3 goals to walk together</div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s2">1</div>
+              <div><div class="goal-title">Build daily care routines</div><div class="goal-timeframe">In 30 days</div></div>
+            </div>
+            <div class="goal-body">A morning and evening routine for the whole household. Reminders for hygiene, meals, school, and medications. A calendar for appointments.</div>
+            <div class="goal-actions"><button class="btn-primary">Start this →</button><button class="btn-secondary">Not now</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill gov" href="https://jfs.ohio.gov/job-services-and-unemployment/job-programs-and-services/comprehensive-case-management-and-employment-program-ccmep" target="_blank" rel="noopener"><span class="dot"></span>CCMEP</a>
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s2">2</div>
+              <div><div class="goal-title">Strengthen family communication</div><div class="goal-timeframe">In 30 days</div></div>
+            </div>
+            <div class="goal-body">Calm, respectful talk when stress runs high. Short family check-ins. A parenting, caregiving, or relationship group if it helps.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.nationalparentyouthhelpline.org/" target="_blank" rel="noopener"><span class="dot"></span>National Parent &amp; Youth Helpline</a>
+                <a class="pill local" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>Parenting Support</a>
+                <span class="pill local"><span class="dot"></span>GoodWorks</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s2">3</div>
+              <div><div class="goal-title">Cover clothing, school, and medical needs</div><div class="goal-timeframe">In 30 days</div></div>
+            </div>
+            <div class="goal-body">Ask for school supplies, uniforms, adult clothing, or elder care help. Support appointments and learning. Keep the important papers together.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.ioaging.org/" target="_blank" rel="noopener"><span class="dot"></span>Institute on Aging</a>
+                <a class="pill local" href="https://eldercare.acl.gov/" target="_blank" rel="noopener"><span class="dot"></span>Care for Aging Loved Ones</a>
+                <a class="pill gov" href="https://www.findhelp.org/goods" target="_blank" rel="noopener"><span class="dot"></span>findhelp.org/goods</a>
+                <span class="pill local"><span class="dot"></span>CHAP</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:64px"></div>
+        </div>
+        <div class="coach-bar"><span>💬 Message my coach</span><span class="tag">#home-routine</span></div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUILD SKILLS (Level 3) -->
+  <div>
+    <div class="phone-label s3">Build Skills <span>· Level 3</span></div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar"><span>9:41</span><span>••• 🔋</span></div>
+        <div class="app-header"><span class="back">←</span><span class="brand">FAMILY CARE</span><span class="avatar">M</span></div>
+        <div class="content">
+          <span class="level-tag s3">Where you are today</span>
+          <h2 class="screen-title">Routines are holding — now let's build your confidence and your circle.</h2>
+          <div class="warm-frame">
+            The house runs most weeks. The next chapter is <b>handling more on your own, with a support system you can count on.</b>
+          </div>
+          <div class="guide-support">
+            <span class="badge">GUIDEWAY+</span>
+            <p>This guide is supported by a <b>Guideway coach</b>, personalized to your journey.</p>
+          </div>
+          <div class="section-lbl">3 goals to walk together</div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s3">1</div>
+              <div><div class="goal-title">Keep weekly caregiving routines</div><div class="goal-timeframe">In 90 days</div></div>
+            </div>
+            <div class="goal-body">Plan the week’s meals, chores, medication times, and appointments. Keep school, job, and program schedules steady.</div>
+            <div class="goal-actions"><button class="btn-primary">Start this →</button><button class="btn-secondary">Not now</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+                <a class="pill local" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>Parenting / Caregiving Support</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s3">2</div>
+              <div><div class="goal-title">Strengthen your support system</div><div class="goal-timeframe">Monthly</div></div>
+            </div>
+            <div class="goal-body">Connect dependents to tutoring, day services, groups, or senior programs. Grow a small circle of friends, neighbors, or relatives. Stay in touch with teachers and doctors.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.ioaging.org/" target="_blank" rel="noopener"><span class="dot"></span>Institute on Aging</a>
+                <a class="pill local" href="https://eldercare.acl.gov/" target="_blank" rel="noopener"><span class="dot"></span>Care for Aging Loved Ones</a>
+                <a class="pill gov" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>findhelp.org/care</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s3">3</div>
+              <div><div class="goal-title">Grow your caregiving skills</div><div class="goal-timeframe">In 90 days</div></div>
+            </div>
+            <div class="goal-body">Practice calm responses under stress. Learn problem-solving for family issues. Take a class on parenting, elder care, disability support, or relationships.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.findhelp.org/care" target="_blank" rel="noopener"><span class="dot"></span>Family Caregiver Education</a>
+                <span class="pill tech"><span class="dot"></span>Understanding Anxiety Videos</span>
+                <span class="pill local"><span class="dot"></span>CHAP</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:64px"></div>
+        </div>
+        <div class="coach-bar"><span>💬 Message my coach</span><span class="tag">#home-steady</span></div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAINTAIN (Level 4 & 5) -->
+  <div>
+    <div class="phone-label s4">Maintain <span>· Level 4 &amp; 5</span></div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar"><span>9:41</span><span>••• 🔋</span></div>
+        <div class="app-header"><span class="back">←</span><span class="brand">FAMILY CARE</span><span class="avatar">M</span></div>
+        <div class="content">
+          <span class="level-tag s4">Where you are today</span>
+          <h2 class="screen-title">Your home is steady and everyone is growing. That took work.</h2>
+          <div class="warm-frame">
+            You've built strong routines and good communication. The next chapter is <b>keeping the family strong through changes — and celebrating how far you’ve come.</b>
+          </div>
+          <div class="guide-support">
+            <span class="badge">GUIDEWAY+</span>
+            <p>This guide is supported by a <b>Guideway coach</b>, personalized to your journey.</p>
+          </div>
+          <div class="section-lbl">3 goals to walk together</div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s4">1</div>
+              <div><div class="goal-title">Keep strong daily and weekly routines</div><div class="goal-timeframe">In 6 months</div></div>
+            </div>
+            <div class="goal-body">Steady eating, bedtime, homework, and hygiene routines. Emotional support for kids, partners, and parents. Appointments organized.</div>
+            <div class="goal-actions"><button class="btn-primary">Start this →</button><button class="btn-secondary">Not now</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill local" href="https://www.ioaging.org/" target="_blank" rel="noopener"><span class="dot"></span>Institute on Aging Supports</a>
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s4">2</div>
+              <div><div class="goal-title">Support growth and independence</div><div class="goal-timeframe">Quarterly</div></div>
+            </div>
+            <div class="goal-body">Help each family member with learning, therapy, or personal goals. Encourage hobbies and healthy choices. Partner with schools and doctors.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <span class="pill local"><span class="dot"></span>CHAP</span>
+                <a class="pill tech" href="https://www.khanacademy.org/" target="_blank" rel="noopener"><span class="dot"></span>Khan Academy</a>
+                <span class="pill local"><span class="dot"></span>Schools and Programs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header"><div class="goal-dot s4">3</div>
+              <div><div class="goal-title">Plan for changes ahead</div><div class="goal-timeframe">Annual</div></div>
+            </div>
+            <div class="goal-body">Make a family emergency plan. Plan ahead for school, health, or caregiving changes. Update medications, school forms, and legal papers. Celebrate the wins.</div>
+            <div class="goal-actions"><button class="btn-secondary">Open</button></div>
+            <div class="partners">
+              <div class="partners-lbl">Helping partners</div>
+              <div class="partner-row">
+                <a class="pill tech" href="https://www.lawhelp.org/" target="_blank" rel="noopener"><span class="dot"></span>LawHelp</a>
+                <a class="pill local" href="https://www.weconceive.com/" target="_blank" rel="noopener"><span class="dot"></span>We Conceive: Family Planning</a>
+                <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:64px"></div>
+        </div>
+        <div class="coach-bar"><span>🎉 Share your story</span><span class="tag">#home-strong</span></div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <h3>Partner legend</h3>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--hair);">
+    <span class="pill coach"><span class="dot"></span>Guideway+ Coach</span>
+    <span class="pill gov"><span class="dot"></span>Government / public program (ODH, CCMEP, findhelp.org/care, /goods, /food)</span>
+    <span class="pill local"><span class="dot"></span>Local nonprofit or community (CHAP, GoodWorks, Institute on Aging, Parent &amp; Youth Helpline, aging-care support)</span>
+    <span class="pill tech"><span class="dot"></span>Tech / education tool (Khan Academy, LawHelp, anxiety video series)</span>
+    <span class="pill perk"><span class="dot"></span>Perk / discount partner (LifeMart family discounts)</span>
+  </div>
+  <h3>How the four stages differ — tone, resources, and coach tags</h3>
+  <div class="footer-grid">
+    <div class="footer-col s1">
+      <h4>Stabilize · Level 1</h4>
+      <p><b>Tone:</b> urgent + reassuring. <b>Timeframes:</b> 2 to 7 days. <b>Coach tag:</b> #home-safe. <b>Top resources:</b> ODH, findhelp.org/goods and /care, the National Parent &amp; Youth Helpline, caregiver support.</p>
+    </div>
+    <div class="footer-col s2">
+      <h4>Connect · Level 2</h4>
+      <p><b>Tone:</b> stability + expansion. <b>Timeframes:</b> about 30 days. <b>Coach tag:</b> #home-routine. <b>Top resources:</b> CCMEP, GoodWorks, CHAP, Institute on Aging, aging-care support, the National Parent &amp; Youth Helpline.</p>
+    </div>
+    <div class="footer-col s3">
+      <h4>Build Skills · Level 3</h4>
+      <p><b>Tone:</b> growing agency. <b>Timeframes:</b> monthly to 90 days. <b>Coach tag:</b> #home-steady. <b>Top resources:</b> Family caregiver education, aging-care support, findhelp.org/care, Institute on Aging.</p>
+    </div>
+    <div class="footer-col s4">
+      <h4>Maintain · Level 4 &amp; 5</h4>
+      <p><b>Tone:</b> resilience + giving back. <b>Timeframes:</b> 3 to 6 months, ongoing. <b>Coach tag:</b> #home-strong. <b>Top resources:</b> Institute on Aging supports, CHAP, LawHelp for family legal papers, We Conceive for family planning.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
