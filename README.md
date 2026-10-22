@@ -18,6 +18,8 @@ stays put even when the study is renamed.
 | `know-the-need.html` | Summary: a self-reported needs assessment connected to resources. |
 | `somerset.html`, `miami-dade.html` | Customer briefs, with PDFs. |
 | `product-strategy.html` | Engagement: Wellness Review, our research on gamified wellness, with `product-strategy.pdf`. |
+| `open-enrollment-journey.html` | Journey plan: the open enrollment flow chart and steps, with tags, points and the questions to confirm. |
+| `REACH_Community_User_Journeys.xlsx` | The user journeys workbook, downloadable from the open enrollment page. |
 | `RESEARCH_BRIEF_GUIDE.md` | How we write up research: voice, sourcing, structure, design, and how we check and publish. Follow it for new research. |
 
 There is no slide deck. The two studies are the whole set, deliberately, so
