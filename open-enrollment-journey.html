@@ -387,6 +387,85 @@ td a{color:var(--head)}
 </section>
 
 <section>
+  <h2>Which messages does each person get each week?</h2>
+  <p class="note prose">Two a week at most per person, by push or text. Each reminder stops once its step is done.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>When</th><th>Message</th><th>Who gets it</th><th>How it is sent</th></tr></thead>
+    <tbody>
+      <tr><td>4 weeks before</td><td>"Get ready for open enrollment": the needs survey, the checkup reminder, and "please speak with your manager: you can do this on the clock"</td><td>Everyone eligible</td><td>Scheduled message</td></tr>
+      <tr><td>3 weeks before</td><td>Finish your survey; turn in your checkup form</td><td>People who haven't finished step 1</td><td>Sequence reminder</td></tr>
+      <tr><td>2 weeks before</td><td>"Open enrollment is coming, with some exciting changes": 60-second video or one-page flyer, and the link to the benefits guide</td><td>Everyone eligible</td><td>Scheduled message</td></tr>
+      <tr><td>1 week before</td><td>On-site support dates and sites at your location, and virtual time with HR</td><td>People who haven't finished step 2</td><td>Sequence reminder</td></tr>
+      <tr><td>Enrollment opens</td><td>"Enrollment is open": what to have ready, the enrollment link, and "you can do this on the clock"</td><td>Everyone eligible</td><td>Scheduled message</td></tr>
+      <tr><td>Each week while open</td><td>Booking link, "Call me back", and the enrollment link</td><td>People still in the enrollment sequence</td><td>Sequence reminder</td></tr>
+      <tr><td>8 days before the end date</td><td>"Finish a week early for 200 points and a drawing entry"</td><td>People still choosing, from sequence progress</td><td>HR, to selected people</td></tr>
+      <tr><td>Last day</td><td>"Enrollment closes today"</td><td>People still choosing, from sequence progress</td><td>HR, to selected people</td></tr>
+      <tr><td>2 weeks after close</td><td>Thank-you and the three-question pulse survey</td><td>Everyone who confirmed</td><td>Sequence step</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>How could team members earn points along the way?</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Stage</th><th>Action</th><th>Sample points</th><th>Feature that awards them</th></tr></thead>
+    <tbody>
+      <tr><td>1 Needs and checkup</td><td>Save the dates</td><td class="num">50</td><td>Challenge task</td></tr>
+      <tr><td>1 Needs and checkup</td><td>Complete the needs assessment</td><td class="num">200</td><td>Forms and surveys</td></tr>
+      <tr><td>2 New benefits guide</td><td>Explore the new benefits guide</td><td class="num">150</td><td>Content, challenge task</td></tr>
+      <tr><td>2 New benefits guide</td><td>Review my current benefits</td><td class="num">100</td><td>Check-in form</td></tr>
+      <tr><td>2 New benefits guide</td><td>Watch the five-minute video</td><td class="num">100</td><td>Video, sequence task</td></tr>
+      <tr><td>3 Support</td><td>Attend a session, the fair, or watch the recording</td><td class="num">150</td><td>Event QR check-in</td></tr>
+      <tr><td>3 Support</td><td>Upload my checkup form</td><td class="num">100</td><td>Form with photo upload</td></tr>
+      <tr><td>3 Support</td><td>Checkup form approved</td><td class="num">300</td><td>HR, by hand</td></tr>
+      <tr><td>5 Confirmation</td><td>Confirm my 2027 choices</td><td class="num">500</td><td>Check-in form</td></tr>
+      <tr><td>5 Confirmation</td><td>Confirm at least a week before the end date</td><td class="num">200</td><td>Challenge bonus, plus a drawing entry</td></tr>
+      <tr><td>5 Confirmation</td><td>Share how it went</td><td class="num">150</td><td>Pulse survey</td></tr>
+    </tbody>
+    <tfoot><tr><td colspan="2">Most a person could earn</td><td class="num">2,000</td><td>Redeemed in the rewards catalog</td></tr></tfoot>
+  </table></div>
+</section>
+
+<section>
+  <h2>Which app features does each stage use?</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Stage</th><th>Features</th></tr></thead>
+    <tbody>
+      <tr><td>1 Needs and checkup</td><td>Communications (push, text, email, news feed) · Sequences · Forms with self-tagging · Calendar · Segmentation · Challenges and points</td></tr>
+      <tr><td>2 New benefits guide</td><td>Content for the digital guide · Link to current benefits · Short video · Personalized content by tag · Points</td></tr>
+      <tr><td>3 Support</td><td>Calendar page with on-site support by location · Virtual HR time in 15-minute sessions · Info sessions with QR check-in · Question form · Forms with photo upload, reviewed by HR · Points</td></tr>
+      <tr><td>4 Enrollment</td><td>Single sign-on link to the enrollment site · Time with HR · Sequence reminders · Scheduled messages by tag</td></tr>
+      <tr><td>5 Confirmation</td><td>Check-in form · Recognition and kudos · Rewards catalog · Pulse survey · Analytics and reporting</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note prose" style="margin-top:10px">Marketplace is the one module this journey doesn't use. Wellness on demand can join stage 3 as a "get ready for your wellness visit" content pack.</p>
+</section>
+
+<section>
+  <h2>Which questions do we need help with?</h2>
+  <ol class="oq prose">
+    <li>Can the upload field take a PDF, can a response carry a pending, approved or sent-back status, and can HR award points by hand?</li>
+    <li>Can a form submission remove a tag, and can an audience leave out people with a tag?</li>
+    <li>Can a sequence reminder repeat every few days, or is weekly the right rhythm?</li>
+    <li>Is there a report of points or completion by location?</li>
+    <li>How is single sign-on set up for the enrollment link, and does a step hidden by tag drop out of a sequence?</li>
+    <li>Can a form submission send a push notification to the HR admin, not only an email?</li>
+    <li>Can a form save answers as the person goes, so a half-finished survey reopens where they stopped?</li>
+    <li>Who re-authorizes the roster sync, and does the upload step open the phone camera?</li>
+  </ol>
+  <p class="prose" style="margin-top:16px"><b>Answer any question you already know; each one lets more of the journey run on its own.</b></p>
+</section>
+
+<section>
+  <h2>Which journeys could we work on next?</h2>
+  <div class="next">
+    <div><b>Volunteer onboarding</b>Share what to expect, assess interests and availability, check eligibility and paperwork, sign up for shifts, confirm and welcome.</div>
+    <div><b>Year-round engagement</b>Life-event journeys from need tags, wellness challenges, recognition milestones and pulse surveys between enrollments.</div>
+    <div><b>Case-based journeys</b>Built for one need at a time, like the Legal Services request: request, intake, prepare, follow up.</div>
+  </div>
+</section>
+
+<section>
   <h2>How does HR run each of the five stages?</h2>
   <div class="legend">
     <span><i class="sw tm"></i>Team member does this in the app</span>
@@ -453,81 +532,6 @@ td a{color:var(--head)}
 </section>
 
 <section>
-  <h2>Which messages does each person get each week?</h2>
-  <p class="note prose">Two a week at most per person, by push or text. Each reminder stops once its step is done.</p>
-  <div class="tbl"><table>
-    <thead><tr><th>When</th><th>Message</th><th>Who gets it</th><th>How it is sent</th></tr></thead>
-    <tbody>
-      <tr><td>4 weeks before</td><td>"Get ready for open enrollment": the needs survey, the checkup reminder, and "please speak with your manager: you can do this on the clock"</td><td>Everyone eligible</td><td>Scheduled message</td></tr>
-      <tr><td>3 weeks before</td><td>Finish your survey; turn in your checkup form</td><td>People who haven't finished step 1</td><td>Sequence reminder</td></tr>
-      <tr><td>2 weeks before</td><td>"Open enrollment is coming, with some exciting changes": 60-second video or one-page flyer, and the link to the benefits guide</td><td>Everyone eligible</td><td>Scheduled message</td></tr>
-      <tr><td>1 week before</td><td>On-site support dates and sites at your location, and virtual time with HR</td><td>People who haven't finished step 2</td><td>Sequence reminder</td></tr>
-      <tr><td>Enrollment opens</td><td>"Enrollment is open": what to have ready, the enrollment link, and "you can do this on the clock"</td><td>Everyone eligible</td><td>Scheduled message</td></tr>
-      <tr><td>Each week while open</td><td>Booking link, "Call me back", and the enrollment link</td><td>People still in the enrollment sequence</td><td>Sequence reminder</td></tr>
-      <tr><td>8 days before the end date</td><td>"Finish a week early for 200 points and a drawing entry"</td><td>People still choosing, from sequence progress</td><td>HR, to selected people</td></tr>
-      <tr><td>Last day</td><td>"Enrollment closes today"</td><td>People still choosing, from sequence progress</td><td>HR, to selected people</td></tr>
-      <tr><td>2 weeks after close</td><td>Thank-you and the three-question pulse survey</td><td>Everyone who confirmed</td><td>Sequence step</td></tr>
-    </tbody>
-  </table></div>
-</section>
-
-<section>
-  <h2>How could team members earn points along the way?</h2>
-  <div class="tbl"><table>
-    <thead><tr><th>Stage</th><th>Action</th><th>Sample points</th><th>Feature that awards them</th></tr></thead>
-    <tbody>
-      <tr><td>1 Needs and checkup</td><td>Save the dates</td><td class="num">50</td><td>Challenge task</td></tr>
-      <tr><td>1 Needs and checkup</td><td>Complete the needs assessment</td><td class="num">200</td><td>Forms and surveys</td></tr>
-      <tr><td>2 New benefits guide</td><td>Explore the new benefits guide</td><td class="num">150</td><td>Content, challenge task</td></tr>
-      <tr><td>2 New benefits guide</td><td>Review my current benefits</td><td class="num">100</td><td>Check-in form</td></tr>
-      <tr><td>2 New benefits guide</td><td>Watch the five-minute video</td><td class="num">100</td><td>Video, sequence task</td></tr>
-      <tr><td>3 Support</td><td>Attend a session, the fair, or watch the recording</td><td class="num">150</td><td>Event QR check-in</td></tr>
-      <tr><td>3 Support</td><td>Upload my checkup form</td><td class="num">100</td><td>Form with photo upload</td></tr>
-      <tr><td>3 Support</td><td>Checkup form approved</td><td class="num">300</td><td>HR, by hand</td></tr>
-      <tr><td>5 Confirmation</td><td>Confirm my 2027 choices</td><td class="num">500</td><td>Check-in form</td></tr>
-      <tr><td>5 Confirmation</td><td>Confirm at least a week before the end date</td><td class="num">200</td><td>Challenge bonus, plus a drawing entry</td></tr>
-      <tr><td>5 Confirmation</td><td>Share how it went</td><td class="num">150</td><td>Pulse survey</td></tr>
-    </tbody>
-    <tfoot><tr><td colspan="2">Most a person could earn</td><td class="num">2,000</td><td>Redeemed in the rewards catalog</td></tr></tfoot>
-  </table></div>
-</section>
-
-<section>
-  <h2>Which app features does each stage use?</h2>
-  <div class="tbl"><table>
-    <thead><tr><th>Stage</th><th>Features</th></tr></thead>
-    <tbody>
-      <tr><td>1 Needs and checkup</td><td>Communications (push, text, email, news feed) · Sequences · Forms with self-tagging · Calendar · Segmentation · Challenges and points</td></tr>
-      <tr><td>2 New benefits guide</td><td>Content for the digital guide · Link to current benefits · Short video · Personalized content by tag · Points</td></tr>
-      <tr><td>3 Support</td><td>Calendar page with on-site support by location · Virtual HR time in 15-minute sessions · Info sessions with QR check-in · Question form · Forms with photo upload, reviewed by HR · Points</td></tr>
-      <tr><td>4 Enrollment</td><td>Single sign-on link to the enrollment site · Time with HR · Sequence reminders · Scheduled messages by tag</td></tr>
-      <tr><td>5 Confirmation</td><td>Check-in form · Recognition and kudos · Rewards catalog · Pulse survey · Analytics and reporting</td></tr>
-    </tbody>
-  </table></div>
-  <p class="note prose" style="margin-top:10px">Marketplace is the one module this journey doesn't use. Wellness on demand can join stage 3 as a "get ready for your wellness visit" content pack.</p>
-</section>
-
-<section>
-  <h2>Which journeys could we work on next?</h2>
-  <div class="next">
-    <div><b>Volunteer onboarding</b>Share what to expect, assess interests and availability, check eligibility and paperwork, sign up for shifts, confirm and welcome.</div>
-    <div><b>Year-round engagement</b>Life-event journeys from need tags, wellness challenges, recognition milestones and pulse surveys between enrollments.</div>
-    <div><b>Case-based journeys</b>Built for one need at a time, like the Legal Services request: request, intake, prepare, follow up.</div>
-  </div>
-</section>
-
-<section>
-  <h2>Which questions do we need help with?</h2>
-  <ol class="oq prose">
-    <li>Can the upload field take a PDF, can a response carry a pending, approved or sent-back status, and can HR award points by hand?</li>
-    <li>Can a form submission remove a tag, and can an audience leave out people with a tag?</li>
-    <li>Can a sequence reminder repeat every few days, or is weekly the right rhythm?</li>
-    <li>Is there a report of points or completion by location?</li>
-    <li>How is single sign-on set up for the enrollment link, and does a step hidden by tag drop out of a sequence?</li>
-    <li>Can a form submission send a push notification to the HR admin, not only an email?</li>
-    <li>Can a form save answers as the person goes, so a half-finished survey reopens where they stopped?</li>
-    <li>Who re-authorizes the roster sync, and does the upload step open the phone camera?</li>
-  </ol>
   <h3>Sources</h3>
   <ul class="src-list">
     <li><a href="https://www.jellyvision.com/what-is-alex/">Jellyvision, What is ALEX</a>: questions, plain language, ongoing messages</li>
@@ -565,7 +569,6 @@ td a{color:var(--head)}
     <li><a href="https://www.vabankers.org/sites/main/files/file-attachments/bswift_initiatives.pdf">bswift initiatives</a>: 1094-C and 1095-C creation and distribution</li>
     <li><a href="https://www.bswift.com/compliance-cobra-services/">bswift, COBRA services</a>†: notices, elections, premium billing</li>
   </ul>
-  <p class="prose" style="margin-top:16px"><b>Answer any question you already know; each one lets more of the journey run on its own.</b></p>
 </section>
 </div>
 
