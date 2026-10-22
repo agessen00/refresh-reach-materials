@@ -108,6 +108,8 @@ figcaption{font-size:13.5px;color:var(--muted);margin-top:8px;max-width:760px}
 .t-muted{fill:var(--muted)} .t-ink{fill:var(--ink)} .t-navy{fill:var(--head)} .t-green{fill:var(--green)} .t-coral{fill:var(--coral)}
 /* survey */
 ol.q{padding-left:22px;margin:8px 0 0}
+ol.oq{padding-left:22px;margin:8px 0 0;font-size:15px}
+ol.oq li{margin-bottom:8px}
 ol.q li{margin-bottom:12px}
 ol.q .opts{display:block;font-size:13.5px;color:var(--muted)}
 ol.q .tagmap{display:inline-block;font-size:12px;font-weight:600;color:var(--green);background:var(--greenSoft);border-radius:999px;padding:1px 9px;margin-top:3px}
@@ -470,66 +472,9 @@ td a{color:var(--head)}
 </section>
 
 <section>
-  <h2>When is each tag added and removed?</h2>
-  <figure>
-    <div class="svgbox">
-    <svg viewBox="0 0 1000 230" role="img" aria-label="Four tags across the journey. OE Eligible from the roster to the end of the journey. Need tags from the survey on, kept. OE Wellness approved from HR approval on, kept. OE Confirmed from confirmation to the end of the journey.">
-      <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--green)"/></marker></defs>
-      <g font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" text-anchor="middle" class="t-muted">
-        <text x="272" y="22">Prepare</text><text x="397" y="22">4 to 2 weeks</text><text x="522" y="22">2 to 0 weeks</text>
-        <text x="647" y="22">Enrollment open</text><text x="772" y="22">End date</text><text x="897" y="22">After</text>
-      </g>
-      <g class="faint" stroke-width="1">
-        <line x1="210" y1="34" x2="210" y2="210"/><line x1="335" y1="34" x2="335" y2="210"/><line x1="460" y1="34" x2="460" y2="210"/>
-        <line x1="585" y1="34" x2="585" y2="210"/><line x1="710" y1="34" x2="710" y2="210"/><line x1="835" y1="34" x2="835" y2="210"/><line x1="960" y1="34" x2="960" y2="210"/>
-      </g>
-      <g font-family="Arial, Helvetica, sans-serif" font-size="13" class="t-ink">
-        <text x="0" y="69">OE · Eligible</text>
-        <text x="0" y="109">Need: area</text>
-        <text x="0" y="149">OE · Wellness approved</text>
-        <text x="0" y="189">OE · Confirmed</text>
-      </g>
-      <g stroke-width="6" stroke-linecap="round" class="bar-line">
-        <line x1="240" y1="64" x2="940" y2="64"/>
-        <line x1="350" y1="104" x2="975" y2="104" marker-end="url(#arr)"/>
-        <line x1="420" y1="144" x2="975" y2="144" marker-end="url(#arr)"/>
-        <line x1="700" y1="184" x2="940" y2="184"/>
-      </g>
-      <g class="bar-add"><circle cx="240" cy="64" r="9"/><circle cx="350" cy="104" r="9"/><circle cx="420" cy="144" r="9"/><circle cx="700" cy="184" r="9"/></g>
-      <g class="bar-end"><circle cx="940" cy="64" r="9"/><circle cx="940" cy="184" r="9"/></g>
-      <g font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" text-anchor="middle" style="fill:var(--surface)">
-        <text x="240" y="69">+</text><text x="350" y="109">+</text><text x="420" y="149">+</text><text x="700" y="189">+</text>
-        <text x="940" y="69">−</text><text x="940" y="189">−</text>
-      </g>
-      <g font-family="Arial, Helvetica, sans-serif" font-size="11.5" class="t-muted">
-        <text x="250" y="84">roster</text>
-        <text x="360" y="124">survey answers</text>
-        <text x="430" y="164">HR approves, any time of year</text>
-        <text x="710" y="204">confirmed</text>
-        <text x="900" y="124" text-anchor="end">kept for year-round journeys</text>
-        <text x="900" y="164" text-anchor="end">kept while the discount applies</text>
-      </g>
-    </svg>
-    </div>
-    <figcaption>Sequences already track every step, so steps need no tags. Each − is HR clearing the OE tags after the journey.</figcaption>
-  </figure>
-
-  <h3>Tags used in this journey</h3>
+  <h2>How could team members earn points along the way?</h2>
   <div class="tbl"><table>
-    <thead><tr><th>Tag</th><th>Stage</th><th>Added when</th><th>Removed when</th><th>Nudge it drives</th></tr></thead>
-    <tbody>
-      <tr><td><code>OE · Eligible</code></td><td>1</td><td>Roster sync; new hires join</td><td>Journey ends</td><td>Who gets the journey and every message</td></tr>
-      <tr><td><code>Need: area</code></td><td>1</td><td>A survey answer, through self-tagging</td><td>Kept</td><td>Which guide pages and sessions each person sees</td></tr>
-      <tr><td><code>OE · Wellness approved</code></td><td>3</td><td>HR approves the checkup form</td><td>Kept while the discount applies</td><td>Thank-you and points; the discount record</td></tr>
-      <tr><td><code>OE · Confirmed</code></td><td>5</td><td>"My 2027 choices are made" form, or HR from the completion list</td><td>Journey ends</td><td>Thank-you, points and the drawing</td></tr>
-</tbody>
-  </table></div>
-</section>
-
-<section>
-  <h2>How do team members earn points along the way?</h2>
-  <div class="tbl"><table>
-    <thead><tr><th>Stage</th><th>Action</th><th>Points</th><th>Feature that awards them</th></tr></thead>
+    <thead><tr><th>Stage</th><th>Action</th><th>Sample points</th><th>Feature that awards them</th></tr></thead>
     <tbody>
       <tr><td>1 Needs and checkup</td><td>Save the dates</td><td class="num">50</td><td>Challenge task</td></tr>
       <tr><td>1 Needs and checkup</td><td>Complete the needs assessment</td><td class="num">200</td><td>Forms and surveys</td></tr>
@@ -543,26 +488,7 @@ td a{color:var(--head)}
       <tr><td>5 Confirmation</td><td>Confirm at least a week before the end date</td><td class="num">200</td><td>Challenge bonus, plus a drawing entry</td></tr>
       <tr><td>5 Confirmation</td><td>Share how it went</td><td class="num">150</td><td>Pulse survey</td></tr>
     </tbody>
-    <tfoot><tr><td colspan="2">Most a person can earn</td><td class="num">2,000</td><td>Redeemed in the rewards catalog</td></tr></tfoot>
-  </table></div>
-</section>
-
-<section>
-  <h2>Which reports tell HR who to nudge?</h2>
-  <p class="note prose">Built from sequence progress, the single-tag list filter and CSV exports. Audiences can't leave out a tag, so each "without" list comes from sequence progress.</p>
-  <div class="tbl"><table>
-    <thead><tr><th>Report</th><th>Who it shows</th><th>Nudge</th><th>Sent by</th></tr></thead>
-    <tbody>
-      <tr><td>Progress by stage</td><td>Count at each stage, by location, role and shift</td><td>A friendly site leader check-in where a stage is moving slowly</td><td>HR</td></tr>
-      <tr><td>Assessment not started</td><td>Step 1 not finished after 5 days, from sequence progress</td><td>"Six minutes to help us plan for what matters to you; you can do this on the clock"</td><td>Scheduled</td></tr>
-      <tr><td>Wellness not yet uploaded</td><td>No checkup form in the responses, one week into step 1</td><td>Turn in your checkup form or book the visit; the discount starts the month after</td><td>Scheduled</td></tr>
-      <tr><td>Wellness waiting on HR</td><td>Form responses waiting more than 3 working days</td><td>Review reminder to the HR reviewer</td><td>Scheduled, to HR</td></tr>
-      <tr><td>Wellness sent back</td><td>Sent back more than 3 days ago, from HR's review list</td><td>Personal message with HR's note and a booking link</td><td>HR</td></tr>
-      <tr><td>Still choosing</td><td>Enrollment step not finished after 7 days, from sequence progress</td><td>Office hours, a booking link and the enrollment link</td><td>Scheduled</td></tr>
-      <tr><td>Enrolled, not confirmed</td><td>On the enrollment site's completion list, without <code>OE · Confirmed</code></td><td>HR adds the tag; the thank-you and points follow</td><td>HR</td></tr>
-      <tr><td>Points by location</td><td>Team totals and the share confirmed, from the sequence progress export</td><td>A weekly shout-out for locations whose whole team has confirmed</td><td>HR</td></tr>
-      <tr><td>Top questions</td><td>Questions sent through the question form</td><td>A guide update or a short news feed answer</td><td>HR</td></tr>
-    </tbody>
+    <tfoot><tr><td colspan="2">Most a person could earn</td><td class="num">2,000</td><td>Redeemed in the rewards catalog</td></tr></tfoot>
   </table></div>
 </section>
 
@@ -582,7 +508,7 @@ td a{color:var(--head)}
 </section>
 
 <section>
-  <h2>What comes after open enrollment?</h2>
+  <h2>Which journeys could we work on next?</h2>
   <div class="next">
     <div><b>Volunteer onboarding</b>Share what to expect, assess interests and availability, check eligibility and paperwork, sign up for shifts, confirm and welcome.</div>
     <div><b>Year-round engagement</b>Life-event journeys from need tags, wellness challenges, recognition milestones and pulse surveys between enrollments.</div>
@@ -591,18 +517,17 @@ td a{color:var(--head)}
 </section>
 
 <section>
-  <h2>What we will confirm next</h2>
-  <div class="ask">
-    <div><span class="lbl">Adrian's assumption</span>Wellness form: the platform's upload field takes photos only, and forms have no approval status. The person uploads a photo, and HR approves it outside the form and awards the points by hand.<span class="q">Can the upload field take a PDF, can a response carry a pending, approved or sent-back status, and can HR award points by hand?</span></div>
-    <div><span class="lbl">Adrian's assumption</span>Removing tags: nothing removes a tag automatically, and a message can't leave out people who have a tag. The journey relies on the sequences' built-in reminders, which go only to people who haven't finished.<span class="q">Can a form submission remove a tag, and can an audience leave out people with a tag?</span></div>
-    <div><span class="lbl">Adrian's assumption</span>Reminder timing: reminders can only be daily, weekly or monthly, so "every 3 to 4 days" became weekly.<span class="q">Can a sequence reminder repeat every few days, or is weekly the right rhythm?</span></div>
-    <div><span class="lbl">Adrian's assumption</span>Kudos by location: the platform check found no points totals by location, so HR posts the kudos.<span class="q">Is there a report of points or completion by location?</span></div>
-    <div><span class="lbl">Adrian's assumption</span>What the check confirmed: sequences, self-tagging questions, events split into booking slots, and a link type with single sign-on to the enrollment site all exist. Those carry the journey.<span class="q">How is single sign-on set up for the enrollment link, and does a step hidden by tag drop out of a sequence?</span></div>
-    <div><span class="lbl">Adrian's decision</span>"Call me back" sends the HR admin a push notification with a link to the request and the person's phone number.<span class="q">Can a form submission send a push notification to the HR admin, not only an email?</span></div>
-    <div><span class="lbl">Adrian's decision</span>The challenge is worth 2,000 points, and confirming a week early adds a drawing entry.<span class="q">What can 2,000 points buy in the rewards catalog (the cheapest gift card seen was 6,000 points), and who writes and runs the drawing rules?</span></div>
-    <div><span class="lbl">Adrian's decision</span>Progress saves everywhere: finished steps in the journey, each answer in the survey and forms, and choices on the enrollment site.<span class="q">Can a form save answers as the person goes, so a half-finished survey reopens where they stopped? The platform check found no save-and-resume.</span></div>
-    <div><span class="lbl">Also to confirm</span>The roster sync needs re-authorizing before the eligibility tags can be relied on, and the phone camera on the upload step wasn't tested.<span class="q">Who re-authorizes the roster sync, and does the upload step open the phone camera?</span></div>
-  </div>
+  <h2>Which questions do we need help with?</h2>
+  <ol class="oq prose">
+    <li>Can the upload field take a PDF, can a response carry a pending, approved or sent-back status, and can HR award points by hand?</li>
+    <li>Can a form submission remove a tag, and can an audience leave out people with a tag?</li>
+    <li>Can a sequence reminder repeat every few days, or is weekly the right rhythm?</li>
+    <li>Is there a report of points or completion by location?</li>
+    <li>How is single sign-on set up for the enrollment link, and does a step hidden by tag drop out of a sequence?</li>
+    <li>Can a form submission send a push notification to the HR admin, not only an email?</li>
+    <li>Can a form save answers as the person goes, so a half-finished survey reopens where they stopped?</li>
+    <li>Who re-authorizes the roster sync, and does the upload step open the phone camera?</li>
+  </ol>
   <h3>Sources</h3>
   <ul class="src-list">
     <li><a href="https://www.jellyvision.com/what-is-alex/">Jellyvision, What is ALEX</a>: questions, plain language, ongoing messages</li>
