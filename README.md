@@ -19,6 +19,7 @@ stays put even when the study is renamed.
 | `somerset.html`, `miami-dade.html` | Customer briefs, with PDFs. |
 | `product-strategy.html` | Engagement: Wellness Review, our research on gamified wellness, with `product-strategy.pdf`. |
 | `open-enrollment-journey.html` | Journey plan: the open enrollment flow chart and steps, with tags, points and the questions to confirm. |
+| `vehicle-of-service-snap-journey.html` | Journey plan: SNAP E&T with Refresh's Vehicle of Service, the person's path, the money loop, the automation ladder and the product map. |
 | `REACH_Community_User_Journeys.xlsx` | The user journeys workbook, downloadable from the open enrollment page. |
 | `RESEARCH_BRIEF_GUIDE.md` | How we write up research: voice, sourcing, structure, design, and how we check and publish. Follow it for new research. |
 
