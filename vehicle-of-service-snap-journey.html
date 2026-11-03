@@ -472,6 +472,42 @@ td b{font-family:var(--display);color:var(--head)}
 </section>
 
 <section>
+  <h2>How do we build it from what we have?</h2>
+  <p class="prose">Most of the automation comes from features Refresh already has, connected to a few outside services. Our Modules and Features page and the open enrollment journey name these features. The work is mostly setting up what exists, plus three or four connections. It is not a new platform.</p>
+  <div class="tbl"><table>
+    <thead><tr><th scope="col">Journey step</th><th scope="col">What we automate</th><th scope="col">What Refresh already has</th><th scope="col">Outside service or partner</th><th scope="col">What stays with people</th></tr></thead>
+    <tbody>
+      <tr><td><b>1 · Find out what may help</b></td><td>Questions by text link, help for today, the emergency SNAP flag</td><td>Forms and sequences, text and push messages, need tags from answers, automatic translation <span class="pill have">✓ Have</span></td><td><a href="https://github.com/orgs/PolicyEngine/repositories">PolicyEngine</a> (free) for "may qualify"; <a href="https://www.findhelp.org">findhelp</a>, already in our resources list; the local 211’s listings, in the shared format described below</td><td>Nothing yet; this step only gives information</td></tr>
+      <tr><td><b>2 · Apply for SNAP and ask to join</b></td><td>The short SNAP application, permissions, "Sent on [date]"</td><td>A form with a signature field, used in open enrollment; the open enrollment review list (Pending, Approved, Sent back), reused as the sign-up tracker</td><td>A fax or secure email service to reach the county; a link to the state’s benefits website, never a bot</td><td>The county interviews, decides and signs the person up</td></tr>
+      <tr><td><b>3 · Meet and make a plan</b></td><td>Booking, reminders, and the plan’s dates and parole dates on one calendar</td><td>Scheduling, calendar and booking <span class="pill have">✓ Have</span></td><td>None needed</td><td>The case manager writes the plan in the state’s system</td></tr>
+      <tr><td><b>4 · Take part each month</b></td><td>Confirming hours, check-in reminders, receipt photos, the monthly list</td><td>Photo upload from open enrollment; reminders that go only to people who haven’t finished; reporting <span class="pill have">✓ Have</span></td><td>A spreadsheet in the county’s own format, sent by secure email</td><td>Taking attendance, the check-in itself, and the county’s answers</td></tr>
+      <tr><td><b>Money</b></td><td>The invoice draft, staff time, the payment tracker</td><td>Reporting and data analytics <span class="pill have">✓ Have</span></td><td>The partner’s accounting system, through our integrations (which ones, to confirm)</td><td>Finance signs off, and the county approves</td></tr>
+      <tr><td><b>5 · Keep SNAP and move on</b></td><td>Renewal dates from a photo of the letter, and the hours letter</td><td>Photo upload, sequences, reminders</td><td>Reading the date from the photo (to confirm); <a href="https://benefitkitchen.com/">Benefit Kitchen</a> later, if its renewal predictions prove worth paying for</td><td>The county renews; the partner signs the letter</td></tr>
+    </tbody>
+  </table></div>
+  <p class="swipe">Swipe sideways to see the whole table.</p>
+
+  <h3>The three connections that unlock most of it</h3>
+  <ul>
+    <li><b>PolicyEngine, behind Benefits Access.</b> It gives the "may qualify" check and the dollar estimates at no cost. Counsel reviews its open-source license before we build it in.</li>
+    <li><b>One export to the county, through one secure channel.</b> The monthly list, the attendance report and the invoice draft, in the county’s own spreadsheet format. This is where "fewer clicks for the agency" becomes real, and it needs no state connection.</li>
+    <li><b>The local 211’s listings, or findhelp, for help today.</b> They replace a resource list we would otherwise keep up to date by hand.</li>
+  </ul>
+  <p>Later, and only with the state’s agreement, comes a fourth: reading from the state’s website for partners. Ohio is also designing its own automatic link between a person’s request to join training and their SNAP case, so we connect to that when it arrives rather than building around it.</p>
+
+  <div class="callout"><b>211 listings in a shared format.</b> Many 211 directories and resource platforms share their listings of local services in HSDS, the Human Services Data Specification, a free shared format from <a href="https://openreferral.readthedocs.io">Open Referral</a>. It describes each organization, its locations and its services the same way everywhere, and it comes with a matching way for software to read them (the Human Services Data API). Building on it lets us pull the area’s 211 listings in a standard format, instead of keeping our own list or tying ourselves to one vendor. Which 211 answers in each of the five counties, and whether it shares its listings this way, is still to confirm.</div>
+
+  <h3>Reusing what open enrollment already proved</h3>
+  <ul>
+    <li>The review list HR uses for checkup forms (Pending, Approved, Sent back) becomes the sign-up tracker</li>
+    <li>"Reminders only to people who haven’t finished" becomes the monthly hours reminder</li>
+    <li>Need tags from the survey separate people the work rule applies to from people it doesn’t</li>
+    <li>The "Report a life event" form handles a change of address, which is common after release</li>
+  </ul>
+  <p><b>What we can’t automate:</b> logging into the state’s website as the person, deciding who qualifies, the county’s sign-up, the monthly check-in conversation itself, and moving any program money.</p>
+</section>
+
+<section>
   <h2>What can we learn from other states?</h2>
   <p class="prose">Referrals, eligibility checks and hours are moving into state systems; billing mostly is not. In our review of state plans and provider guides, one state lets partners invoice in its shared system. The rest take spreadsheets, templates and secure email.</p>
   <div class="callout"><b>Beside Ohio, not against it.</b> Ohio is starting design sessions to link a person’s request to join E&amp;T to their open or pending SNAP case, inside the state worker’s system, with an eligibility worker still reviewing each request (FY2026 plan, p. 6). No due date was found. The provider portal is optional and shows assignments and failures (p. 20). So the Vehicle of Service sends people to the state’s request, shows them where it stands, and does the partner’s work the state system leaves out: attendance, the monthly list and the invoice.</div>
@@ -498,12 +534,14 @@ td b{font-family:var(--display);color:var(--head)}
 
 
 <section>
-  <h2>Which questions do the county and state need to answer?</h2>
+  <h2>Which questions do we still need answered?</h2>
   <div class="qs">
     <div><span class="lbl">County Job and Family Services</span>Will you contract with a new nonprofit partner mid-year, and is it one contract per county? Would you take one list a month and reply only about changes? What invoice format and time records do you need, and how is help with costs paid?</div>
     <div><span class="lbl">County Job and Family Services</span>Can a flat software fee sit in the partner’s E&amp;T budget? What data-sharing terms would also cover a software company working for the partner? Is there a limit on how many households one staff member can apply for?</div>
     <div><span class="lbl">Ohio Department of Job and Family Services</span>When does the automatic link from the portal’s E&amp;T request to the SNAP case go live, and can partners see its status? Does Ohio accept electronic signatures on the short application, and does it have federal permission to take SNAP applications before release from prison?</div>
     <div><span class="lbl">USDA Food and Nutrition Service</span>Is there guidance after February 2025 on software that helps people apply? Can a household’s own permission release SNAP information beyond 7 CFR 272.1(c)?</div>
+    <div><span class="lbl">Refresh product team</span>Does Refresh offer an open API or webhooks, so a form can trigger an export, a fax or an email? Can a form’s signature field serve as an e-signature the county will accept? Can we read text from a photo, so a renewal letter’s date fills itself in? Which of our integrations reach the accounting systems our partners use?</div>
+    <div><span class="lbl">Local 211</span>Which 211 answers in each of the five counties, and does it share its listings in the Human Services Data Specification (HSDS) format or through an API we can use?</div>
     <div><span class="lbl">Ohio Department of Medicaid</span>Will the SNAP work-rule exclusion apply automatically each month, and will ODM accept organization letters produced from a digital hours log?</div>
   </div>
   <div class="callout"><b>Our invitation.</b> One working session with a county E&amp;T coordinator and a partner case manager to walk through this plan with real cases, before we build release 1. What they show us decides what we build first.</div>
@@ -528,6 +566,10 @@ td b{font-family:var(--display);color:var(--head)}
     <li><a href="https://dam.assets.ohio.gov/image/upload/medicaid.ohio.gov/Families%2C%20Individuals/Programs/Community/Group_VIII_Partner_Packet_08132026.pdf">Ohio Department of Medicaid Group VIII Partner Packet, August 2026</a></li>
     <li><a href="https://www.law.cornell.edu/cfr/text/2/200.430">2 CFR 200.430, compensation and time records</a></li>
     <li><a href="https://www.fns.usda.gov/snap/outreach/section-4018-agricultural-act-2014-questions-answers">FNS, Section 4018 of the Agricultural Act of 2014</a></li>
+    <li><a href="https://openreferral.readthedocs.io">Open Referral, Human Services Data Specification (HSDS) and API</a></li>
+    <li><a href="https://github.com/orgs/PolicyEngine/repositories">PolicyEngine on GitHub</a></li>
+    <li><a href="https://www.findhelp.org">findhelp</a></li>
+    <li><a href="https://benefitkitchen.com/">Benefit Kitchen</a></li>
     <li><a href="https://www.mass.gov/info-details/snap-path-to-work-provider-portal-the-partner-activity-tracking-hub-path">Massachusetts, SNAP Path to Work provider portal</a></li>
     <li><a href="https://dfcs.georgia.gov/document/document/snap-et-provider-manual/download">Georgia DFCS, SNAP E&amp;T provider manual</a></li>
     <li><a href="https://www.sbctc.edu/resources/documents/colleges-staff/grants/bfet/ffy26-bfet-program-and-fiscal-guidelines.pdf">Washington SBCTC, BFET program and fiscal guidelines, FFY26</a></li>
