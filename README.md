@@ -21,6 +21,7 @@ stays put even when the study is renamed.
 | `open-enrollment-journey.html` | Journey plan: the open enrollment flow chart and steps, with tags, points and the questions to confirm. |
 | `vehicle-of-service-snap-journey.html` | Journey plan: SNAP E&T with Refresh's Vehicle of Service, the person's path, the money loop, the automation ladder and the product map. |
 | `REACH_Community_User_Journeys.xlsx` | The user journeys workbook, downloadable from the open enrollment page. |
+| `LANGUAGE_AND_TONE.md` | How we write: plain English that isn't dumbed down, journeys and flow charts in the reader's words, words to swap, screen copy, tone and the standing rules. Every piece of writing follows it. |
 | `RESEARCH_BRIEF_GUIDE.md` | How we write up research: voice, sourcing, structure, design, and how we check and publish. Follow it for new research. |
 
 There is no slide deck. The two studies are the whole set, deliberately, so
