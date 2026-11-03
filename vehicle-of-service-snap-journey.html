@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Vehicle of Service Journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Refresh brand (Refresh_Brand_System.md): Brand Purple carries hierarchy, Melon is the spark, lavender not gray */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --ink:#2A2A34; --muted:#5F5F6E; --hair:rgba(42,42,52,.10); --line:#DCD7F2;
+  --head:#494C7E; --indigo:#6266A0; --tier3:#8387BC; --melon:#FE765E; --melonText:#C2452E;
+  --lav1:#EDEBF9; --lav2:#E3DFF5; --lav3:#DCD7F2; --peach:#FFE3DC; --onstep:#FFFFFF;
+  --display:"Outfit",Arial,sans-serif; --body:"DM Sans",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 80px}
+.wrap{max-width:1080px;margin:0 auto}
+.prose{max-width:740px}
+h1,h2,h3{font-family:var(--display);color:var(--head);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(28px,4.4vw,40px);font-weight:700;letter-spacing:-.02em}
+h2{font-size:26px;font-weight:700;margin-bottom:12px;letter-spacing:-.01em}
+h3{font-size:18px;font-weight:600;margin:22px 0 6px}
+p{margin:0 0 12px}
+a{color:var(--head)}
+section{margin-top:60px}
+header{border-bottom:3px solid var(--melon);padding-bottom:26px}
+.brandrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-bottom:18px;font:600 15px var(--display)}
+.brandrow .r{color:var(--head);font-weight:700}.brandrow .d{color:var(--melon);font-weight:700}.brandrow .m{color:var(--muted);font:500 12px var(--display);letter-spacing:.08em;text-transform:uppercase}
+.lede{font:500 19px/1.45 var(--display);color:var(--indigo);margin:14px 0 0;max-width:820px}
+.note{font-size:13.5px;color:var(--muted)}
+.squares{display:flex;gap:7px;margin:16px 0 0}.squares i{width:11px;height:11px;border-radius:3px;display:block}
+/* stage strip */
+.strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:22px}
+.strip div{background:var(--lav1);border-radius:14px;padding:12px 13px;font-size:13px;color:var(--muted);min-width:0}
+.strip b{display:block;font:700 15px var(--display);color:var(--head);margin:2px 0}
+.strip span{font:700 11px var(--display);letter-spacing:.1em;color:var(--melonText)}
+@media (max-width:760px){.strip{grid-template-columns:1fr 1fr}}
+/* callouts */
+.callout{border-left:5px solid var(--head);background:var(--lav1);border-radius:12px;padding:14px 18px;margin:16px 0;font-size:15px}
+.callout.melon{border-left-color:var(--melon);background:var(--peach)}
+.callout b{color:var(--head);font-family:var(--display)}
+/* svg figures */
+figure{margin:14px 0 0}
+.svgbox{overflow-x:auto;background:var(--surface);border:1px solid var(--hair);border-radius:18px;padding:14px}
+.svgbox svg{display:block;width:100%;min-width:780px;height:auto}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:8px;max-width:780px}
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin:14px 0 4px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:16px;height:16px;border-radius:5px;display:inline-block;border:1px solid var(--hair)}
+/* step cards */
+.esteps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:18px}
+.estep{background:var(--surface);border:1px solid var(--hair);border-top:4px solid var(--melon);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.estep .n{font:700 11.5px var(--display);letter-spacing:.1em;color:var(--melonText)}
+.estep h3{margin:0;font-size:19px}
+.screen{background:var(--lav1);border-radius:12px;padding:10px 12px;font-size:13.5px}
+.lbl{display:block;font:700 10.5px var(--display);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.estep ul{margin:0;padding-left:18px;font-size:13.5px}.estep li{margin-bottom:4px}
+.rule{font-size:12.5px;background:var(--peach);border-radius:10px;padding:8px 10px}
+/* lanes */
+.lane{display:grid;grid-template-columns:170px 1fr;gap:16px;padding:18px 0;border-top:1px dashed var(--lav3);position:relative}
+.lane-label b{display:block;font:700 15px var(--display);color:var(--head)}
+.lane-label .n{font:700 11px var(--display);letter-spacing:.1em;color:var(--melonText)}
+.lane-label small{display:block;font-size:12.5px;color:var(--muted)}
+.cards{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;min-width:0}
+.card{flex:1 1 180px;max-width:260px;border-radius:14px;padding:12px 13px;font-size:13.5px;line-height:1.4;display:flex;flex-direction:column;gap:6px;position:relative}
+.card .who{font:700 10.5px var(--display);letter-spacing:.09em;text-transform:uppercase;opacity:.85}
+.card b{font-family:var(--display);font-weight:600;font-size:14.5px}
+.card.p{background:var(--lav1);color:var(--ink)}
+.card.v{background:var(--head);color:var(--onstep)}
+.card.c{background:var(--peach);color:var(--ink)}
+.card.f{background:var(--surface);border:2px dashed var(--indigo);color:var(--ink)}
+.card + .card::before{content:"→";position:absolute;left:-12px;top:50%;transform:translate(-50%,-50%);color:var(--muted);font-size:13px}
+@media (max-width:640px){.lane{grid-template-columns:1fr;gap:8px}.card{max-width:none;flex-basis:100%}.card + .card::before{content:"↓";left:24px;top:-12px}}
+/* tables */
+.tbl{overflow-x:auto;margin-top:10px;border:1px solid var(--hair);border-radius:16px;background:var(--surface)}
+.swipe{display:none;font-size:12px;color:var(--muted);margin-top:6px}
+@media (max-width:760px){.swipe{display:block}}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:760px}
+.tbl table{border-style:hidden}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border:1px solid var(--line)}
+th{font:700 12px var(--display);letter-spacing:.04em;color:#fff;background:var(--head)}
+tr.grp td{background:var(--lav1);font:700 11.5px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--melonText)}
+td b{font-family:var(--display);color:var(--head)}
+/* pills */
+.pill{display:inline-block;font:700 11px var(--display);letter-spacing:.02em;border-radius:999px;padding:2px 10px;white-space:nowrap}
+.pill.have{background:var(--lav1);color:var(--head)}
+.pill.on{background:var(--lav2);color:var(--indigo)}
+.pill.build{background:var(--peach);color:var(--head)}
+.pill.prop{border:1.5px solid var(--head);color:var(--head)}
+.pill.r1{background:var(--head);color:#fff}
+.pill.r2{background:var(--tier3);color:#fff}
+.pill.ok{background:var(--lav1);color:var(--head)}
+.pill.ask{background:var(--peach);color:var(--head)}
+.pill.no{border:1.5px solid var(--muted);color:var(--muted)}
+/* grids */
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:12px}
+.three div{background:var(--surface);border:1px solid var(--hair);border-radius:16px;padding:14px 16px;font-size:14px}
+.three b{display:block;font:600 16px var(--display);color:var(--head);margin-bottom:6px}
+.three ul{margin:0;padding-left:18px}
+.qs{display:grid;gap:10px;margin-top:10px}
+.qs div{border:1px solid var(--hair);border-left:4px solid var(--melon);border-radius:12px;padding:12px 16px;font-size:14.5px}
+.qs .lbl{margin-bottom:2px}
+.src-list{font-size:13px;color:var(--muted);columns:2;column-gap:30px;padding-left:18px}
+.src-list li{margin-bottom:5px;break-inside:avoid}.src-list a{word-break:break-word}
+@media (max-width:720px){.src-list{columns:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brandrow"><span class="r">Refresh</span><span class="m">·</span><span class="d">NPO Division</span><span class="m">Journey plan · Internal draft · Updated November 2, 2026</span></div>
+  <h1>SNAP E&amp;T with Refresh’s Vehicle of Service</h1>
+  <p class="lede">The money loop is the spine: referral confirmed, participation logged, month confirmed on SNAP, invoice paid. Every screen the person sees feeds one step of that loop. The county and the state still decide, refer and pay.</p>
+  <div class="squares" aria-hidden="true"><i style="background:#494C7E"></i><i style="background:#6266A0"></i><i style="background:#8387BC"></i><i style="background:#DCD7F2"></i><i style="background:#FE765E"></i></div>
+  <div class="strip">
+    <div><span>STAGE 1</span><b>Find and screen</b>Food today, the 7-day screen, ID</div>
+    <div><span>STAGE 2</span><b>Apply and ask to join</b>Filing date fixed, E&amp;T request sent</div>
+    <div><span>STAGE 3</span><b>Assessment and plan</b>With the county or case manager</div>
+    <div><span>STAGE 4</span><b>Take part each month</b>Hours, contact, supports, status</div>
+    <div><span>STAGE 5</span><b>Keep benefits, move forward</b>Report, renewal, work, exit</div>
+  </div>
+</header>
+
+<section>
+  <h2>What does the person see, step by step?</h2>
+  <p class="prose">Dana is a returning citizen, an adult without dependents, so the time limit applies. Maria works 25 hours a week and has a 9-year-old, so it does not. Both take the same path; Dana’s hours matter more.</p>
+  <div class="legend">
+    <span><i class="sw" style="background:var(--lav1)"></i>The person, in the app</span>
+    <span><i class="sw" style="background:var(--peach)"></i>The county or state decides</span>
+    <span><i class="sw" style="background:#fff;border:2px dashed var(--indigo)"></i>Partner staff</span>
+    <span><i class="sw" style="background:var(--head)"></i>Refresh does it on its own</span>
+  </div>
+  <figure>
+    <div class="svgbox">
+    <svg viewBox="0 0 1040 500" role="img" aria-label="Person flow. A text link or QR code opens step 1, find and screen. If the person is not on SNAP, they file a minimum application with name, address and signature, which fixes the filing date, then the county holds the interview and decides. Once on SNAP, step 2 is the request to join E&amp;T in the state portal and one partner email to the county. The county re-screens and refers. Step 3 is the assessment and plan with the county or case manager. Step 4 is taking part each month, with hours from the session roster. Step 5 is keeping benefits and moving forward. Refresh shows the status of each step and sends the monthly status list.">
+      <defs><marker id="ea" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5F5F6E"/></marker></defs>
+      <g stroke-width="1.5">
+        <rect x="20" y="50" width="150" height="70" rx="35" fill="#fff" stroke="#494C7E"/>
+        <rect x="210" y="50" width="190" height="70" rx="14" fill="#EDEBF9" stroke="#494C7E"/>
+        <polygon points="445,85 500,45 555,85 500,125" fill="#FFE3DC" stroke="#FE765E"/>
+        <rect x="600" y="50" width="190" height="70" rx="14" fill="#EDEBF9" stroke="#494C7E"/>
+        <rect x="830" y="50" width="190" height="70" rx="14" fill="#FFE3DC" stroke="#FE765E"/>
+        <rect x="410" y="190" width="180" height="70" rx="14" fill="#EDEBF9" stroke="#494C7E"/>
+        <rect x="410" y="300" width="180" height="70" rx="14" fill="#FFE3DC" stroke="#FE765E"/>
+        <rect x="830" y="190" width="190" height="70" rx="14" fill="#fff" stroke="#6266A0" stroke-dasharray="5 4"/>
+        <rect x="830" y="300" width="190" height="70" rx="14" fill="#EDEBF9" stroke="#494C7E"/>
+        <rect x="830" y="410" width="190" height="70" rx="35" fill="#EDEBF9" stroke="#494C7E"/>
+        <rect x="560" y="410" width="210" height="70" rx="14" fill="#494C7E" stroke="#494C7E"/>
+        <rect x="140" y="190" width="200" height="70" rx="14" fill="#494C7E" stroke="#494C7E"/>
+      </g>
+      <g font-family="Outfit, Arial, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle" fill="#494C7E">
+        <text x="95" y="82">Text link or QR</text>
+        <text x="305" y="78">1 · Find and screen</text>
+        <text x="500" y="90">On SNAP?</text>
+        <text x="695" y="78">2 · Ask to join E&amp;T</text>
+        <text x="925" y="78">County re-screens</text>
+        <text x="500" y="218">Minimum application</text>
+        <text x="500" y="328">Interview and decision</text>
+        <text x="925" y="218">3 · Assessment and plan</text>
+        <text x="925" y="328">4 · Take part each month</text>
+        <text x="925" y="440">5 · Keep benefits</text>
+        <text x="665" y="438" fill="#fff">Monthly status list</text>
+        <text x="240" y="218" fill="#fff">Status, dated receipts</text>
+      </g>
+      <g font-family="DM Sans, Arial, sans-serif" font-size="12" text-anchor="middle" fill="#5F5F6E">
+        <text x="95" y="100">no download</text>
+        <text x="305" y="96">food today · 7-day screen</text>
+        <text x="305" y="112">the county decides</text>
+        <text x="695" y="96">state portal request</text>
+        <text x="695" y="112">+ one partner email</text>
+        <text x="925" y="96">and refers</text>
+        <text x="925" y="112">only the county refers</text>
+        <text x="500" y="236">name, address, signature</text>
+        <text x="500" y="252">fixes the filing date</text>
+        <text x="500" y="346">the county decides</text>
+        <text x="925" y="236">county or case manager</text>
+        <text x="925" y="252">15 or 30 days</text>
+        <text x="925" y="346">hours from the session roster</text>
+        <text x="925" y="362">contact · supports</text>
+        <text x="925" y="458">report · renewal · work</text>
+        <text x="665" y="456" fill="#E3DFF5">one list, exceptions back</text>
+        <text x="240" y="236" fill="#E3DFF5">"Sent on [date]"</text>
+        <text x="240" y="252" fill="#E3DFF5">staff alert after X days</text>
+      </g>
+      <g stroke-width="1.6" fill="none" stroke="#5F5F6E">
+        <line x1="170" y1="85" x2="206" y2="85" marker-end="url(#ea)"/>
+        <line x1="400" y1="85" x2="441" y2="85" marker-end="url(#ea)"/>
+        <line x1="555" y1="85" x2="596" y2="85" marker-end="url(#ea)"/>
+        <line x1="790" y1="85" x2="826" y2="85" marker-end="url(#ea)"/>
+        <line x1="500" y1="125" x2="500" y2="186" marker-end="url(#ea)"/>
+        <line x1="500" y1="260" x2="500" y2="296" marker-end="url(#ea)"/>
+        <polyline points="590,335 695,335 695,124" marker-end="url(#ea)"/>
+        <line x1="925" y1="120" x2="925" y2="186" marker-end="url(#ea)"/>
+        <line x1="925" y1="260" x2="925" y2="296" marker-end="url(#ea)"/>
+        <line x1="925" y1="370" x2="925" y2="406" marker-end="url(#ea)"/>
+        <line x1="830" y1="350" x2="774" y2="430" marker-end="url(#ea)" stroke-dasharray="5 4"/>
+        <line x1="410" y1="225" x2="344" y2="225" marker-end="url(#ea)" stroke-dasharray="5 4"/>
+      </g>
+      <g font-family="DM Sans, Arial, sans-serif" font-size="12" fill="#2A2A34">
+        <text x="575" y="78" text-anchor="middle">yes</text>
+        <text x="508" y="160">no</text>
+        <text x="703" y="200">SNAP approved</text>
+        <text x="760" y="398">each month</text>
+        <text x="376" y="216" text-anchor="middle">tracked</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>Peach steps belong to the county or the state, and no screen in the app makes those decisions. The purple boxes are what Refresh does without anyone asking: it keeps the person and the staff told where things stand, and builds the monthly list.</figcaption>
+  </figure>
+  <p class="swipe">Swipe sideways to see the whole chart.</p>
+
+  <div class="esteps">
+    <div class="estep">
+      <span class="n">STAGE 1 · FIND AND SCREEN</span><h3>See what may fit</h3>
+      <div class="screen"><span class="lbl">The screen says</span>"Free job training and help finding work. Help with rides and childcare may be available once your plan is set. The county decides who qualifies; we help with every step."</div>
+      <div class="screen"><span class="lbl">On day 1</span>"Need food today? Here’s what’s open near you. You can apply without a fixed address."<br>Only when the 7-day screen is positive: "Based on your answers, the county may approve SNAP within 7 days of your application date."</div>
+      <ul>
+        <li>A text link opens the screen on the web: no download, no password, recovery through partner staff</li>
+        <li>Food and day-1 help come from the local 211 or food bank listings, not a list we keep ourselves</li>
+        <li>Screens for likely eligibility, including the 7-day expedited screen</li>
+        <li>For someone just released: state ID, Social Security card and birth certificate steps, and Medicaid that resumes at release</li>
+      </ul>
+      <div class="rule">Information, never pressure: persuasive recruitment is not a reimbursable SNAP cost (7 CFR 277.4(b)(5)). Time in stages 1 and 2 is tagged as not E&amp;T.</div>
+    </div>
+    <div class="estep">
+      <span class="n">STAGE 2 · APPLY AND ASK TO JOIN</span><h3>Fix the date, send the request</h3>
+      <div class="screen"><span class="lbl">The screen says</span>"Your SNAP application date is [date]. Next: your interview with [county] JFS."<br>Then: "Your E&amp;T request was sent on [date]."</div>
+      <ul>
+        <li>A minimum application (name, address, signature) fixes the filing date; the person files it in the state portal, or the partner faxes or emails it with a dated receipt</li>
+        <li>The request to join E&amp;T goes through the state portal, plus one partner email to the county contact; without a portal account, partner or county staff help in person, or the person asks by phone (1-844-640-6446)</li>
+        <li>Consent as separate toggles: release to check eligibility, sharing with each named partner, texts</li>
+      </ul>
+      <div class="rule">Only the county refers to E&amp;T (7 CFR 273.7(c)(2)). The app shows what has happened, never a date the county did not set.</div>
+    </div>
+    <div class="estep">
+      <span class="n">STAGE 3 · ASSESSMENT AND PLAN</span><h3>Meet, then plan</h3>
+      <div class="screen"><span class="lbl">The screen says</span>"Your plan with [case manager]: [activity], [days]. Supports are set in your plan."</div>
+      <ul>
+        <li>The state’s pre-assessment questionnaire in its portal; the assessment within 15 days for unemployed adults without dependents, 30 for everyone else</li>
+        <li>The employability plan is written in the state system by the county or the contracted case manager</li>
+        <li>Plan dates, and parole appointments if the person adds them, in one calendar</li>
+      </ul>
+    </div>
+    <div class="estep">
+      <span class="n">STAGE 4 · EACH MONTH</span><h3>Take part</h3>
+      <div class="screen"><span class="lbl">The screen says</span>"This month: [n] hours from your sessions. Thursday class adds 6. Tap to talk with [name]."</div>
+      <ul>
+        <li>Hours come from the session roster: the instructor marks one roster per session, and the person confirms</li>
+        <li>Case-management contact in person, by phone or by email, the methods Ohio’s rule lists</li>
+        <li>Receipts by photo; passes bought by the partner are entered by staff</li>
+      </ul>
+      <div class="rule">Adults without dependents need 80 hours a month (7 CFR 273.24), and case management stays under half of their assigned E&amp;T hours (OAC 5101:4-9-04). The count never shows alone, always with the next step.</div>
+    </div>
+    <div class="estep">
+      <span class="n">STAGE 5 · KEEP AND MOVE FORWARD</span><h3>Keep benefits</h3>
+      <div class="screen"><span class="lbl">The screen says</span>"Your SNAP renewal is due [date]. Here’s what to gather." For Medicaid: "Watch for your notice; most renewals happen without a form."</div>
+      <ul>
+        <li>Month-6 report and month-12 renewal, with the date read from a photo of the notice</li>
+        <li>Countable months for adults without dependents, a job, and a warm exit</li>
+        <li>An hours letter for Ohio’s Medicaid work rule, ready for the partner to sign. It serves mainly people not on SNAP: the state already excludes people on SNAP who are subject to its work rule, from its own data</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>How does the money reach the partner?</h2>
+  <p class="prose">The partner spends first and is paid back half. Each step of the loop has one way the money slips away, and one thing the Vehicle of Service does about it.</p>
+  <figure>
+    <div class="svgbox">
+    <svg viewBox="0 0 1040 330" role="img" aria-label="Money loop in six steps: referral confirmed by the county; participation logged from the roster and contact log; month confirmed on SNAP through the monthly status list; invoice drafted in the county's format and certified by the partner; county approves and the state claims half from USDA; half paid back to the partner after about 60 to 90 days, which funds the next month. Under each step, the leak and the fix.">
+      <defs><marker id="eb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5F5F6E"/></marker></defs>
+      <g stroke-width="1.5">
+        <rect x="10" y="40" width="150" height="74" rx="14" fill="#FFE3DC" stroke="#FE765E"/>
+        <rect x="185" y="40" width="150" height="74" rx="14" fill="#EDEBF9" stroke="#494C7E"/>
+        <rect x="360" y="40" width="150" height="74" rx="14" fill="#494C7E" stroke="#494C7E"/>
+        <rect x="535" y="40" width="150" height="74" rx="14" fill="#494C7E" stroke="#494C7E"/>
+        <rect x="710" y="40" width="150" height="74" rx="14" fill="#FFE3DC" stroke="#FE765E"/>
+        <rect x="885" y="40" width="145" height="74" rx="37" fill="#fff" stroke="#494C7E"/>
+      </g>
+      <g font-family="Outfit, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
+        <text x="85" y="72" fill="#494C7E">Referral</text><text x="85" y="89" fill="#494C7E">confirmed</text>
+        <text x="260" y="72" fill="#494C7E">Participation</text><text x="260" y="89" fill="#494C7E">logged</text>
+        <text x="435" y="72" fill="#fff">Month confirmed</text><text x="435" y="89" fill="#fff">on SNAP</text>
+        <text x="610" y="72" fill="#fff">Invoice drafted,</text><text x="610" y="89" fill="#fff">partner certifies</text>
+        <text x="785" y="72" fill="#494C7E">County approves,</text><text x="785" y="89" fill="#494C7E">state claims 50%</text>
+        <text x="957" y="72" fill="#494C7E">50% back to</text><text x="957" y="89" fill="#494C7E">the partner</text>
+      </g>
+      <g font-family="DM Sans, Arial, sans-serif" font-size="11.5" text-anchor="middle" fill="#5F5F6E">
+        <text x="85" y="106">by the county</text><text x="260" y="106">roster + contact log</text><text x="435" y="106" fill="#E3DFF5">monthly status list</text>
+        <text x="610" y="106" fill="#E3DFF5">county’s format</text><text x="785" y="106">USDA pays half</text><text x="957" y="106">about 60 to 90 days</text>
+      </g>
+      <g stroke-width="1.6" fill="none" stroke="#5F5F6E">
+        <line x1="160" y1="77" x2="181" y2="77" marker-end="url(#eb)"/><line x1="335" y1="77" x2="356" y2="77" marker-end="url(#eb)"/>
+        <line x1="510" y1="77" x2="531" y2="77" marker-end="url(#eb)"/><line x1="685" y1="77" x2="706" y2="77" marker-end="url(#eb)"/>
+        <line x1="860" y1="77" x2="881" y2="77" marker-end="url(#eb)"/>
+        <polyline points="957,40 957,18 85,18 85,36" marker-end="url(#eb)" stroke-dasharray="5 4"/>
+      </g>
+      <text x="520" y="13" font-family="DM Sans, Arial, sans-serif" font-size="11.5" text-anchor="middle" fill="#5F5F6E">funds the next month of services</text>
+      <g font-family="DM Sans, Arial, sans-serif" font-size="11.5" text-anchor="middle">
+        <text x="85" y="146" font-weight="700" fill="#C2452E">Leak</text><text x="260" y="146" font-weight="700" fill="#C2452E">Leak</text><text x="435" y="146" font-weight="700" fill="#C2452E">Leak</text><text x="610" y="146" font-weight="700" fill="#C2452E">Leak</text><text x="785" y="146" font-weight="700" fill="#C2452E">Leak</text><text x="957" y="146" font-weight="700" fill="#C2452E">Leak</text>
+        <g fill="#2A2A34">
+          <text x="85" y="164">services given before</text><text x="85" y="179">the referral date</text>
+          <text x="260" y="164">staff time with</text><text x="260" y="179">no time records</text>
+          <text x="435" y="164">months the person</text><text x="435" y="179">was off SNAP</text>
+          <text x="610" y="164">unallowable costs;</text><text x="610" y="179">donated value</text>
+          <text x="785" y="164">claims over the</text><text x="785" y="179">county’s budget</text>
+          <text x="957" y="164">cash carried</text><text x="957" y="179">60 to 90 days</text>
+        </g>
+        <text x="85" y="214" font-weight="700" fill="#494C7E">Fix</text><text x="260" y="214" font-weight="700" fill="#494C7E">Fix</text><text x="435" y="214" font-weight="700" fill="#494C7E">Fix</text><text x="610" y="214" font-weight="700" fill="#494C7E">Fix</text><text x="785" y="214" font-weight="700" fill="#494C7E">Fix</text><text x="957" y="214" font-weight="700" fill="#494C7E">Fix</text>
+        <g fill="#6266A0">
+          <text x="85" y="232">referral tracker with</text><text x="85" y="247">a staff alert</text>
+          <text x="260" y="232">contact minutes</text><text x="260" y="247">logged as they happen</text>
+          <text x="435" y="232">renewal reminders and</text><text x="435" y="247">the monthly list</text>
+          <text x="610" y="232">costs coded</text><text x="610" y="247">when entered</text>
+          <text x="785" y="232">spend tracked</text><text x="785" y="247">against the budget</text>
+          <text x="957" y="232">reimbursement</text><text x="957" y="247">tracker</text>
+        </g>
+      </g>
+      <text x="520" y="300" font-family="DM Sans, Arial, sans-serif" font-size="12" text-anchor="middle" fill="#5F5F6E">The partner stays the payee. Refresh never holds, claims or takes a share of program funds, and its fee is flat.</text>
+    </svg>
+    </div>
+    <figcaption>Donated (in-kind) value, such as the beta’s donated software, is not reimbursable under SNAP (7 CFR 277.4(e)). The beta helps the partner keep more of what it already earns; it does not add a billable line.</figcaption>
+  </figure>
+  <p class="swipe">Swipe sideways to see the whole chart.</p>
+</section>
+
+<section>
+  <h2>Who does what at each stage?</h2>
+  <div class="legend">
+    <span><i class="sw" style="background:var(--lav1)"></i>Person</span>
+    <span><i class="sw" style="background:var(--head)"></i>Refresh, on its own</span>
+    <span><i class="sw" style="background:#fff;border:2px dashed var(--indigo)"></i>Partner staff</span>
+    <span><i class="sw" style="background:var(--peach)"></i>County or state</span>
+  </div>
+  <div class="lane">
+    <div class="lane-label"><span class="n">STAGE 1</span><b>Find and screen</b><small>Before any referral</small></div>
+    <div class="cards">
+      <div class="card p"><span class="who">Person</span><b>Opens the text link</b>Two minutes of questions; food today and the 7-day screen first.</div>
+      <div class="card v"><span class="who">Refresh</span><b>Flags likely eligibility</b>Screens for likely eligibility and tags this time as not E&amp;T.</div>
+      <div class="card f"><span class="who">Partner staff</span><b>Welcomes and helps</b>Staff-assisted mode on a tablet or paper writes the same record.</div>
+    </div>
+  </div>
+  <div class="lane">
+    <div class="lane-label"><span class="n">STAGE 2</span><b>Apply and ask to join</b><small>Days 1 to 30</small></div>
+    <div class="cards">
+      <div class="card p"><span class="who">Person</span><b>Fixes the filing date</b>Minimum application; consent as separate toggles; E&amp;T request in the state portal.</div>
+      <div class="card f"><span class="who">Partner staff</span><b>Sends one email</b>To the county contact, with the person’s consent on file.</div>
+      <div class="card c"><span class="who">County</span><b>Interviews, decides, refers</b>SNAP eligibility, E&amp;T re-screen and the referral stay with the county.</div>
+      <div class="card v"><span class="who">Refresh</span><b>Tracks the wait</b>"Sent on [date]" for the person; an alert to staff after X days.</div>
+    </div>
+  </div>
+  <div class="lane">
+    <div class="lane-label"><span class="n">STAGE 3</span><b>Assessment and plan</b><small>Within 15 or 30 days</small></div>
+    <div class="cards">
+      <div class="card c"><span class="who">County or case manager</span><b>Assesses and plans</b>In the state system, with the state’s pre-assessment questionnaire.</div>
+      <div class="card f"><span class="who">Partner staff</span><b>Sets supports</b>Supports and caps as the county allows.</div>
+      <div class="card v"><span class="who">Refresh</span><b>Puts the plan on the calendar</b>Plan dates and reminders, with parole appointments if the person adds them.</div>
+    </div>
+  </div>
+  <div class="lane">
+    <div class="lane-label"><span class="n">STAGE 4</span><b>Take part each month</b><small>Every month</small></div>
+    <div class="cards">
+      <div class="card f"><span class="who">Partner staff</span><b>Keeps the roster</b>Session hours and case contacts by mode: in person, phone, email.</div>
+      <div class="card p"><span class="who">Person</span><b>Confirms hours</b>Sees the month so far and the next session that counts.</div>
+      <div class="card v"><span class="who">Refresh</span><b>Builds the monthly list</b>One list to the county on a fixed day; the reply comes back as exceptions only.</div>
+      <div class="card c"><span class="who">County</span><b>Checks status, hears exceptions</b>Provider determinations within 10 days; failures and possible good cause as the county contract sets.</div>
+    </div>
+  </div>
+  <div class="lane">
+    <div class="lane-label"><span class="n">MONEY</span><b>Bill and be paid</b><small>Monthly or quarterly</small></div>
+    <div class="cards">
+      <div class="card v"><span class="who">Refresh</span><b>Drafts the invoice</b>In the county’s format, from confirmed months, roster hours, contact time and coded supports.</div>
+      <div class="card f"><span class="who">Partner finance</span><b>Certifies and sends</b>Confirms the non-federal source; stays the payee.</div>
+      <div class="card c"><span class="who">County and state</span><b>Approve and claim</b>The county approves; the state claims half from USDA; the partner is paid.</div>
+    </div>
+  </div>
+  <div class="lane">
+    <div class="lane-label"><span class="n">STAGE 5</span><b>Keep and move forward</b><small>Month 6, month 12, exit</small></div>
+    <div class="cards">
+      <div class="card p"><span class="who">Person</span><b>Renews on time</b>A photo of the notice sets the date and the checklist.</div>
+      <div class="card c"><span class="who">County</span><b>Reviews and renews</b>The report and renewal stay with the county.</div>
+      <div class="card f"><span class="who">Partner staff</span><b>Signs the hours letter</b>For Ohio’s Medicaid work rule, where it applies.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>What gets faster, and who still decides?</h2>
+  <p class="prose">We only count what we can measure. The before-and-after counts wait for a two-week time study at the partner and the county.</p>
+  <div class="tbl"><table>
+    <thead><tr><th scope="col">Moment</th><th scope="col">Today</th><th scope="col">With the Vehicle of Service</th><th scope="col">Who still decides</th></tr></thead>
+    <tbody>
+      <tr><td><b>Filing for SNAP</b></td><td>The date waits until the full application is done</td><td>A minimum application fixes the date on day 1</td><td>The county</td></tr>
+      <tr><td><b>The referral wait</b></td><td>An email, then silence; the person calls to ask</td><td>"Sent on [date]" for the person; a staff alert after X days</td><td>The county refers</td></tr>
+      <tr><td><b>Consent</b></td><td>Three or four paper forms, asked again by each office</td><td>Separate toggles, recorded once, shared on purpose, revocable</td><td>The person</td></tr>
+      <tr><td><b>Monthly status</b></td><td>One email per person, every month</td><td>One list per month on a fixed day; exceptions back</td><td>The county looks up each case</td></tr>
+      <tr><td><b>Hours</b></td><td>Sign-in sheets typed into a spreadsheet</td><td>Session roster, confirmed by the person, exported for the report</td><td>The state counts the months</td></tr>
+      <tr><td><b>Supports</b></td><td>Receipts photocopied and logged by hand</td><td>Photo or staff entry, coded to one funder when entered</td><td>The county sets supports and caps</td></tr>
+      <tr><td><b>The invoice</b></td><td>Four to eight hours a cycle, assembled by hand (estimate)</td><td>A draft from confirmed months, roster hours, contact time and coded supports</td><td>The county approves</td></tr>
+    </tbody>
+  </table></div>
+  <p class="swipe">Swipe sideways to see the whole table.</p>
+</section>
+
+<section>
+  <h2>What can we automate within the rules?</h2>
+  <div class="tbl"><table>
+    <thead><tr><th scope="col">Idea</th><th scope="col">Where it stands</th><th scope="col">Why</th></tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="3">Allowed today</td></tr>
+      <tr><td><b>Minimum application fixes the filing date</b></td><td><span class="pill ok">Allowed</span></td><td>Name, address and signature are enough to file (<a href="https://www.law.cornell.edu/cfr/text/7/273.2">7 CFR 273.2(c)(1)</a>). Electronic signatures are the state’s choice.</td></tr>
+      <tr><td><b>Pre-filled answers the person reviews and signs</b></td><td><span class="pill ok">Allowed</span></td><td>Done elsewhere by GetCalFresh; FNS has guided states on applications submitted through a tax-software partner.</td></tr>
+      <tr><td><b>Routing to the state portal’s E&amp;T request and pre-assessment</b></td><td><span class="pill ok">Allowed</span></td><td>They already exist in Ohio’s Self-Service Portal; we send people there rather than rebuild them.</td></tr>
+      <tr><td><b>Reminders from a date the person enters or photographs</b></td><td><span class="pill ok">Allowed</span></td><td>It is the person’s own notice.</td></tr>
+      <tr><td><b>Roster hours, monthly list, supports ledger, invoice draft</b></td><td><span class="pill ok">Allowed</span></td><td>The partner reviews, certifies and sends; costs stay allowable and allocable (<a href="https://www.law.cornell.edu/cfr/text/2/200.403">2 CFR 200.403</a>), staff time backed by records (<a href="https://www.law.cornell.edu/cfr/text/2/200.430">200.430</a>).</td></tr>
+      <tr class="grp"><td colspan="3">Needs the county or state</td></tr>
+      <tr><td><b>A flat software fee in the E&amp;T budget</b></td><td><span class="pill ask">Ask the county</span></td><td>Only as an approved budget line.</td></tr>
+      <tr><td><b>Refresh holding SNAP data as the partner’s subcontractor</b></td><td><span class="pill ask">Ask the county</span></td><td>Shared with those directly connected with the program, with safeguards (<a href="https://www.law.cornell.edu/cfr/text/7/272.1">7 CFR 272.1(c)</a>); flow-down terms in the county contract. Consent alone does not release state data.</td></tr>
+      <tr><td><b>Provider portal use by a vendor</b></td><td><span class="pill ask">Ask the state</span></td><td>Ohio’s portal is optional and shows assignments and failures, not SNAP case status.</td></tr>
+      <tr><td><b>Partner staff as authorized representative</b></td><td><span class="pill ask">By exception</span></td><td>A named person, a written designation per household, disclosure that the partner is reimbursed, and a cap the county confirms (<a href="https://www.law.cornell.edu/cfr/text/7/273.2">273.2(n)</a>).</td></tr>
+      <tr><td><b>SNAP filing before release</b></td><td><span class="pill ask">Federal waiver</span></td><td>FNS lists a pre-release filing waiver; Medicaid already stays suspended, not ended, during confinement in Ohio (<a href="https://codes.ohio.gov/ohio-revised-code/section-5163.45">ORC 5163.45</a>).</td></tr>
+      <tr class="grp"><td colspan="3">Not allowed</td></tr>
+      <tr><td><b>A bot that logs in as the person or fills the state portal</b></td><td><span class="pill no">No</span></td><td>No third-party channel found for Ohio; FNS treats automation that replaces state work as a major change (<a href="https://www.usda.gov/sites/default/files/guidance-documents/fns.snap-automation-revised-022425.pdf">FNS, 2025</a>).</td></tr>
+      <tr><td><b>Deciding eligibility, or paying out program funds</b></td><td><span class="pill no">No</span></td><td>Our guardrails: the agency decides; the partner stays the payee.</td></tr>
+      <tr><td><b>A text alone as the monthly case-management contact</b></td><td><span class="pill no">No</span></td><td>Ohio’s rule lists in person, phone and email (<a href="https://codes.ohio.gov/ohio-administrative-code/rule-5101:4-9-04">OAC 5101:4-9-04</a>).</td></tr>
+      <tr><td><b>Paying anyone by the number of people who apply or enroll</b></td><td><span class="pill no">No</span></td><td>Section 4018 of the Agricultural Act of 2014 (<a href="https://www.fns.usda.gov/snap/outreach/section-4018-agricultural-act-2014-questions-answers">FNS</a>). Refresh’s fee is flat.</td></tr>
+      <tr><td><b>Billing donated value, or pressuring people to apply</b></td><td><span class="pill no">No</span></td><td><a href="https://www.law.cornell.edu/cfr/text/7/277.4">7 CFR 277.4(e) and (b)(5)</a>.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="swipe">Swipe sideways to see the whole table.</p>
+</section>
+
+<section>
+  <h2>Which pieces make up the product?</h2>
+  <p class="prose">Release 1 has to work by email alone: no portal, no data feed. It proves both halves of the vision, the person reaching the benefit and the partner reaching the funds.</p>
+  <div class="tbl"><table>
+    <thead><tr><th scope="col">Piece</th><th scope="col">Stage</th><th scope="col">Status</th><th scope="col">Release</th></tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="4">For the person</td></tr>
+      <tr><td><b>Text-link screen</b>, no download, with day-1 resources and the 7-day flag</td><td>1</td><td><span class="pill on">Turn on</span> Communications, Forms</td><td><span class="pill r1">Release 1</span></td></tr>
+      <tr><td><b>Screen for likely eligibility</b></td><td>1</td><td><span class="pill have">✓ Have</span> public benefits navigation; household screening with PolicyEngine is our proposal</td><td><span class="pill r1">Release 1</span></td></tr>
+      <tr><td><b>Minimum-application page</b> with a dated receipt</td><td>2</td><td><span class="pill prop">Our proposal</span></td><td><span class="pill r1">Release 1</span></td></tr>
+      <tr><td><b>Consent as separate toggles</b>, person or staff-assisted</td><td>2</td><td><span class="pill prop">Our proposal</span></td><td><span class="pill r1">Release 1</span></td></tr>
+      <tr><td><b>Renewal timeline</b> from a photo of the notice</td><td>5</td><td><span class="pill prop">Our proposal</span></td><td><span class="pill r2">Release 2</span></td></tr>
+      <tr><td><b>Document wallet</b>: identity and income; release papers optional</td><td>2</td><td><span class="pill have">✓ Have</span> portable account; the wallet is our proposal</td><td><span class="pill r2">Release 2</span></td></tr>
+      <tr><td><b>Plan calendar</b>, with parole appointments if added</td><td>3</td><td><span class="pill have">✓ Have</span> scheduling and calendar</td><td><span class="pill r2">Release 2</span></td></tr>
+      <tr class="grp"><td colspan="4">For partner staff</td></tr>
+      <tr><td><b>Referral tracker</b> with a staff alert, routed through the state portal’s E&amp;T request</td><td>2</td><td><span class="pill prop">Our proposal</span></td><td><span class="pill r1">Release 1</span></td></tr>
+      <tr><td><b>Session roster and contact log</b>, with the half-hours limit</td><td>4</td><td><span class="pill build">Build now</span></td><td><span class="pill r1">Release 1</span></td></tr>
+      <tr><td><b>Exceptions to the county</b>: provider determinations within 10 days; failures and good cause as the contract sets</td><td>4</td><td><span class="pill prop">Our proposal</span></td><td><span class="pill r1">Release 1</span></td></tr>
+      <tr><td><b>Case summary</b> ready to paste into the state system</td><td>3–4</td><td><span class="pill build">Build now</span></td><td><span class="pill r2">Release 2</span></td></tr>
+      <tr><td><b>Hours-verification letter</b> for Ohio’s Medicaid work rule</td><td>5</td><td><span class="pill build">Build now</span></td><td><span class="pill r2">Release 2</span></td></tr>
+      <tr class="grp"><td colspan="4">For the partner’s funding</td></tr>
+      <tr><td><b>Monthly status list</b>, exceptions-only reply</td><td>4</td><td><span class="pill build">Build now</span></td><td><span class="pill r1">Release 1</span></td></tr>
+      <tr><td><b>Supportive-services ledger</b>, coded to one funder at entry</td><td>4</td><td><span class="pill prop">Our proposal</span></td><td><span class="pill r1">Release 1</span></td></tr>
+      <tr><td><b>Invoice draft</b> in the county’s format, certified by the partner</td><td>Money</td><td><span class="pill prop">Our proposal</span></td><td><span class="pill r1">Release 1</span></td></tr>
+      <tr><td><b>Time coding</b>: pre-referral time tagged as not E&amp;T; contact minutes for time records</td><td>1–4</td><td><span class="pill prop">Our proposal</span></td><td><span class="pill r1">Release 1</span></td></tr>
+      <tr><td><b>Audit-ready participant file</b> and reimbursement tracker</td><td>Money</td><td><span class="pill prop">Our proposal</span></td><td><span class="pill r2">Release 2</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="swipe">Swipe sideways to see the whole table.</p>
+  <div class="callout melon"><b>Before release 1 goes live.</b> One page agreed in writing with the county: the day and format of the monthly status list, with an exceptions-only reply; whether a faxed or emailed minimum application is accepted, and where to send it; and the invoice format and backup. Signed data-sharing terms that flow down to Refresh come first; until then, the county’s reply stays with the partner, outside Refresh.</div>
+  <p class="note">"Have" and "Turn on" come from the Modules and Features page. "Build now" are the product gaps named in Tapping Into Restricted Funding, Addendum A2 and A5. Everything else is our proposal. Product confirms each status.</p>
+</section>
+
+<section>
+  <h2>What can we learn from other states?</h2>
+  <p class="prose">Referrals, eligibility checks and hours are moving into state systems; billing mostly is not. In our review of state plans and provider guides, one state lets partners invoice in its shared system. The rest take spreadsheets, templates and secure email.</p>
+  <div class="callout"><b>Beside Ohio, not against it.</b> Ohio is starting design sessions to link a person’s request to join E&amp;T to their open or pending SNAP case, inside the state worker’s system, with an eligibility worker still reviewing each request (FY2026 plan, p. 6). No due date was found. The provider portal is optional and shows assignments and failures (p. 20). So the Vehicle of Service sends people to the state’s request, shows them where it stands, and does the partner’s work the state system leaves out: the roster, the monthly list and the invoice.</div>
+  <div class="tbl"><table>
+    <thead><tr><th scope="col">State</th><th scope="col">What partners share with the state</th><th scope="col">How partners bill</th><th scope="col">What we take from it</th></tr></thead>
+    <tbody>
+      <tr><td><b>Massachusetts</b></td><td>A shared partner portal for eligibility, enrollment, hours and notes; a signed consent unlocks each person’s record</td><td>In the same portal, the only state found</td><td>Unlock each record with a signed consent, and keep the claim beside the participation that earns it</td></tr>
+      <tr><td><b>Georgia</b></td><td>A real-time eligibility check from name and date of birth</td><td>State templates by encrypted email; altered templates are rejected</td><td>Produce the state’s own template exactly; never invent our own</td></tr>
+      <tr><td><b>Washington</b></td><td>Referrals by message, accepted or declined within 7 days with reasons; hours and notes</td><td>Colleges bill quarterly with a workbook through the state college board</td><td>Use the state’s referral statuses and reason codes, not our own</td></tr>
+      <tr><td><b>Kentucky</b></td><td>Provider entries become tasks in a state worker’s queue; participants report their own hours</td><td>Not found</td><td>What we send arrives as items a state worker reviews, never as changes to the case</td></tr>
+      <tr><td><b>Oregon, Michigan, Tennessee</b></td><td>A nightly or daily batch between the eligibility system and a workforce case system</td><td>Tennessee in a grants system; others not found</td><td>Connect to the workforce system partners already use, not the eligibility system</td></tr>
+      <tr><td><b>Minnesota, Indiana</b></td><td>A one-way feed to providers, or no provider access at all; changes by phone or email</td><td>Attendance worksheets by email (Indiana)</td><td>Where the state offers nothing, the monthly list and invoice draft carry the most weight</td></tr>
+      <tr><td><b>Ohio</b></td><td>Email to the county contact; an optional provider portal; automatic linking in design</td><td>To the county, against line-item budgets</td><td>Release 1 works by email alone, ready to feed the state’s link when it arrives</td></tr>
+    </tbody>
+  </table></div>
+  <p class="swipe">Swipe sideways to see the whole table.</p>
+  <div class="three">
+    <div><b>Where states have strong systems</b>Feed them cleanly, with the state’s own fields and statuses. Add what they leave out: the person’s experience and the partner’s billing.</div>
+    <div><b>Where states have little</b>Be the partner’s batched layer for referral, status, participation and billing, exporting in the state’s exact roster and invoice formats.</div>
+    <div><b>What we never duplicate</b>The eligibility decision, the time-limit status, failure entries where the state portal takes them, and the state’s outcome figures.</div>
+  </div>
+  <p class="note">Since October 1, 2025, states report E&amp;T outcomes each year by April 15: jobs and median wages after completion, credentials and skill gains, by participant group (<a href="https://govinfo.gov/content/pkg/FR-2024-11-18/pdf/2024-26809.pdf">89 FR 90547</a>). FNS collects totals, not case records, so states need clean partner records to build them; our exports can carry the fields the state counts. Nonprofits with a letter from their state SNAP agency could apply for the FNS process and technology improvement grants; the FY2026 round has closed.</p>
+</section>
+
+
+<section>
+  <h2>Which questions do the county and state need to answer?</h2>
+  <div class="qs">
+    <div><span class="lbl">County Job and Family Services</span>Will you contract with a new nonprofit partner mid-year, and is it one contract per county? Would you take one status list a month and reply with exceptions only? What invoice format and time records do you need, and how are participant supports paid?</div>
+    <div><span class="lbl">County Job and Family Services</span>Can a flat software fee sit in the partner’s E&amp;T budget? What data-sharing terms flow down to a software subcontractor? Is there a cap on households per authorized representative?</div>
+    <div><span class="lbl">Ohio Department of Job and Family Services</span>When does the automatic link from the portal’s E&amp;T request to the SNAP case go live, and can partners see its status? Does Ohio accept electronic signatures on the minimum application, and does it hold the pre-release filing waiver?</div>
+    <div><span class="lbl">USDA Food and Nutrition Service</span>Is there guidance after February 2025 on automation used by third-party assisters? Can household consent release SNAP data beyond 7 CFR 272.1(c)?</div>
+    <div><span class="lbl">Ohio Department of Medicaid</span>Will the SNAP work-rule exclusion apply automatically each month, and will ODM accept organization letters produced from a digital hours log?</div>
+  </div>
+  <div class="callout"><b>Our invitation.</b> One working session with a county E&amp;T coordinator and a partner case manager to walk through this map with real cases, before we build release 1. What they show us decides what we build first.</div>
+</section>
+
+<section>
+  <h2>Sources</h2>
+  <ul class="src-list">
+    <li><a href="https://fns-prod.azureedge.us/sites/default/files/resource-files/oh-snapet-stateplanFY26.pdf">Ohio SNAP E&amp;T State Plan, FY2026</a> (approved September 30, 2025)</li>
+    <li><a href="https://ssp.benefits.ohio.gov/apspssp/ssp.portal/informationLinks/viewSnapet">Ohio Self-Service Portal, SNAP E&amp;T information</a></li>
+    <li><a href="https://www.law.cornell.edu/cfr/text/7/273.7">7 CFR 273.7, SNAP work provisions and E&amp;T</a></li>
+    <li><a href="https://www.law.cornell.edu/cfr/text/7/273.24">7 CFR 273.24, time limit for adults without dependents</a></li>
+    <li><a href="https://www.law.cornell.edu/cfr/text/7/273.2">7 CFR 273.2, application, interview, authorized representatives</a></li>
+    <li><a href="https://www.law.cornell.edu/cfr/text/7/272.1">7 CFR 272.1(c), confidentiality</a></li>
+    <li><a href="https://www.law.cornell.edu/cfr/text/7/277.4">7 CFR 277.4, funding and allowable costs</a></li>
+    <li><a href="https://codes.ohio.gov/ohio-administrative-code/rule-5101:4-9-04">Ohio Administrative Code 5101:4-9-04, E&amp;T case management</a></li>
+    <li><a href="https://codes.ohio.gov/ohio-administrative-code/rule-5101:4-7-01">OAC 5101:4-7-01, interim report</a> and <a href="https://codes.ohio.gov/ohio-administrative-code/rule-5101:4-7-07">5101:4-7-07, recertification</a></li>
+    <li><a href="https://codes.ohio.gov/ohio-revised-code/section-5163.45">Ohio Revised Code 5163.45, Medicaid suspended during confinement</a></li>
+    <li><a href="https://www.usda.gov/sites/default/files/guidance-documents/fns.snap-automation-revised-022425.pdf">FNS, Use of Advanced Automation in SNAP, revised February 2025</a></li>
+    <li><a href="https://www.fns.usda.gov/snap/guidance-state-agencies-processing-snap-applications-submitted-intuit-turbotax">FNS guidance on applications submitted through a tax-software partner</a></li>
+    <li><a href="https://www.fns.usda.gov/snap-et/snap2skills">FNS SNAP to Skills</a></li>
+    <li><a href="https://dam.assets.ohio.gov/image/upload/medicaid.ohio.gov/Families%2C%20Individuals/Programs/Community/Group_VIII_Partner_Packet_08132026.pdf">Ohio Department of Medicaid Group VIII Partner Packet, August 2026</a></li>
+    <li><a href="https://www.law.cornell.edu/cfr/text/2/200.430">2 CFR 200.430, compensation and time records</a></li>
+    <li><a href="https://www.fns.usda.gov/snap/outreach/section-4018-agricultural-act-2014-questions-answers">FNS, Section 4018 of the Agricultural Act of 2014</a></li>
+    <li><a href="https://www.mass.gov/info-details/snap-path-to-work-provider-portal-the-partner-activity-tracking-hub-path">Massachusetts, SNAP Path to Work provider portal</a></li>
+    <li><a href="https://dfcs.georgia.gov/document/document/snap-et-provider-manual/download">Georgia DFCS, SNAP E&amp;T provider manual</a></li>
+    <li><a href="https://www.sbctc.edu/resources/documents/colleges-staff/grants/bfet/ffy26-bfet-program-and-fiscal-guidelines.pdf">Washington SBCTC, BFET program and fiscal guidelines, FFY26</a></li>
+    <li><a href="https://chfs.ky.gov/agencies/dcbs/dfs/Documents/snapetproviderfaq.pdf">Kentucky, SNAP E&amp;T provider FAQ</a></li>
+    <li><a href="https://snaptoskills.fns.usda.gov/tools/snap-et-operations-handbook">FNS SNAP to Skills, E&amp;T Operations Handbook</a></li>
+    <li><a href="https://govinfo.gov/content/pkg/FR-2024-11-18/pdf/2024-26809.pdf">89 FR 90547, SNAP E&amp;T reporting rule, November 2024</a></li>
+    <li>Refresh’s Vehicle of Service, draft v7, and the SNAP E&amp;T setup checklist, November 2026</li>
+  </ul>
+</section>
+
+
+</div>
+</body></html>
