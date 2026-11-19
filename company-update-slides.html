@@ -183,13 +183,13 @@
     '<p class="close">Care given is care passed on.</p></section>';
 
   function triplet(){
-    var Gc='#2f9e35',I='#252427',M='#5d5b60',s='<svg viewBox="0 0 260 172" role="img" aria-label="Logan steering up front, Jim in the middle, Andy pedaling in the back">';
+    var Gc='#2f9e35',I='#252427',M='#5d5b60',s='<svg viewBox="-20 0 300 172" role="img" aria-label="Logan setting the course up front, Jim keeping us in sync in the middle, Andy powering the climb in the back">';
     s+=wheel(36,100,24,3,Gc)+wheel(224,100,24,3,Gc)+ln(36,100,224,100,Gc)+ln(60,100,56,66,Gc)+ln(120,100,116,66,Gc)+ln(180,100,176,66,Gc)+ln(56,66,218,66,Gc)+ln(218,66,224,100,Gc)+ln(214,60,226,56,Gc);
     [54,114,174].forEach(function(x){s+=ln(x,66,x+4,40,I)+head(x+6,30,I,8)+ln(x+4,48,x+30,60,I);});
     s+='<path d="M172 29 a8 8 0 0 1 16 0 z" fill="'+Gc+'"/>'+ln(186,29,198,29,Gc,3);
     s+='<path d="M44 22 q-3 5 0 7 q3 -2 0 -7 z M38 32 q-3 5 0 7 q3 -2 0 -7 z" fill="#6fb6e8"/>';
-    s+=txt(60,146,'Andy',13,I,true)+txt(130,146,'Jim',13,I,true)+txt(200,146,'Logan',13,I,true);
-    s+=txt(60,162,'pedaling',9,M)+txt(130,162,'keeping steady',9,M)+txt(200,162,'steering',9,M);
+    s+=txt(42,146,'Andy',13,I,true)+txt(130,146,'Jim',13,I,true)+txt(218,146,'Logan',13,I,true);
+    s+=txt(42,162,'powering the climb',9,M)+txt(130,162,'keeping us in sync',9,M)+txt(218,162,'setting the course',9,M);
     return s+'</svg>';
   }
   var THANKS='<section class="slide"><div class="wm">R</div><div class="kicker">Public sector · Adrian</div><h1>Thank you, Logan, Andy and Jim</h1><p class="sub">Three founders, one bike, and a very clear division of labor.</p>'+
