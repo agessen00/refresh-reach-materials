@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Company update slides</title>
+<style>
+  :root{--cream:#F8F7F0;--ink:#252427;--green:#4BDF52;--greenTint:#E6F9E7;--muted:#5d5b60;--hair:#e3e1d8;}
+  *{box-sizing:border-box}
+  body{margin:0;background:#ecebe4;font-family:Arial,Helvetica,sans-serif;color:var(--ink);padding:24px 16px 60px}
+  nav{max-width:1120px;margin:0 auto 28px;display:flex;flex-wrap:wrap;gap:8px}
+  nav a{background:#fff;border:1px solid var(--hair);border-radius:20px;padding:7px 14px;font-size:14px;color:var(--ink);text-decoration:none}
+  nav a:hover{border-color:var(--green)}
+  .vhead{max-width:1120px;margin:48px auto 18px;border-top:3px solid var(--green);padding-top:18px}
+  .vhead h2{margin:0 0 6px;font-size:28px}
+  .vhead p{margin:4px 0;font-size:15px;line-height:1.5;color:var(--muted);max-width:900px}
+  .label{max-width:1120px;margin:0 auto 8px;font-size:13px;color:var(--muted)}
+  .slide{max-width:1120px;aspect-ratio:16/9;margin:0 auto 14px;background:var(--cream);border:1px solid var(--hair);border-radius:6px;padding:44px 60px;display:flex;flex-direction:column;overflow:hidden}
+  .kicker{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  h1{font-size:38px;margin:10px 0 6px;line-height:1.1}
+  .sub{font-size:18px;color:var(--muted);margin:0 0 20px}
+  .eq{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;flex:1}
+  .card{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:22px;display:flex;flex-direction:column}
+  .card .tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .card .big{font-size:52px;font-weight:700;margin:8px 0 6px;line-height:1}
+  .card p{font-size:16px;line-height:1.4;margin:0}
+  .card.blank{background:var(--greenTint);border:2px dashed var(--green);justify-content:center;align-items:center}
+  .card.blank .big{font-size:110px}
+  .op{align-self:center;font-size:44px;font-weight:700;color:var(--green)}
+  .foot{margin-top:16px;font-size:17px;line-height:1.45;border-left:4px solid var(--green);padding-left:16px}
+  .bikes{flex:1;display:flex;flex-direction:column;gap:4px}
+  .rowlabel{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .cell{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:6px 8px 8px;text-align:center}
+  .cell svg{width:100%;height:auto;display:block;max-height:92px}
+  .cell .cap{font-size:13px;line-height:1.3;margin-top:2px}
+  .cell.ok{border-color:var(--green);background:var(--greenTint)}
+  .story{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;flex:1}
+  .scene{font-size:19px;line-height:1.5;margin:0}
+  .ph{background:#fff3c4;padding:0 4px;border-radius:3px}
+  .outcome{font-size:22px;font-weight:700;margin-top:16px;line-height:1.3}
+  .sees{display:flex;flex-direction:column;gap:10px}
+  .sees div{background:#fff;border:1px solid var(--hair);border-left:5px solid var(--green);border-radius:6px;padding:12px 16px;font-size:18px;line-height:1.35}
+  .nums{font-size:15px;line-height:1.45;color:var(--muted);margin-top:12px}
+  .close{margin-top:14px;font-size:24px;font-weight:700}
+  .open{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;flex:1}
+  .quote .q{font-size:24px;line-height:1.35;font-weight:700;margin:0}
+  .quote .who{font-size:14px;color:var(--muted);margin:8px 0 18px}
+  .quote .ours{font-size:18px;line-height:1.5;margin:0;border-left:4px solid var(--green);padding-left:14px}
+  .ladder{display:flex;flex-direction:column-reverse;gap:6px;justify-content:flex-end}
+  .rung{background:#fff;border:1px solid var(--hair);border-radius:6px;padding:6px 12px;font-size:13px;line-height:1.3}
+  .rung b{display:block;font-size:15px}
+  .rung span{color:var(--muted)}
+  .r1,.r2{background:#f3f1ea}
+  .r3,.r4,.r5{background:var(--greenTint);border-color:var(--green)}
+  .brace{font-size:13px;font-weight:700;padding:2px}
+  .b1{color:var(--muted)} .b2{color:#2f9e35}
+  .foot.big{font-size:22px;font-weight:700}
+  .slide{position:relative}
+  .slide > *:not(.wm){position:relative;z-index:1}
+  .wm{position:absolute;right:28px;bottom:-40px;font-size:300px;font-weight:700;line-height:1;color:#4BDF52;opacity:.13;z-index:0;pointer-events:none;user-select:none}
+  .reach{display:flex;gap:6px;margin:0 0 12px}
+  .reach div{flex:1;text-align:center;background:#fff;border:1px solid var(--hair);border-radius:6px;padding:4px 2px}
+  .reach b{display:block;font-size:26px;color:#2f9e35;line-height:1.1}
+  .reach span{font-size:11px;color:var(--muted)}
+  .thanks{display:grid;grid-template-columns:1fr 1.25fr;gap:36px;align-items:center;flex:1}
+  .tk-art svg{width:100%;height:auto}
+  .tk-text p{font-size:18px;line-height:1.5;margin:0 0 14px}
+  .north{background:var(--greenTint);border:2px solid var(--green);border-radius:8px;padding:12px 16px;font-size:19px;font-weight:700;line-height:1.35}
+  .north span{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#2f9e35;margin-bottom:4px}
+  .tk-text .mine{border-left:4px solid var(--green);padding-left:14px;font-style:italic}
+  @media (max-width:760px){.thanks{grid-template-columns:1fr}}
+  .notes{max-width:1120px;margin:0 auto 34px;font-size:13px;color:var(--muted);line-height:1.5}
+  @media (max-width:760px){.slide{aspect-ratio:auto;padding:26px 18px}.eq,.story,.open{grid-template-columns:1fr}.row{grid-template-columns:repeat(2,1fr)}.op{justify-self:center}h1{font-size:28px}}
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script>
+(function(){
+  var INK='#252427', MUTE='#9a979c', G='#2f9e35';
+  function wheel(cx,cy,r,w,c){return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="'+c+'" stroke-width="'+(w||3)+'"/>';}
+  function ln(x1,y1,x2,y2,c,w){return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="'+(w||3)+'" stroke-linecap="round"/>';}
+  function head(x,y,c,r){return '<circle cx="'+x+'" cy="'+y+'" r="'+(r||7)+'" fill="'+c+'"/>';}
+  function bike(rx,fx,r,c,seatUp){var gy=110-r,mid=(rx+fx)/2,sy=gy-(seatUp||22);
+    return wheel(rx,gy,r,3,c)+wheel(fx,gy,r,3,c)+ln(rx,gy,mid,gy,c)+ln(mid,gy,mid-6,sy,c)+ln(rx,gy,mid-6,sy,c)+ln(mid-6,sy+4,fx-4,sy+2,c)+ln(fx-4,sy+2,fx,gy,c)+ln(fx-6,sy-2,fx+2,sy-6,c)+ln(mid-12,sy,mid,sy,c,4);}
+  function rider(x,seatY,c,tall){var t=tall||1;return ln(x,seatY,x+4,seatY-24*t,c)+head(x+6,seatY-32*t,c)+ln(x+4,seatY-18*t,x+28,seatY-6,c);}
+  function stand(x,c,tall){var t=tall||1,top=110-60*t;return head(x,top-8,c)+ln(x,top,x,top+30*t,c)+ln(x,top+30*t,x-6,110,c)+ln(x,top+30*t,x+6,110,c)+ln(x,top+10,x-8,top+24,c)+ln(x,top+10,x+8,top+24,c);}
+  function chair(x,c){return wheel(x,96,14,3,c)+ln(x-10,96,x-10,70,c)+ln(x-10,82,x+12,82,c)+head(x-4,58,c)+ln(x-4,66,x-4,82,c)+ln(x-4,82,x+12,96,c);}
+  function rect(x,y,w,h,c,f,rx){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+(rx||0)+'" fill="'+(f||'none')+'" stroke="'+c+'" stroke-width="3"/>';}
+  function txt(x,y,s,sz,c,b){return '<text x="'+x+'" y="'+y+'" font-size="'+sz+'" font-family="Arial" fill="'+c+'" text-anchor="middle"'+(b?' font-weight="700"':'')+'>'+s+'</text>';}
+  function dash(x1,y1,x2,y2,c){return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="2.5" stroke-dasharray="5 5"/>';}
+  function phone(x,y,c,inner){return rect(x,y,36,62,c,'#fff',7)+ln(x+13,y+6,x+23,y+6,c,2)+(inner||'');}
+  function door(x,y,c,locked,open){var s=open?rect(x,y,36,60,c,'#E6F9E7',2)+'<path d="M'+x+' '+y+' l-14 8 v58 l14 -6" fill="#fff" stroke="'+c+'" stroke-width="3"/>':rect(x,y,36,60,c,'#fff',2)+'<circle cx="'+(x+28)+'" cy="'+(y+32)+'" r="2.5" fill="'+c+'"/>';
+    if(locked){s+='<path d="M'+(x+12)+' '+(y+24)+' v-5 a6 6 0 0 1 12 0 v5" fill="none" stroke="'+c+'" stroke-width="2.5"/>'+rect(x+10,y+24,16,12,c,c,2);}return s;}
+  function moon(x,y){return '<path d="M'+x+' '+y+' a13 13 0 1 0 13 16 a10 10 0 0 1 -13 -16z" fill="#c9c5b8"/>';}
+  function clock(x,y,r,c){return wheel(x,y,r,3,c)+ln(x,y,x,y-r*0.6,c)+ln(x,y,x+r*0.5,y,c);}
+  function pin(x,y,c){return '<path d="M'+x+' '+y+' c-7 -9 -11 -14 -11 -20 a11 11 0 0 1 22 0 c0 6 -4 11 -11 20z" fill="'+c+'"/><circle cx="'+x+'" cy="'+(y-20)+'" r="4" fill="#fff"/>';}
+  function paper(x,y,c){return rect(x,y,24,32,c,'#fff',2)+ln(x+5,y+9,x+19,y+9,c,2)+ln(x+5,y+16,x+19,y+16,c,2)+ln(x+5,y+23,x+15,y+23,c,2);}
+  function check(x,y,c){return '<path d="M'+x+' '+y+' l7 7 l13 -15" fill="none" stroke="'+c+'" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>';}
+  function house(x,c){return '<path d="M'+x+' 111 v-26 l14 -12 l14 12 v26" fill="#fff" stroke="'+c+'" stroke-width="3"/>';}
+  function heart(x,y,c){return '<path d="M'+x+' '+(y+10)+' l-10 -10 a6 6 0 0 1 10 -7 a6 6 0 0 1 10 7 z" fill="'+c+'"/>';}
+  function bulb(x,y,c){return '<circle cx="'+x+'" cy="'+y+'" r="8" fill="'+c+'"/>'+rect(x-4,y+8,8,5,c,c,1);}
+  function gift(x,y,c,open){return rect(x,y,36,28,c,'#fff',2)+ln(x+18,y,x+18,y+28,c)+(open?'<path d="M'+(x-2)+' '+(y-4)+' l18 -14 M'+(x+38)+' '+(y-4)+' l-18 -14" stroke="'+c+'" stroke-width="3"/>':rect(x-2,y-8,40,8,c,'#fff',2));}
+  function tiles(x,y,c){var s='';for(var i=0;i<3;i++)for(var j=0;j<2;j++)s+=rect(x+5+j*14,y+14+i*14,10,10,c,c,2);return s;}
+  function svg(inner){return '<svg viewBox="0 0 160 118" role="img">'+inner+'<line x1="4" y1="111" x2="156" y2="111" stroke="#d8d5cc" stroke-width="2"/></svg>';}
+
+  // fixed drawings for each idea slide, in cell order
+  var D={
+    bike:{top:[
+      bike(40,90,18,MUTE)+stand(122,INK,1.5), bike(40,90,18,MUTE)+chair(126,INK), bike(40,90,18,MUTE)+stand(122,INK)+ln(114,42,130,42,INK,4),
+      bike(40,90,18,MUTE)+stand(122,INK)+'<path d="M100 111 L118 92 L132 104 L150 86 L156 111 Z" fill="#e8e4d8"/>', bike(40,90,18,MUTE)+stand(124,INK,0.65)],
+     bot:[
+      bike(36,104,26,G,34)+rider(64,50,INK,1.25),
+      wheel(40,96,14,3,G)+wheel(70,96,14,3,G)+wheel(124,96,14,3,G)+ln(40,96,124,96,G)+ln(70,96,70,74,G)+ln(70,74,110,70,G)+ln(110,70,124,96,G)+'<path d="M84 80 l6 -10 l-2 7 h5 l-6 10 l2 -7 z" fill="'+G+'"/>'+head(66,48,INK)+ln(66,56,68,74,INK)+ln(68,62,108,66,INK),
+      wheel(28,92,18,3,G)+wheel(132,92,18,3,G)+ln(28,92,132,92,G)+ln(56,92,52,64,G)+ln(98,92,94,64,G)+ln(52,64,128,64,G)+ln(128,64,132,92,G)+rider(50,64,INK)+rider(92,64,INK),
+      '<path d="M4 111 L40 100 L80 106 L120 92 L156 100 L156 111 Z" fill="#e8e4d8"/>'+wheel(42,84,20,6,G)+wheel(110,82,20,6,G)+ln(42,84,76,84,G)+ln(76,84,70,58,G)+ln(42,84,70,58,G)+ln(70,62,106,58,G)+ln(106,58,110,82,G)+rider(68,58,INK),
+      bike(56,96,13,G,16)+wheel(48,106,4,2,G)+wheel(64,106,4,2,G)+rider(74,79,INK,0.7)]},
+    door:{top:[
+      stand(28,INK)+door(68,51,MUTE,true)+moon(128,16), stand(30,INK)+clock(98,62,28,MUTE), stand(20,INK)+dash(34,96,124,56,MUTE)+pin(136,62,MUTE),
+      stand(20,INK)+txt(88,34,'3 counties away',12,MUTE)+dash(34,60,124,60,MUTE)+pin(136,66,MUTE), stand(26,INK)+phone(64,38,MUTE,txt(82,74,'on hold',9,MUTE))+clock(128,50,15,MUTE)],
+     bot:[
+      stand(28,INK)+door(80,51,G,false,true)+moon(128,16),
+      stand(26,INK)+phone(64,38,G,ln(72,58,92,58,G,2)+ln(72,68,92,68,G,2)+ln(72,78,92,78,G,2)+ln(72,88,86,88,G,2))+txt(130,72,'16',24,G,true),
+      stand(26,INK)+phone(64,38,G,head(82,64,G,7)+'<path d="M70 92 a12 10 0 0 1 24 0" fill="'+G+'"/>'),
+      pin(30,62,G)+pin(80,44,G)+pin(130,62,G)+dash(30,58,80,40,G)+dash(80,40,130,58,G)+stand(80,INK,0.75),
+      stand(26,INK)+phone(64,38,G,rect(68,60,28,16,G,'#E6F9E7',4)+txt(82,72,'next',9,G,true))]},
+    places:{top:[
+      rect(46,14,68,94,MUTE,'#fff',3)+txt(80,32,'555-0101',10,MUTE)+txt(80,46,'555-0142',10,MUTE)+txt(80,60,'555-0177',10,MUTE)+txt(80,74,'555-0193',10,MUTE)+txt(80,88,'555-0110',10,MUTE)+txt(80,102,'…',10,MUTE),
+      paper(18,60,MUTE)+paper(50,52,MUTE)+paper(82,60,MUTE)+paper(114,52,MUTE),
+      pin(26,62,MUTE)+pin(80,44,MUTE)+pin(134,62,MUTE)+stand(80,INK,0.75),
+      (function(){var s='';for(var i=0;i<3;i++)for(var j=0;j<2;j++){var x=36+i*32,y=24+j*40;s+=rect(x,y,24,24,MUTE,'#fff',4)+'<circle cx="'+(x+12)+'" cy="'+(y+11)+'" r="3" fill="'+MUTE+'"/>'+ln(x+12,y+13,x+12,y+18,MUTE,2);}return s;})(),
+      stand(30,INK)+gift(84,70,MUTE,false)+txt(102,52,'?',20,MUTE,true)],
+     bot:[
+      stand(28,INK)+phone(64,30,G,tiles(66,32,G)),
+      stand(28,INK)+phone(64,30,G,ln(72,52,92,52,G,2)+ln(72,62,92,62,G,2)+check(72,74,G)),
+      stand(28,INK)+phone(64,30,G,pin(82,80,G)),
+      phone(62,30,G,rect(68,50,24,24,G,'#E6F9E7',4)+check(71,62,G))+txt(124,64,'one',14,G,true)+txt(124,80,'login',14,G,true),
+      stand(30,INK)+gift(84,70,G,true)+check(92,52,G)]},
+    together:{top:[
+      stand(30,INK)+ln(100,111,100,46,MUTE)+'<path d="M100 50 h30 l8 6 l-8 6 h-30 z M100 66 h-30 l-8 6 l8 6 h30 z" fill="#fff" stroke="'+MUTE+'" stroke-width="2.5"/>'+txt(50,40,'?',22,MUTE,true),
+      stand(80,INK)+rect(58,22,44,20,MUTE,'#fff',2)+rect(64,4,32,18,MUTE,'#fff',2),
+      stand(36,INK)+txt(76,40,'?',22,MUTE,true)+pin(126,74,MUTE)+txt(126,94,'pantry',11,MUTE),
+      house(14,MUTE)+stand(80,INK)+house(118,MUTE),
+      stand(44,INK)+bulb(44,18,MUTE)+stand(118,MUTE)],
+     bot:[
+      stand(30,INK)+ln(80,111,80,46,G)+'<path d="M80 50 h34 l8 6 l-8 6 h-34 z" fill="#E6F9E7" stroke="'+G+'" stroke-width="2.5"/>'+stand(136,INK)+ln(136,62,120,50,INK),
+      stand(40,INK)+stand(120,INK)+rect(50,58,60,20,G,'#E6F9E7',2),
+      stand(24,INK)+stand(136,INK)+stand(52,INK,0.8)+pin(96,70,G)+txt(96,90,'pantry',11,G,true),
+      stand(26,INK)+stand(60,INK)+stand(100,INK)+stand(134,INK)+heart(80,14,G),
+      stand(40,INK)+bulb(40,18,G)+'<path d="M58 30 h40 l-8 -6 M98 30 l-8 6" fill="none" stroke="'+G+'" stroke-width="3"/>'+stand(120,INK)+bulb(120,18,G)]}
+  };
+
+  function idea(kind,s,kicker){
+    var cells=function(list,caps,ok){return list.map(function(d,i){return '<div class="cell'+(ok?' ok':'')+'">'+svg(d)+'<div class="cap">'+caps[i]+'</div></div>';}).join('');};
+    return '<section class="slide"><div class="wm">'+({bike:'E',door:'A',together:'C',places:'H'})[kind]+'</div><div class="kicker">'+kicker+'</div><h1>'+s.title+'</h1><p class="sub">'+s.sub+'</p><div class="bikes">'+
+      '<div class="rowlabel">'+s.tl+'</div><div class="row">'+cells(D[kind].top,s.top,false)+'</div>'+
+      '<div class="rowlabel">'+s.bl+'</div><div class="row">'+cells(D[kind].bot,s.bot,true)+'</div></div>'+
+      '<p class="foot">'+s.foot+'</p></section>'+'<div style="height:22px"></div>';
+  }
+
+  var OPEN='<section class="slide"><div class="kicker">Public sector · Adrian</div><h1>Enough help, waiting to be shared</h1><p class="sub">About 100 million Americans live below the true cost of living.</p>'+
+    '<div class="open"><div class="quote"><p class="q">“America’s poverty is not for lack of resources. We lack something else.”</p><p class="who">Matthew Desmond, <i>Poverty, by America</i> (2023)</p>'+
+    '<p class="ours">We have invested in good technology before, to serve our people. What we never had was the chance to bring it together, and to share it, curated for a greater purpose.</p></div>'+
+    '<div class="ladder">'+
+      '<div class="rung r1"><b>1 · Crisis</b><span>immediate action needed</span></div>'+
+      '<div class="rung r2"><b>2 · Vulnerable</b><span>a major barrier to work, learning or stability</span></div>'+
+      '<div class="brace b1">Most help today is built for crisis and getting stable</div>'+
+      '<div class="rung r3"><b>3 · Dependent</b><span>managing with support, still needs help to progress</span></div>'+
+      '<div class="rung r4"><b>4 · Independent</b><span>stable in this area</span></div>'+
+      '<div class="rung r5"><b>5 · Thriving</b><span>a strong foundation, exceeding expectations</span></div>'+
+      '<div class="brace b2">Where we can now keep walking with people</div>'+
+    '</div></div>'+
+    '<p class="foot big">Reconnect every community to its organizations, and people to where they belong.</p></section>';
+
+  var STORY='<section class="slide"><div class="kicker">Public sector · Adrian</div><h1>One person, one next step</h1><p class="sub">One person our partners serve.</p>'+
+    '<div class="story"><div><p class="scene"><span class="ph">[Name or "one participant"]</span> came in to <span class="ph">[Partner]</span> in <span class="ph">[place]</span> needing <span class="ph">[one thing]</span>. That night, from their phone, they saw their next step. By <span class="ph">[when]</span> they were sitting with someone who could help.</p>'+
+    '<p class="outcome"><span class="ph">[Where they are now, in one line.]</span></p>'+
+    '<p class="nums">1.5M+ licenses already out, 5M ready, 10M within reach. Every $1 a partner spends on SNAP job training brings 50¢ back from the federal government.</p></div>'+
+    '<div class="sees"><div>The person sees their next step.</div><div>The agency sees the need as it forms.</div><div>Leaders see who moved from stabilizing toward thriving.</div></div></div>'+
+    '<p class="close">Care given is care passed on.</p></section>';
+
+  function triplet(){
+    var Gc='#2f9e35',I='#252427',M='#5d5b60',s='<svg viewBox="0 0 260 150" role="img" aria-label="Logan steering up front, Jim in the middle, Andy pedaling in the back">';
+    s+=wheel(36,100,24,3,Gc)+wheel(224,100,24,3,Gc)+ln(36,100,224,100,Gc)+ln(60,100,56,66,Gc)+ln(120,100,116,66,Gc)+ln(180,100,176,66,Gc)+ln(56,66,218,66,Gc)+ln(218,66,224,100,Gc)+ln(214,60,226,56,Gc);
+    [54,114,174].forEach(function(x){s+=ln(x,66,x+4,40,I)+head(x+6,30,I,8)+ln(x+4,48,x+30,60,I);});
+    s+='<path d="M172 29 a8 8 0 0 1 16 0 z" fill="'+Gc+'"/>'+ln(186,29,198,29,Gc,3);
+    s+='<path d="M44 22 q-3 5 0 7 q3 -2 0 -7 z M38 32 q-3 5 0 7 q3 -2 0 -7 z" fill="#6fb6e8"/>';
+    s+=txt(60,126,'Andy',13,I,true)+txt(120,126,'Jim',13,I,true)+txt(180,126,'Logan',13,I,true);
+    s+=txt(60,142,'doing the pedaling',9,M)+txt(120,142,'keeping it steady',9,M)+txt(180,142,'steering',9,M);
+    return s+'</svg>';
+  }
+  var THANKS='<section class="slide"><div class="wm">R</div><div class="kicker">Public sector · Adrian</div><h1>Thank you, Logan, Andy and Jim</h1><p class="sub">Three founders, one bike, and a very clear division of labor.</p>'+
+    '<div class="thanks"><div class="tk-art">'+triplet()+'</div><div class="tk-text">'+
+    '<p>Most founders build the bike and sell the rides. These three built it, then kept handing out seats.</p>'+
+    '<p class="mine">Twenty years in the public sector, and this company still taught me something new. A business win without a servant heart is a missed opportunity.</p>'+
+    '<div class="reach"><div><b>R</b><span>Refresh</span></div><div><b>E</b><span>equity</span></div><div><b>A</b><span>access</span></div><div><b>C</b><span>community</span></div><div><b>H</b><span>hub</span></div></div>'+
+    '<div class="north">Reconnect every community to its organizations, and people to where they belong.</div>'+
+    '</div></div><p class="close">Thank you for leaving the light on for the rest of us, too.</p></section>';
+
+  var V=[
+   {id:'final', name:'Final slides', blurb:'The four ideas, each said zero times, then the thank-you. The story is told aloud across the slides.', kicker:'Public sector · Adrian', pre:'', post:THANKS,
+    s:{
+     bike:{title:'The same bike, or the right ride', sub:'Five riders and one very confident purchase order.', tl:'One bike, issued to everyone', bl:'A bike that fits each rider',
+       top:['Tall rider, knees up by the ears','Wheelchair user, kindly issued two pedals','Blind rider, told to follow the signs','Mountain ahead, bike built for a parking lot','Child, feet waving at the pedals'],
+       bot:['A taller frame, knees back where knees go','A battery hand-cycle, already out front','A tandem, with a partner up front','A mountain bike, and there goes the mountain','Training wheels, and a very serious face'],
+       foot:'Everyone got the same bike, and the road stayed empty. Everyone got their own, and everyone arrived.', note:'show the top row and let it sit for two seconds, then the bottom row. Credit the bicycle idea to the Robert Wood Johnson Foundation (2017) in the notes, never on the slide.'},
+     door:{title:'Life rarely books an appointment', sub:'Five moments that never checked the business hours.', tl:'Help during office hours', bl:'Help that meets you when you need it',
+       top:['11 p.m. and the door says try Monday','Short break, long line','No car, and the office moved across town','The right expert, three whole counties away','On hold, and now knows the song'],
+       bot:['11 p.m. and the next step is there','Sixteen plain questions, done before the coffee cools','Help arrives by video, shoes optional','Any town in the network, zero counties crossed','A nudge for the next step, no hold music'],
+       foot:'Life never did book an appointment. Now it doesn’t have to.', note:'"It’s eleven at night." Pause. Click. "Still eleven at night." Then the bottom line, once.'},
+     places:{title:'Ten doors, each with its own clipboard', sub:'The same help, before and after someone tidied up.', tl:'Help in ten different places', bl:'Everything in one place',
+       top:['Ten phone numbers, each one recommending another','Five forms, one name, written five times','Three offices, generously spread across town','A login for every program, each one forgotten','Benefits waiting politely, never introduced'],
+       bot:['One app, in a pocket that’s already there','Answer once, and it stays answered','Help does the traveling for a change','One login, the only one to remember','What they’re owed, finally introduced'],
+       foot:'The help was always there. It was just living at ten addresses. Now it has one.', note:'"This is a full afternoon." Click. "This is a pocket."'},
+     together:{title:'No one rides alone', sub:'Five people, and what company does to a road.', tl:'Each person working it out alone', bl:'Each person with company',
+       top:['A fork in the road, a silent signpost','Carrying it all, plus opening the door','A pantry down the street, the best-kept secret','New in town, a phone with nobody in it','One hard-won lesson, kept in one head'],
+       bot:['Someone who’s been there says, this way','Two people carrying, one free hand each','The pantry, now the worst-kept secret in town','Welcomed on day one, phone suddenly full','One lesson, already in the next head'],
+       foot:'Every person who finds the way leaves the light on for the next. That is how one good step forward becomes a road.', note:'this is the turn, from what a person receives to what a person gives. Read the pantry pair and the last pair, then the bottom line, then three seconds of quiet.'}
+    }}
+  ];
+
+  var order=['bike','door','together','places'];
+  var nav='', html='';
+  V.forEach(function(v){
+    nav+='<a href="#'+v.id+'">'+v.name+'</a>';
+    if(v.pre){html+='<div class="label">The sum, left open</div>'+v.pre;}
+    order.forEach(function(k){html+=idea(k,v.s[k],v.kicker);});
+    if(v.post){html+='<div class="label">The story, and the answer</div>'+v.post;}
+  });
+  
+  document.getElementById('root').innerHTML=html;
+})();
+</script>
+</body>
+</html>
