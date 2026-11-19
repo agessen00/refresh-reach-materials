@@ -155,7 +155,7 @@
 
   function idea(kind,s,kicker){
     var cells=function(list,caps,ok){return list.map(function(d,i){return '<div class="cell'+(ok?' ok':'')+'">'+svg(d)+'<div class="cap">'+caps[i]+'</div></div>';}).join('');};
-    return '<section class="slide"><div class="wm">'+({bike:'E',door:'A',together:'C',places:'H'})[kind]+'</div><div class="kicker">'+kicker+'</div><h1>'+s.title+'</h1><p class="sub">'+s.sub+'</p><div class="bikes">'+
+    return '<section class="slide"><div class="wm">'+({bike:'E',door:'A',together:'C',places:'H'})[kind]+'</div><div class="kicker">'+kicker+'</div><h1>'+s.title+'</h1>'+(s.sub?'<p class="sub">'+s.sub+'</p>':'')+'<div class="bikes">'+
       '<div class="rowlabel">'+s.tl+'</div><div class="row">'+cells(D[kind].top,s.top,false)+'</div>'+
       '<div class="rowlabel">'+s.bl+'</div><div class="row">'+cells(D[kind].bot,s.bot,true)+'</div></div>'+
       '<p class="foot">'+s.foot+'</p></section>'+'<div style="height:22px"></div>';
@@ -203,19 +203,19 @@
   var V=[
    {id:'final', name:'Final slides', blurb:'The four ideas, each said zero times, then the thank-you. The story is told aloud across the slides.', kicker:'Public sector · Adrian', pre:'', post:THANKS,
     s:{
-     bike:{title:'The same bike, or the right ride', sub:'Different journeys, one very confident purchase order.', tl:'One bike, issued to everyone', bl:'A bike that fits each rider',
+     bike:{title:'Different journeys, one very confident purchase order', sub:'', tl:'One bike, issued to everyone', bl:'A bike that fits each rider',
        top:['Tall rider, knees up by the ears','Wheelchair user, kindly issued two pedals','Blind rider, told to follow the signs','Mountain ahead, bike built for a parking lot','Child, feet waving at the pedals'],
        bot:['A taller frame, knees back where knees go','A battery hand-cycle, already out front','A tandem, with a partner up front','A mountain bike, and there goes the mountain','Training wheels, and a very serious face'],
        foot:'Everyone got the same bike, and the road stayed empty. Everyone got their own, and everyone arrived.', note:'show the top row and let it sit for two seconds, then the bottom row. Credit the bicycle idea to the Robert Wood Johnson Foundation (2017) in the notes, never on the slide.'},
-     door:{title:'Life rarely books an appointment', sub:'Moments that never checked the business hours.', tl:'Help during office hours', bl:'Help that meets you when you need it',
+     door:{title:'Life rarely books an appointment', sub:'', tl:'Help during office hours', bl:'Help that meets you when you need it',
        top:['11 p.m. and the door says try Monday','Short break, long line','No car, and the office moved across town','The right expert, three whole counties away','On hold, and now knows the song'],
        bot:['11 p.m. and the next step is there','Sixteen plain questions, done before the coffee cools','Help arrives by video, shoes optional','Any town in the network, zero counties crossed','A nudge for the next step, no hold music'],
        foot:'Life never did book an appointment. Now it doesn’t have to.', note:'"It’s eleven at night." Pause. Click. "Still eleven at night." Then the bottom line, once.'},
-     places:{title:'Ten doors, each with its own clipboard', sub:'The same help, before and after someone tidied up.', tl:'Help in ten different places', bl:'Everything in one place',
+     places:{title:'Ten doors, each with its own clipboard', sub:'', tl:'Help in ten different places', bl:'Everything in one place',
        top:['Ten phone numbers, each one recommending another','Five forms, one name, written five times','Three offices, generously spread across town','A login for every program, each one forgotten','Benefits waiting politely, never introduced'],
        bot:['One app, in a pocket that’s already there','Answer once, and it stays answered','Help does the traveling for a change','One login, the only one to remember','What they’re owed, finally introduced'],
        foot:'The help was always there. It was just living at ten addresses. Now it has one.', note:'"This is a full afternoon." Click. "This is a pocket."'},
-     together:{title:'No one rides alone', sub:'People, and what company does to a road.', tl:'Each person working it out alone', bl:'Each person with company',
+     together:{title:'No one should ride alone', sub:'', tl:'Each person working it out alone', bl:'Each person with company',
        top:['A fork in the road, a silent signpost','Carrying it all, plus opening the door','A pantry down the street, the best-kept secret','New in town, a phone with nobody in it','One hard-won lesson, kept in one head'],
        bot:['Someone who’s been there says, this way','Two people carrying, one free hand each','The pantry, now the worst-kept secret in town','Welcomed on day one, phone suddenly full','One lesson, already in the next head'],
        foot:'Every person who finds the way leaves the light on for the next. That is how one good step forward becomes a road.', note:'this is the turn, from what a person receives to what a person gives. Read the pantry pair and the last pair, then the bottom line, then three seconds of quiet.'}
